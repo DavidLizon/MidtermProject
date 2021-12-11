@@ -10,5 +10,7 @@
 
 <h1>Game Nerds Unite!</h1>
 
+<h2>USER: ${DEBUG}</h2>
+
 </body>
 </html>
