@@ -39,10 +39,22 @@ class GenreTest {
 		em.close();
 		genre = null;
 	}
+	
+	/*
+	 * SELECT * FROM genre WHERE id = 1;
++----+--------+------------------------------------+
+| id | name   | description                        |
++----+--------+------------------------------------+
+|  1 | Action | Heavy action and constant gameplay |
++----+--------+------------------------------------+
+	 */
 
 	@Test
 	void test_genre_mapping() {
 		assertNotNull(genre);
 		assertNotNull(genre.getName()); 
+		assertEquals(1, genre.getId());
+		assertEquals("Action", genre.getName());
+		assertEquals("Heavy action and constant gameplay", genre.getDescription());
 	}
 }
