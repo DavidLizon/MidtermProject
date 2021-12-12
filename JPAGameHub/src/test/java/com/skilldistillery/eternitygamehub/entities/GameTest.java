@@ -40,9 +40,21 @@ class GameTest {
 		game = null;
 	}
 
+	/*
+	 * SELECT * FROM game WHERE id = 1;
++----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+
+| id | title                  | description                     | max_players | user_id | rating_id | image_url                 |
++----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+
+|  1 | Call of Duty: Vanguard | Description of game goes here.  |           4 |       1 |         1 | game image url goes here. |
++----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+
+	 */
+	
 	@Test
 	void test_game_mapping() {
 		assertNotNull(game);
 		assertNotNull(game.getMaxPlayers()); 
+		assertEquals(1, game.getId());
+		assertEquals(4, game.getMaxPlayers());
+		assertEquals("Call of Duty: Vanguard", game.getTitle());
 	}
 }

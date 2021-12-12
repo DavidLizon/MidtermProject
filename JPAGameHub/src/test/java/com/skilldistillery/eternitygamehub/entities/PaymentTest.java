@@ -39,10 +39,19 @@ class PaymentTest {
 		em.close();
 		payment = null;
 	}
-
+	
+//	 select * from payment;
+//	 +----+---------------------+--------+---------+
+//	 | id | payment_date        | amount | sale_id |
+//	 +----+---------------------+--------+---------+
+//	 |  1 | 2021-12-11 03:33:30 |  12.99 |       1 |
+//	 +----+---------------------+--------+---------+
+	
 	@Test
 	void test_payment_mapping() {
 		assertNotNull(payment);
-		assertNotNull(payment.getAmount()); 
+		assertEquals(2021, payment.getPaymentDate().getYear()); 
+		assertEquals(12, payment.getPaymentDate().getMonthValue()); 
+		assertEquals(12.99, payment.getAmount()); 
 	}
 }
