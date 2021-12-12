@@ -63,6 +63,7 @@ class RatingTest {
 	@Test
 	void test_rating_to_games_OneToMany_mapping() {
 		assertNotNull(rating);
+		assertNotNull(rating.getGames());
 		assertTrue(rating.getGames().size() > 0);
 	}
 }

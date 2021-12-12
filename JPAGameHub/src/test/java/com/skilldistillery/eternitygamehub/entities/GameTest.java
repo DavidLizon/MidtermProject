@@ -73,4 +73,20 @@ class GameTest {
 		assertEquals("E", game.getRating().getName());
 		
 	}
+	
+//	SELECT * FROM game JOIN genre;
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+--------+------------------------------------+
+//	| id | title                  | description                     | max_players | user_id | rating_id | image_url                 | id | name   | description                        |
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+--------+------------------------------------+
+//	|  1 | Call of Duty: Vanguard | Description of game goes here.  |           4 |       1 |         1 | game image url goes here. |  1 | Action | Heavy action and constant gameplay |
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+--------+------------------------------------+
+//	
+	
+	
+	@Test
+	void test_game_to_genres_ManyToMany_mapping() {
+		assertNotNull(game);
+		assertNotNull(game.getGenres());
+		assertTrue(game.getGenres().size() > 0);
+	}
 }
