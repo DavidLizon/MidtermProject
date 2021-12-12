@@ -1,5 +1,6 @@
 package com.skilldistillery.eternitygamehub.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -9,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -40,6 +42,9 @@ public class GameInventory {
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
+	
+	@OneToMany(mappedBy = "gameInventory")
+	private List<Sale> sales;
 	
 	public GameInventory() {}
 
@@ -105,6 +110,14 @@ public class GameInventory {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public List<Sale> getSales() {
+		return sales;
+	}
+
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
 	}
 
 	@Override

@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Sale {
@@ -36,6 +38,18 @@ public class Sale {
 	
 	@Column(name = "date_returned")
 	private LocalDateTime dateReturned;
+	
+	@ManyToOne
+	@JoinColumn(name = "buyer_id")
+	private User buyer;
+	
+	@ManyToOne
+	@JoinColumn(name = "seller_id")
+	private User seller;
+	
+	@ManyToOne
+	@JoinColumn(name = "game_inventory")
+	private GameInventory gameInventory;
 	
 	public Sale() {}
 
@@ -101,6 +115,30 @@ public class Sale {
 
 	public void setDateReturned(LocalDateTime dateReturned) {
 		this.dateReturned = dateReturned;
+	}
+
+	public User getBuyer() {
+		return buyer;
+	}
+
+	public void setBuyer(User buyer) {
+		this.buyer = buyer;
+	}
+
+	public User getSeller() {
+		return seller;
+	}
+
+	public void setSeller(User seller) {
+		this.seller = seller;
+	}
+
+	public GameInventory getGameInventory() {
+		return gameInventory;
+	}
+
+	public void setGameInventory(GameInventory gameInventory) {
+		this.gameInventory = gameInventory;
 	}
 
 	@Override
