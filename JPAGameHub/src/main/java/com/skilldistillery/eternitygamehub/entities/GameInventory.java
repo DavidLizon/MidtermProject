@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,6 +28,10 @@ public class GameInventory {
 	
 	@Column(name = "rent_price")
 	private double rentPrice;
+	
+	@ManyToOne
+	@JoinColumn(name = "platform_id")
+	private Platform platform;
 	
 	public GameInventory() {}
 
@@ -67,6 +73,14 @@ public class GameInventory {
 
 	public void setRentPrice(double rentPrice) {
 		this.rentPrice = rentPrice;
+	}
+
+	public Platform getPlatform() {
+		return platform;
+	}
+
+	public void setPlatform(Platform platform) {
+		this.platform = platform;
 	}
 
 	@Override

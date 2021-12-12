@@ -1,11 +1,13 @@
 package com.skilldistillery.eternitygamehub.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Platform {
@@ -15,6 +17,9 @@ public class Platform {
 	private int id;
 	
 	private String name;
+	
+	@OneToMany(mappedBy = "platform")
+	private List<GameInventory> gameInventory;
 	
 	public Platform() {}
 
@@ -32,6 +37,14 @@ public class Platform {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public List<GameInventory> getGameInventory() {
+		return gameInventory;
+	}
+
+	public void setGameInventory(List<GameInventory> gameInventory) {
+		this.gameInventory = gameInventory;
 	}
 
 	@Override
