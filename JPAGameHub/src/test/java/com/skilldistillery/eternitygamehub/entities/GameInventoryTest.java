@@ -41,9 +41,8 @@ class GameInventoryTest {
 	}
 
 	@Test
-	void test_user_mapping() {
+	void test_inventory_mapping() {
 		assertNotNull(inventory);
 		assertNotNull(inventory.getSalePrice()); 
-		assertEquals(1, inventory.getId()); 
 	}
 }

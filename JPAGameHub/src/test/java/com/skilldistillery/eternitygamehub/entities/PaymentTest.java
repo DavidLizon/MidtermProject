@@ -41,9 +41,8 @@ class PaymentTest {
 	}
 
 	@Test
-	void test_user_mapping() {
+	void test_payment_mapping() {
 		assertNotNull(payment);
 		assertNotNull(payment.getAmount()); 
-		assertEquals(1, payment.getPaymentDate()); 
 	}
 }
