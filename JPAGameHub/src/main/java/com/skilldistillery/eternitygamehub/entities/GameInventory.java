@@ -33,6 +33,10 @@ public class GameInventory {
 	@JoinColumn(name = "platform_id")
 	private Platform platform;
 	
+	@ManyToOne
+	@JoinColumn(name = "game_id")
+	private Game game;
+	
 	public GameInventory() {}
 
 	public int getId() {
@@ -81,6 +85,14 @@ public class GameInventory {
 
 	public void setPlatform(Platform platform) {
 		this.platform = platform;
+	}
+
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
 	}
 
 	@Override

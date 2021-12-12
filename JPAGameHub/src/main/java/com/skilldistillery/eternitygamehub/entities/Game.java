@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Game {
@@ -39,6 +40,9 @@ public class Game {
 	
 	@ManyToMany(mappedBy = "games")
 	private List<Genre> genres;
+	
+	@OneToMany(mappedBy = "game")
+	private List<GameInventory> gameInventory;
 	
 	
 	public Game() {}
@@ -105,6 +109,14 @@ public class Game {
 
 	public void setGenres(List<Genre> genres) {
 		this.genres = genres;
+	}
+
+	public List<GameInventory> getGameInventory() {
+		return gameInventory;
+	}
+
+	public void setGameInventory(List<GameInventory> gameInventory) {
+		this.gameInventory = gameInventory;
 	}
 
 	@Override
