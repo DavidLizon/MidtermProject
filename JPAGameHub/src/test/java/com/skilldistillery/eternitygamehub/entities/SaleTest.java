@@ -40,9 +40,18 @@ class SaleTest {
 		sale = null;
 	}
 
+//	select * from sale; 
+//	+----+----------+-----------+-------------------+---------------------+-----------------+------------------+------------------+-----------------------+----------------+---------------+
+//	| id | buyer_id | seller_id | game_inventory_id | sale_date           | rating_by_buyer | comment_by_buyer | rating_by_seller | comment_by_seller     | return_by_date | date_returned |
+//	+----+----------+-----------+-------------------+---------------------+-----------------+------------------+------------------+-----------------------+----------------+---------------+
+//	|  1 |        1 |         2 |                 1 | 2021-12-11 03:33:30 |               5 | Fast shipping!   |                5 | Payment went through! | 2021-12-22     | 2021-12-21  
+//	
+	
 	@Test
 	void test_user_mapping() {
 		assertNotNull(sale);
 		assertEquals(1, sale.getId()); 
+		assertEquals(2021, sale.getSaleDate().getYear()); 
+		assertEquals(12, sale.getSaleDate().getMonthValue()); 
 	}
 }

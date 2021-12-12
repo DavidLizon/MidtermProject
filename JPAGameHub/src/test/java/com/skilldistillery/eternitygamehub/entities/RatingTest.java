@@ -39,10 +39,15 @@ class RatingTest {
 		em.close();
 		rating = null;
 	}
+//	
+//	| id | name | description                 |
+//	+----+------+-----------------------------+
+//	|  1 | E    | Game is rated for everyone. |
 
 	@Test
 	void test_rating_mapping() {
 		assertNotNull(rating);
-		assertNotNull(rating.getName()); 
+		assertEquals("E", rating.getName()); 
+		assertEquals(1, rating.getId()); 
 	}
 }
