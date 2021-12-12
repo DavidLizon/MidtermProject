@@ -1,11 +1,15 @@
 package com.skilldistillery.eternitygamehub.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Genre {
@@ -17,6 +21,12 @@ public class Genre {
 	private String name;
 	
 	private String description;
+	
+	@ManyToMany
+	@JoinTable(name = "game_genre",
+			   joinColumns = @JoinColumn(name = "genre_id"),
+		       inverseJoinColumns = @JoinColumn(name = "game_id"))
+	private List<Game> games;
 	
 	public Genre() {}
 
@@ -42,6 +52,14 @@ public class Genre {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<Game> getGames() {
+		return games;
+	}
+
+	public void setGames(List<Game> games) {
+		this.games = games;
 	}
 
 	@Override

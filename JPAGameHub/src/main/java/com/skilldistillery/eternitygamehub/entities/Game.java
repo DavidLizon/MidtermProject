@@ -1,5 +1,6 @@
 package com.skilldistillery.eternitygamehub.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -34,6 +36,10 @@ public class Game {
 	@ManyToOne
 	@JoinColumn(name = "rating_id")
 	private Rating rating;
+	
+	@ManyToMany(mappedBy = "games")
+	private List<Genre> genres;
+	
 	
 	public Game() {}
 
@@ -91,6 +97,14 @@ public class Game {
 
 	public void setRating(Rating rating) {
 		this.rating = rating;
+	}
+
+	public List<Genre> getGenres() {
+		return genres;
+	}
+
+	public void setGenres(List<Genre> genres) {
+		this.genres = genres;
 	}
 
 	@Override
