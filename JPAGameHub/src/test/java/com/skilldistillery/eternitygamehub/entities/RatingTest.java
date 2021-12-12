@@ -51,4 +51,18 @@ class RatingTest {
 		assertEquals("E", rating.getName()); 
 		assertEquals(1, rating.getId()); 
 	}
+	
+//	SELECT * FROM game JOIN rating;
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+------+-----------------------------+
+//	| id | title                  | description                     | max_players | user_id | rating_id | image_url                 | id | name | description                 |
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+------+-----------------------------+
+//	|  1 | Call of Duty: Vanguard | Description of game goes here.  |           4 |       1 |         1 | game image url goes here. |  1 | E    | Game is rated for everyone. |
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+------+-----------------------------+
+
+	
+	@Test
+	void test_rating_to_games_OneToMany_mapping() {
+		assertNotNull(rating);
+		assertTrue(rating.getGames().size() > 0);
+	}
 }
