@@ -70,6 +70,5 @@ class PaymentTest {
 		assertEquals(2021, payment.getSale().getSaleDate().getYear());
 		assertEquals(12, payment.getSale().getSaleDate().getMonthValue());
 		assertEquals(11, payment.getSale().getSaleDate().getDayOfMonth());
-		
 	}
 }

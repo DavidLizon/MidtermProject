@@ -52,4 +52,18 @@ class PlatformTest {
 		assertNotNull(platform);
 		assertEquals("Playstation", platform.getName()); 
 	}
+	
+//	SELECT * FROM game_inventory JOIN platform;
+//	+----+---------+---------+-----------------------------------------+------------+-----------+------------+-------------+----+-------------+
+//	| id | game_id | user_id | description                             | sale_price | available | rent_price | platform_id | id | name        |
+//	+----+---------+---------+-----------------------------------------+------------+-----------+------------+-------------+----+-------------+
+//	|  1 |       1 |       1 | Sellers personal description goes here. |      25.99 |         1 |       2.99 |           1 |  1 | Playstation |
+//	+----+---------+---------+-----------------------------------------+------------+-----------+------------+-------------+----+-------------+
+//	
+	@Test
+	void test_platform_to_gameInventory_OneToMany_mapping() {
+		assertNotNull(platform);
+		assertNotNull(platform.getGameInventory());
+		assertTrue(platform.getGameInventory().size() > 0);
+	}
 }

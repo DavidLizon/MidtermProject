@@ -74,7 +74,6 @@ class GameTest {
 		assertNotNull(game);
 		assertEquals(1, game.getRating().getId());
 		assertEquals("E", game.getRating().getName());
-
 	}
 
 //	SELECT * FROM game JOIN genre;
@@ -103,6 +102,19 @@ class GameTest {
 		assertNotNull(game);
 		assertNotNull(game.getGameInventory());
 		assertTrue(game.getGameInventory().size() > 0);
-		
+	}
+	
+//	SELECT * FROM game JOIN user WHERE user.id = 1;
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+----------+------------+-----------+----------+---------------------+---------------------+--------------------------+---------+--------+--------------------------------+
+//	| id | title                  | description                     | max_players | user_id | rating_id | image_url                 | id | username | first_name | last_name | password | email               | account_created     | biography                | enabled | role   | profile_picture_url            |
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+----------+------------+-----------+----------+---------------------+---------------------+--------------------------+---------+--------+--------------------------------+
+//	|  1 | Call of Duty: Vanguard | Description of game goes here.  |           4 |       1 |         1 | game image url goes here. |  1 | admin    | admin      | admin     | admin    | admin@fakeemail.com | 2021-12-11 03:24:53 | The biography goes here. |       1 | seller | profile picture url goes here. |
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+----------+------------+-----------+----------+---------------------+---------------------+--------------------------+---------+--------+--------------------------------+
+//	
+	@Test
+	void test_game_to_user_ManyToOne_mapping() {
+		assertNotNull(game);
+		assertNotNull(game.getUser());
+		assertEquals(1, game.getUser().getId());
 	}
 }
