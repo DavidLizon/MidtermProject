@@ -48,7 +48,7 @@ public class Sale {
 	private User seller;
 	
 	@ManyToOne
-	@JoinColumn(name = "game_inventory")
+	@JoinColumn(name = "game_inventory_id")
 	private GameInventory gameInventory;
 	
 	public Sale() {}
