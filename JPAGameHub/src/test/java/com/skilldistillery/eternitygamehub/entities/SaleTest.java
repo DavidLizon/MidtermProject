@@ -48,7 +48,7 @@ class SaleTest {
 //	
 	
 	@Test
-	void test_user_mapping() {
+	void test_sale_mapping() {
 		assertNotNull(sale);
 		assertEquals(1, sale.getId()); 
 		assertEquals(2021, sale.getSaleDate().getYear()); 

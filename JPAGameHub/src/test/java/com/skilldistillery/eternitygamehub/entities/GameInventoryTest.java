@@ -40,9 +40,21 @@ class GameInventoryTest {
 		inventory = null;
 	}
 
+/*
+ * SELECT * FROM game_inventory WHERE id = 1;
++----+---------+---------+-----------------------------------------+------------+-----------+------------+-------------+
+| id | game_id | user_id | description                             | sale_price | available | rent_price | platform_id |
++----+---------+---------+-----------------------------------------+------------+-----------+------------+-------------+
+|  1 |       1 |       1 | Sellers personal description goes here. |      25.99 |         1 |       2.99 |           1 |
++----+---------+---------+-----------------------------------------+------------+-----------+------------+-------------+
+ */
+	
+	
 	@Test
 	void test_inventory_mapping() {
 		assertNotNull(inventory);
 		assertNotNull(inventory.getSalePrice()); 
+		assertEquals(25.99, inventory.getSalePrice());
+		assertEquals(2.99, inventory.getRentPrice());
 	}
 }
