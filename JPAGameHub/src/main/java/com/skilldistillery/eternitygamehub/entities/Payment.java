@@ -49,6 +49,14 @@ public class Payment {
 		return amount;
 	}
 
+	public Sale getSale() {
+		return sale;
+	}
+
+	public void setSale(Sale sale) {
+		this.sale = sale;
+	}
+
 	public void setAmount(double amount) {
 		this.amount = amount;
 	}
