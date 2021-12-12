@@ -57,4 +57,17 @@ class GenreTest {
 		assertEquals("Action", genre.getName());
 		assertEquals("Heavy action and constant gameplay", genre.getDescription());
 	}
+	
+	
+	
+	@Test
+	void test_genre_to_games_ManyToMany_mapping() {
+		assertNotNull(genre);
+		assertNotNull(genre.getGames());
+		assertTrue(genre.getGames().size() > 0);
+	}
+	
+
+
+	
 }

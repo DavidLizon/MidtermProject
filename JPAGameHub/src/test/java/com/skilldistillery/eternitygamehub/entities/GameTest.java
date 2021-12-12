@@ -42,22 +42,26 @@ class GameTest {
 
 	/*
 	 * SELECT * FROM game WHERE id = 1;
-+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+
-| id | title                  | description                     | max_players | user_id | rating_id | image_url                 |
-+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+
-|  1 | Call of Duty: Vanguard | Description of game goes here.  |           4 |       1 |         1 | game image url goes here. |
-+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+
+	 * +----+------------------------+---------------------------------+------------
+	 * -+---------+-----------+---------------------------+ | id | title |
+	 * description | max_players | user_id | rating_id | image_url |
+	 * +----+------------------------+---------------------------------+------------
+	 * -+---------+-----------+---------------------------+ | 1 | Call of Duty:
+	 * Vanguard | Description of game goes here. | 4 | 1 | 1 | game image url goes
+	 * here. |
+	 * +----+------------------------+---------------------------------+------------
+	 * -+---------+-----------+---------------------------+
 	 */
-	
+
 	@Test
 	void test_game_mapping() {
 		assertNotNull(game);
-		assertNotNull(game.getMaxPlayers()); 
+		assertNotNull(game.getMaxPlayers());
 		assertEquals(1, game.getId());
 		assertEquals(4, game.getMaxPlayers());
 		assertEquals("Call of Duty: Vanguard", game.getTitle());
 	}
-	
+
 //	SELECT * FROM game JOIN rating;
 //	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+------+-----------------------------+
 //	| id | title                  | description                     | max_players | user_id | rating_id | image_url                 | id | name | description                 |
@@ -65,15 +69,14 @@ class GameTest {
 //	|  1 | Call of Duty: Vanguard | Description of game goes here.  |           4 |       1 |         1 | game image url goes here. |  1 | E    | Game is rated for everyone. |
 //	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+------+-----------------------------+
 
-	
 	@Test
 	void test_game_to_rating_ManyToOne_mapping() {
 		assertNotNull(game);
 		assertEquals(1, game.getRating().getId());
 		assertEquals("E", game.getRating().getName());
-		
+
 	}
-	
+
 //	SELECT * FROM game JOIN genre;
 //	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+--------+------------------------------------+
 //	| id | title                  | description                     | max_players | user_id | rating_id | image_url                 | id | name   | description                        |
@@ -81,12 +84,25 @@ class GameTest {
 //	|  1 | Call of Duty: Vanguard | Description of game goes here.  |           4 |       1 |         1 | game image url goes here. |  1 | Action | Heavy action and constant gameplay |
 //	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+--------+------------------------------------+
 //	
-	
-	
+
 	@Test
 	void test_game_to_genres_ManyToMany_mapping() {
 		assertNotNull(game);
 		assertNotNull(game.getGenres());
 		assertTrue(game.getGenres().size() > 0);
+	}
+
+//	SELECT * FROM game JOIN game_inventory;
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+---------+---------+-----------------------------------------+------------+-----------+------------+-------------+
+//	| id | title                  | description                     | max_players | user_id | rating_id | image_url                 | id | game_id | user_id | description                             | sale_price | available | rent_price | platform_id |
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+---------+---------+-----------------------------------------+------------+-----------+------------+-------------+
+//	|  1 | Call of Duty: Vanguard | Description of game goes here.  |           4 |       1 |         1 | game image url goes here. |  1 |       1 |       1 | Sellers personal description goes here. |      25.99 |         1 |       2.99 |           1 |
+//	+----+------------------------+---------------------------------+-------------+---------+-----------+---------------------------+----+---------+---------+-----------------------------------------+------------+-----------+------------+-------------+
+	@Test
+	void test_game_to_gameInventory_OneToMany_mapping() {
+		assertNotNull(game);
+		assertNotNull(game.getGameInventory());
+		assertTrue(game.getGameInventory().size() > 0);
+		
 	}
 }
