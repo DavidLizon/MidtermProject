@@ -9,6 +9,7 @@
 
   <class>com.skilldistillery.eternitygamehub.entities.Game</class>
   <class>com.skilldistillery.eternitygamehub.entities.GameInventory</class>
+  <class>com.skilldistillery.eternitygamehub.entities.Genre</class>
   <class>com.skilldistillery.eternitygamehub.entities.Payment</class>
   <class>com.skilldistillery.eternitygamehub.entities.Platform</class>
   <class>com.skilldistillery.eternitygamehub.entities.Rating</class>
