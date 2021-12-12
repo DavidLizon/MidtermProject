@@ -44,6 +44,9 @@ public class User {
 	
 	@OneToMany(mappedBy = "user")
 	private List<Game> games;
+	
+	@OneToMany(mappedBy = "user")
+	private List<GameInventory> gameInventory;
 
 	public User() {
 		super();
@@ -143,6 +146,14 @@ public class User {
 
 	public void setGames(List<Game> games) {
 		this.games = games;
+	}
+
+	public List<GameInventory> getGameInventory() {
+		return gameInventory;
+	}
+
+	public void setGameInventory(List<GameInventory> gameInventory) {
+		this.gameInventory = gameInventory;
 	}
 
 	@Override

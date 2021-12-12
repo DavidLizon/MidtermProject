@@ -37,6 +37,10 @@ public class GameInventory {
 	@JoinColumn(name = "game_id")
 	private Game game;
 	
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+	
 	public GameInventory() {}
 
 	public int getId() {
@@ -93,6 +97,14 @@ public class GameInventory {
 
 	public void setGame(Game game) {
 		this.game = game;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
