@@ -137,6 +137,14 @@ public class User {
 		this.profilePictureUrl = profilePictureUrl;
 	}
 
+	public List<Game> getGames() {
+		return games;
+	}
+
+	public void setGames(List<Game> games) {
+		this.games = games;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
