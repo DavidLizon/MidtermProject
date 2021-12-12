@@ -31,6 +31,10 @@ public class Game {
 	@JoinColumn(name = "user_id")
 	private User user;
 	
+	@ManyToOne
+	@JoinColumn(name = "rating_id")
+	private Rating rating;
+	
 	public Game() {}
 
 	public int getId() {
@@ -71,6 +75,22 @@ public class Game {
 
 	public void setGameImageUrl(String gameImageUrl) {
 		this.gameImageUrl = gameImageUrl;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Rating getRating() {
+		return rating;
+	}
+
+	public void setRating(Rating rating) {
+		this.rating = rating;
 	}
 
 	@Override

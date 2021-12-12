@@ -39,7 +39,8 @@ class RatingTest {
 		em.close();
 		rating = null;
 	}
-//	
+	
+//	select * from rating; 
 //	| id | name | description                 |
 //	+----+------+-----------------------------+
 //	|  1 | E    | Game is rated for everyone. |

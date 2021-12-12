@@ -1,11 +1,13 @@
 package com.skilldistillery.eternitygamehub.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Rating {
@@ -17,6 +19,9 @@ public class Rating {
 	private String name;
 	
 	private String description;
+	
+	@OneToMany(mappedBy = "rating")
+	private List<Game> games;
 	
 	public Rating() {}
 
@@ -42,6 +47,14 @@ public class Rating {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<Game> getGames() {
+		return games;
+	}
+
+	public void setGames(List<Game> games) {
+		this.games = games;
 	}
 
 	@Override

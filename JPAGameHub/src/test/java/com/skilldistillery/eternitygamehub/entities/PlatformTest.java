@@ -39,10 +39,17 @@ class PlatformTest {
 		em.close();
 		platform = null;
 	}
+	
+//	select * from platform; 
+//	+----+-------------+
+//	| id | name        |
+//	+----+-------------+
+//	|  1 | Playstation |
+//	+----+-------------+
 
 	@Test
-	void test_user_mapping() {
+	void test_platform_mapping() {
 		assertNotNull(platform);
-		assertNotNull(platform.getName()); 
+		assertEquals("Playstation", platform.getName()); 
 	}
 }
