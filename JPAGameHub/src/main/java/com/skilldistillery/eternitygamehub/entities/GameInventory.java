@@ -46,6 +46,9 @@ public class GameInventory {
 	@OneToMany(mappedBy = "gameInventory")
 	private List<Sale> sales;
 	
+	@Column(name = "condition_new")
+	private boolean conditionNew;
+	
 	public GameInventory() {}
 
 	public int getId() {
@@ -118,6 +121,14 @@ public class GameInventory {
 
 	public void setSales(List<Sale> sales) {
 		this.sales = sales;
+	}
+
+	public boolean isConditionNew() {
+		return conditionNew;
+	}
+
+	public void setConditionNew(boolean conditionNew) {
+		this.conditionNew = conditionNew;
 	}
 
 	@Override
