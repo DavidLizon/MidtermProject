@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 public class User {
 
@@ -31,6 +33,7 @@ public class User {
 	private String email;
 	
 	@Column(name = "account_created")
+	@CreationTimestamp
 	private LocalDateTime accountCreated;
 	
 	private String biography;
