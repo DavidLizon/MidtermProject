@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>EGH Home</title>
+<jsp:include page="bootstrapHead.jsp"/>
 </head>
 <body>
 

@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Eternity Game Hub</title> <!-- Can we pull title from the game to display in the title? -->
+<jsp:include page="bootstrapHead.jsp"/>
 </head>
 <body>
 

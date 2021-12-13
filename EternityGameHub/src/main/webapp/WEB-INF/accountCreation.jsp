@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Create EGH Account</title>
+<jsp:include page="bootstrapHead.jsp"/>
+
 </head>
 <body>
 

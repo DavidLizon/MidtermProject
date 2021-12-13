@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>EGH Account Info</title>
+<jsp:include page="bootstrapHead.jsp"/>
 </head>
 <body>
 
