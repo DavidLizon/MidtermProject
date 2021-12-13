@@ -32,5 +32,11 @@ public class HomeController {
 		
 	}
 	
-	
+	@RequestMapping(path= "displayAllGames.do", method = RequestMethod.GET)
+	public String displayAllGames(String keyword, Model model) {
+		List<GameInventory> allGames = new ArrayList<>();
+		allGames = userDao.findAllGames();
+		model.addAttribute("allresults", allGames);
+		return "search";
+	}
 }
