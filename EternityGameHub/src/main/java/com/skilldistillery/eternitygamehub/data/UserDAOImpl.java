@@ -36,7 +36,6 @@ public class UserDAOImpl implements UserDAO {
 			.setParameter("gametitle", "%"+keyword+"%")
 			.getResultList();
 		em.close();
-		
 		return gamesByKeyword;
 	}
 
@@ -46,6 +45,7 @@ public class UserDAOImpl implements UserDAO {
 		String jpql = "Select gi FROM GameInventory gi";
 		allGames = em.createQuery(jpql, GameInventory.class)
 				.getResultList();
+		em.close();
 		return allGames;
 	}
 
