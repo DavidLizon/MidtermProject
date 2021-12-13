@@ -107,6 +107,7 @@ CREATE TABLE IF NOT EXISTS `game_inventory` (
   `available` TINYINT NULL,
   `rent_price` DECIMAL(4,2) NULL,
   `platform_id` INT NOT NULL,
+  `condition_new` TINYINT NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_game_inventory_game1_idx` (`game_id` ASC),
   INDEX `fk_game_inventory_user1_idx` (`user_id` ASC),
@@ -281,7 +282,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `eternitygamehubdb`;
-INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`) VALUES (1, 1, 1, 'Sellers personal description goes here.', 25.99, 1, 2.99, 1);
+INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`, `condition_new`) VALUES (1, 1, 1, 'Sellers personal description goes here.', 25.99, 1, 2.99, 1, 1);
 
 COMMIT;
 
