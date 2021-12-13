@@ -5,13 +5,9 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EGH Home</title>
+<title>EGH User Login</title>
 </head>
 <body>
-
-<h1>Game Nerds Unite!</h1>
-
-<h2>USER: ${DEBUG}</h2>
 
 </body>
 </html>
