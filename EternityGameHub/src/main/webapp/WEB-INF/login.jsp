@@ -9,6 +9,16 @@
 <jsp:include page="bootstrapHead.jsp"/>
 </head>
 <body>
-
+<form action="login.do" method="POST">
+Username
+	<input type="text" name="Username"/>
+	<br>
+Password
+	<input type="password" name="password"/>
+	<input type="submit" value="Log In"/>
+</form>
+<form action="accountCreation.do" method="GET">
+	<input type="submit" value="Create Account"/>
+</form>
 </body>
 </html>
