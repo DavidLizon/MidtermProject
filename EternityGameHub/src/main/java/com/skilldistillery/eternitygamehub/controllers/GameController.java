@@ -51,7 +51,7 @@ public class GameController {
 	@RequestMapping(path= "addGame.do", method = RequestMethod.POST)
 	public String addGameToGames(Game game, Model model) {
 		Game newGame = gameDao.addGame(game);
-		if () { }
+//		if () { }
 		model.addAttribute("newGameAdded", newGame);
 		return "addGameInventoryItem";
 	}
