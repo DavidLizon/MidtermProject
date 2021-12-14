@@ -44,9 +44,6 @@
 				<c:when test="${!loginSuccessful}">
 					<div>
 						<p>Your username or password was incorrect.</p>
-						<form action="loginOrCreateAccount.do"> <!-- Need to confirm this is the correct mapping within controller -->
-							<input type="submit" value="Home"/>
-						</form>	
 					</div>
 				</c:when>
 				
