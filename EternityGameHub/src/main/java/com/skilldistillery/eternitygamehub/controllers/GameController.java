@@ -19,10 +19,14 @@ public class GameController {
 	@Autowired
 	private GameDAO gameDao;
 
+	
+//	<input type = checkbox name = "filteredcondition" value ="new">
+//	<input type = checkbox name = "filteredcondition" value ="rentable">
+
 	@RequestMapping(path= "findByKeyword.do", method = RequestMethod.GET)
-	public String findByKeyword(String keyword, Model model) {
+	public String findByKeyword(String keyword, Model model, String[] filteredcondition) {
 		List<GameInventory> games = new ArrayList<>();
-		games = gameDao.findGameByKeywordSearch(keyword);
+		games = gameDao.findGameByKeywordSearch(keyword, filteredcondition);
 		model.addAttribute("result", games);
 		return "search";
 		
@@ -47,6 +51,7 @@ public class GameController {
 	@RequestMapping(path= "addGame.do", method = RequestMethod.POST)
 	public String addGameToGames(Game game, Model model) {
 		Game newGame = gameDao.addGame(game);
+//		if () { }
 		model.addAttribute("newGameAdded", newGame);
 		return "addGameInventoryItem";
 	}

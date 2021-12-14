@@ -7,7 +7,7 @@ import com.skilldistillery.eternitygamehub.entities.GameInventory;
 
 public interface GameDAO {
 
-	public List<GameInventory> findGameByKeywordSearch(String keyword);
+	public List<GameInventory> findGameByKeywordSearch(String keyword, String[] filteredcondition);
 
 	public List<GameInventory> findAllGames();
 
@@ -18,4 +18,7 @@ public interface GameDAO {
 	public GameInventory addGameInventory(GameInventory newGameInventoryItem);
 	
 	public GameInventory displayCreatedGameInventoryItem(int id);
+	
+	List<GameInventory> findGameByFilteredSearch(List<GameInventory> gamesByKeyword, Boolean conditionNew);
+
 }
