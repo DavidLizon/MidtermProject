@@ -60,8 +60,8 @@ DROP TABLE IF EXISTS `game` ;
 CREATE TABLE IF NOT EXISTS `game` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(45) NOT NULL,
-  `description` TEXT NULL,
-  `max_players` INT NULL,
+  `description` TEXT NOT NULL,
+  `max_players` INT NOT NULL,
   `user_id` INT NOT NULL,
   `rating_id` INT NOT NULL,
   `image_url` VARCHAR(2000) NULL,

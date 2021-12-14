@@ -9,14 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.eternitygamehub.data.GameDAO;
 import com.skilldistillery.eternitygamehub.data.UserDAO;
-import com.skilldistillery.eternitygamehub.entities.Game;
 import com.skilldistillery.eternitygamehub.entities.GameInventory;
-import com.skilldistillery.eternitygamehub.entities.Genre;
-import com.skilldistillery.eternitygamehub.entities.Platform;
 
 @Controller
-public class HomeController {
+public class UserController {
 
 	@Autowired
 	private UserDAO userDao;
@@ -26,22 +24,7 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping(path= "findByKeyword.do", method = RequestMethod.GET)
-	public String findByKeyword(String keyword, Model model) {
-		List<GameInventory> games = new ArrayList<>();
-		games = userDao.findGameByKeywordSearch(keyword);
-		model.addAttribute("result", games);
-		return "search";
-		
-	}
 	
-	@RequestMapping(path= "displayAllGames.do", method = RequestMethod.GET)
-	public String displayAllGames(String keyword, Model model) {
-		List<GameInventory> allGames = new ArrayList<>();
-		allGames = userDao.findAllGames();
-		model.addAttribute("allresults", allGames);
-		return "search";
-	}
 	
 //	@RequestMapping(path= "addNewGame.do", method = RequestMethod.POST)
 //	public String addNewGame(Game newGame) {

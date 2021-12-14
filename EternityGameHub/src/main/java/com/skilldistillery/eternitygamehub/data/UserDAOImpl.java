@@ -29,31 +29,6 @@ public class UserDAOImpl implements UserDAO {
 //			return null;
 //		}
 //	}
-	@Override
-	public List<GameInventory> findGameByKeywordSearch(String keyword) {
-		List<GameInventory> gamesByKeyword = new ArrayList<>();
-		String jpql = "SELECT gi FROM GameInventory gi WHERE gi.game.title LIKE :gametitle";
-		gamesByKeyword = em.createQuery(jpql, GameInventory.class)
-			.setParameter("gametitle", "%"+keyword+"%")
-			.getResultList();
-		em.close();
-		return gamesByKeyword;
-	}
-
-	@Override
-	public List<GameInventory> findAllGames() {
-		List<GameInventory> allGames = new ArrayList<>();
-		String jpql = "Select gi FROM GameInventory gi";
-		allGames = em.createQuery(jpql, GameInventory.class)
-				.getResultList();
-		em.close();
-		return allGames;
-	}
-
-	@Override
-	public Game addGame(Game game) {
-		em.persist(game);
-		return game;
-	}
+	
 
 }

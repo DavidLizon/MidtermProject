@@ -9,10 +9,6 @@ public interface UserDAO {
 
 //	User findByUsername(String username);
 	
-	public List<GameInventory> findGameByKeywordSearch(String keyword);
 	
-	public List<GameInventory> findAllGames();
-
-	public Game addGame(Game game);
 		
 }
