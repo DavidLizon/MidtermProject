@@ -16,7 +16,7 @@
 	<div>
 	<h2>Search Title to List</h2>
 	
-	<form action="sellSearchExistingGameResults.do" method="GET">
+	<form action="searchByTitle.do" method="GET">
 	
 	<label for="title">Title: </label>
 	<input type="text" name="title"/>
@@ -31,7 +31,7 @@
 		<c:when test="${! empty alreadyInGames}">
 			<ul>
 				<c:forEach var="alreadyInGames" items="${searchedByTitles}"> <!-- Need to confirm these names are correct  -->
-					<li>	<a href="displayGame.do">${alreadyInGames.title}</a>		</li> <!-- Need to confirm href is correct -->
+					<li>	<a href="addGame.do">${alreadyInGames.title}</a>		</li> <!-- Need to confirm href is correct -->
 				</c:forEach>
 			</ul>
 			<!-- Not seeing what you're looking for? -->
@@ -47,7 +47,7 @@
 	</div>
 	
 	<div>
-		<input type="button" onclick="addNewGame.do" value="Add New Game!"/> <!-- Not 100% sure the on click command is correct -->
+		<input type="button" onclick="goToAddGame.do" value="Add New Game!"/> <!-- Not 100% sure the on click command is correct -->
 	</div>
 </body>
 </html>

@@ -14,7 +14,7 @@
       <div class="container">
 
         <div class="left-button">
-         	<button onclick="location.href='addGame.jsp'" class="sell-button" type="button">SELL</button>
+         	<button onclick="location.href='goToSearchByTitle.do'" class="sell-button" type="button">SELL</button>
         </div>
 
         <div class="right-button">
