@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<jsp:include page="bootstrapHead.jsp" />
+<jsp:include page="navBar.jsp" />
 	
 	<div>
 	<h2>Search Title to List</h2>
@@ -47,7 +47,7 @@
 	</div>
 	
 	<div>
-		<input type="button" onclick="goToAddGame.do" value="Add New Game!"/> <!-- Not 100% sure the on click command is correct -->
+		<input type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!"/> <!-- Not 100% sure the on click command is correct -->
 	</div>
 </body>
 </html>
