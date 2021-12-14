@@ -32,16 +32,16 @@
 			<input type="number" name="price"/>
 			<br>
 
-		<label for="condition">Condition: </label>
-			<input type="radio" name="condition" value="New"/> New
-			<input type="radio" name="condition" value="Used"/> Used
+		<label for="conditionNew">Condition: </label>
+			<input type="radio" name="conditionNew" value="New"/> New 	<!-- Do these values need to be true/false? -->
+			<input type="radio" name="conditionNew" value="Used"/> Used
 			<br>
 
 		<label for="description">Description: </label>
 			<input type="text" name="description"/>
 			<br>
 			<br>
-		<input type="submit" value="Submit Game to Inventory"/>
+		<input type="submit" value="List Game for Sale"/>
 		</form>
 
 	</div>
