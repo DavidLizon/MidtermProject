@@ -21,6 +21,16 @@ public class UserController {
 		return "home";
 	}
 	
+	@RequestMapping(path= "searchByTitle.do")
+	public String sellButton() {
+		return "sellSearchExistingGame";
+	}
+	
+	@RequestMapping(path= "search.do") //testmapping
+	public String buyButton() {
+		return "search";
+	}
+	
 	@RequestMapping(path="login.do", method=RequestMethod.GET)
 	public String getLogin(HttpSession session) {
 		if(session.getAttribute("user") != null) {
