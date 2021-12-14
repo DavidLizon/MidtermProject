@@ -36,6 +36,8 @@
 	
 	<label for="salePrice">Sale price:</label>
 		<input type="text" name="salePrice"/><br>
+		
+	<!-- need to add image upload field -->
 	
 	<input type="submit" value="Submit Game">
 	</form>
