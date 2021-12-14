@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.skilldistillery.eternitygamehub.entities.Game;
 import com.skilldistillery.eternitygamehub.entities.GameInventory;
 
 @Repository
@@ -47,6 +48,12 @@ public class UserDAOImpl implements UserDAO {
 				.getResultList();
 		em.close();
 		return allGames;
+	}
+
+	@Override
+	public Game addGame(Game game) {
+		em.persist(game);
+		return game;
 	}
 
 }
