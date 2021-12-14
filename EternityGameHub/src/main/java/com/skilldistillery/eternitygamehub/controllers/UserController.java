@@ -15,49 +15,81 @@ public class UserController {
 
 	@Autowired
 	private UserDAO userDao;
-	
-	@RequestMapping(path= {"/", "home.do"})
+
+	@RequestMapping(path = { "/", "home.do" })
 	public String home() {
 		return "home";
 	}
-	
-	@RequestMapping(path= "searchByTitle.do")
+
+	@RequestMapping(path = "goToSearchByTitle.do")
 	public String sellButton() {
 		return "sellSearchExistingGame";
 	}
-	
-	@RequestMapping(path= "search.do") //testmapping
+
+	@RequestMapping(path = "search.do") // testmapping
 	public String buyButton() {
 		return "search";
 	}
 	
-	@RequestMapping(path="login.do", method=RequestMethod.GET)
+	@RequestMapping(path = "goToAddGame.do") // testmapping
+	public String addNewGameButton() {
+		return "addGame";
+	}
+	
+	@RequestMapping(path = "gameLinkToSAII.do") // testmapping
+	public String gameLinkClicked() {
+		return "sellAddInventoryItem";
+	}
+
+	@RequestMapping(path = "userAccount.do")
+	public String userAccountPageButton(HttpSession session) {
+		if (session.getAttribute("user") == null) {
+			return "loginOrCreateAccount";
+		}
+		return "accountinfo";
+	}
+
+	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public String getLogin(HttpSession session) {
-		if(session.getAttribute("user") != null) {
+		if (session.getAttribute("user") != null) {
 			return "redirect:account.do";
 		}
 		return "login";
 	}
-	
-	@RequestMapping(path="login.do", method=RequestMethod.POST)
+
+	@RequestMapping(path = "login.do", method = RequestMethod.POST)
 	public String postLogin(User user, HttpSession session) {
-		
+
 		User u = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
-		if(u != null) {
+		if (u != null) {
 			session.setAttribute("user", u);
 			return "redirect:account.do";
 		}
 		return "login";
 	}
-	
-	@RequestMapping(path="logout.do", method=RequestMethod.GET)
+
+	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("user");
 		return "redirect:index.do";
 	}
+
+	@RequestMapping(path = "userAccount.do", method = RequestMethod.GET)
+	public String getUserInfoForAccountInfoPage(int id, User user, HttpSession session) {
+		if (session.getAttribute("user") == null) {
+			return "loginOrCreateAccount";
+		} userDao.findAndPopulateUser(id, user);
+		return "accountinfo";
+	}
 	
-	
-	
+//	@RequestMapping(path = "userAccount.do", method = RequestMethod.POST)
+//	public String getUserInfoForAccountInfoPage(int id, User user, HttpSession session) {
+//		if (session.getAttribute("user") == null) {
+//			return "loginOrCreateAccount";
+//		} userDao.findAndPopulateUser(id, user);
+//		return "accountinfo";
+//	}
+
 //	@RequestMapping(path= "addNewGame.do", method = RequestMethod.POST)
 //	public String addNewGame(Game newGame) {
 ////		public String addNewGame(int id, String name, String description, int maxPlayers, List<Genre> genre, Platform platform, double rentalPrice, double salePrice ) {

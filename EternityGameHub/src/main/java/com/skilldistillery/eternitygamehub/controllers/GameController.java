@@ -53,7 +53,7 @@ public class GameController {
 	public String addGameToGames(Game game, Model model) {
 		Game newGame = gameDao.addGame(game);
 		model.addAttribute("newGameAdded", newGame);
-		return "addGameInventoryItem";
+		return "sellAddInventoryItem";
 	}
 	
 	@RequestMapping(path= "addGameInventoryItem.do", method = RequestMethod.POST)

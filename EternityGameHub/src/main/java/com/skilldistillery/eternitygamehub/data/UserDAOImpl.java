@@ -44,16 +44,17 @@ public class UserDAOImpl implements UserDAO {
 	  }
 
 	  @Override
-	  public User findUserById(int userId) {
-	    User u = users.get(userId);
+	  public User findUserById(int id) {
+	    User u = users.get(id);
 	    
 	    return u;
 	  }
 
 	  @Override
-	  public User updateUser(int userId, User user) {
-	    // not necessary
-	    return null;
+	  public User findAndPopulateUser(int id, User user) {
+			user = em.find(User.class, id); 
+			em.close();
+			return user;
 	  }
 
 	@Override
@@ -69,5 +70,18 @@ public class UserDAOImpl implements UserDAO {
 		return newUser;
 	}
 	
+	@Override
+	  public User updateUserInfo(int id, String firstName, String lastName, String username, String biography, String email, String profilePictureUrl) {
+		User userToUpdate = em.find(User.class, id); 	
+		userToUpdate.setFirstName(firstName);
+		userToUpdate.setLastName(lastName);
+		userToUpdate.setUsername(username);
+		userToUpdate.setBiography(biography);
+		userToUpdate.setEmail(email);
+		userToUpdate.setProfilePictureUrl(profilePictureUrl);
+		em.persist(userToUpdate);
+		em.close();
+		return userToUpdate;
+	  }
 
 }
