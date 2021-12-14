@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Search Titles to List | Eternity Game Hub</title>
+<title>Search Titles to List | Eternity GameHub</title>
 <jsp:include page="bootstrapHead.jsp" />
 
 </head>
@@ -33,16 +33,20 @@
 					<li>	<a href="displayGame.do">${alreadyInGames.title}</a>		</li> <!-- Need to confirm href is correct -->
 				</c:forEach>
 			</ul>
+			<!-- Not seeing what you're looking for? -->
+			
 		</c:when>
 		
 		<c:when test="${empty alreadyInGames }">
 			<h3>We don't have that game yet!</h3>
-			<input type="button" onclick="addNewGame.do" value="Add New Game!"/> <!-- Not 100% sure the on click command is correct -->
 		</c:when>
 	
 	</c:choose>	
 	
 	</div>
-
+	
+	<div>
+		<input type="button" onclick="addNewGame.do" value="Add New Game!"/> <!-- Not 100% sure the on click command is correct -->
+	</div>
 </body>
 </html>
