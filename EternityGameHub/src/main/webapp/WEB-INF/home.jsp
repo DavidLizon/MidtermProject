@@ -7,29 +7,46 @@
 <meta charset="UTF-8">
 <title>EGH Home</title>
 <jsp:include page="bootstrapHead.jsp"/>
-<jsp:include page="navBar.jsp"/>
 </head>
 <body>
-<div class="listedGames">
-<!-- this div will display the games user currently has listed for sale or rent -->
+<jsp:include page="navBar.jsp"/>
+<section class="buy-sell">
+      <div class="container">
 
+        <div class="left-button">
+          <button href="addGame.jsp" class="sell-button">SELL</button>
+        </div>
 
-</div>
-<div class="purchaseHistory">
-<!-- This div will display a history of games the user has purchased or rented in the past -->
-</div>
-<div>
-<form action = "addGame.do" method="GET">
-	<input type="submit" value="Add new game"/>
-</form>
-<!-- for remove game, how to click from the list of games and delete with same button -->
-</div>
-<div>
-<form>
+        <div class="right-button">
+          <button href="search.jsp" class="buy-button">BUY</button>
+        </div>
 
-</form>
+      </div>
+    </section>
 
-</div>
-
+    <section class="reviews">
+      <div class="container">
+        <ul>
+          <li>
+            <blockquote>
+              "The only place I go when I need a new game!"
+            </blockquote>
+            <cite>-Ryan Majors</cite>
+          </li>
+          <li>
+            <blockquote>
+              "My son loves to buy his games here, I would recommend this site to anyone!"
+            </blockquote>
+            <cite>-Ryan Majors Mom</cite>
+          </li>
+          <li>
+            <blockquote>
+              "All my homies use Eternity Game Hub"
+            </blockquote>
+            <cite>-Dane S</cite>
+          </li>
+        </ul>
+      </div>
+    </section>
 </body>
 </html>
