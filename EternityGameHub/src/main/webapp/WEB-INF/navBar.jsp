@@ -3,8 +3,8 @@
 <nav>
 	<ul class="navbar">
 		<li><a class="logo">Eternity<span>GameHub</span></a></li>
-		<li><a href="home.jsp">Home</a></li>
-		<li><a href="accountInfo.jsp">Account Info</a></li>
-		<li><a href="orderhistory.jsp">Order History</a></li>
+		<li><a href="home.do">Home</a></li>
+		<li><a href="accountInfo.do">Account Info</a></li>
+		<li><a href="orderhistory.">Order History</a></li>
 	</ul>
 </nav>

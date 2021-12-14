@@ -18,7 +18,7 @@
         </div>
 
         <div class="right-button">
-          <button onclick="location.href='search.jsp'" class="buy-button" type="button">BUY</button>
+          <button onclick="location.href='displayAllGames.do'" class="buy-button" type="button">BUY</button>
         </div>
 
       </div>
