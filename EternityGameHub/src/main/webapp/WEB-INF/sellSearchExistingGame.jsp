@@ -11,6 +11,7 @@
 
 </head>
 <body>
+<jsp:include page="bootstrapHead.jsp" />
 	
 	<div>
 	<h2>Search Title to List</h2>

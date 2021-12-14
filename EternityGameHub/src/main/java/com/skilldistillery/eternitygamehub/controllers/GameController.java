@@ -29,7 +29,6 @@ public class GameController {
 		games = gameDao.findGameByKeywordSearch(keyword, filteredcondition);
 		model.addAttribute("result", games);
 		return "search";
-		
 	}
 	
 	@RequestMapping(path= "displayAllGames.do", method = RequestMethod.GET)
@@ -44,14 +43,15 @@ public class GameController {
 	public String searchByTitle(String title, Model model) {
 		List<Game> alreadyInGames = new ArrayList<>();
 		alreadyInGames = gameDao.findTitlesInGames(title);
-		model.addAttribute("searchedByTitles", alreadyInGames);
+		if (alreadyInGames.size() > 0) {
+			return "No results found";  //testing 
+		} model.addAttribute("searchedByTitles", alreadyInGames);
 		return "sellSearchExistingGame";
 	}
 	
 	@RequestMapping(path= "addGame.do", method = RequestMethod.POST)
 	public String addGameToGames(Game game, Model model) {
 		Game newGame = gameDao.addGame(game);
-//		if () { }
 		model.addAttribute("newGameAdded", newGame);
 		return "addGameInventoryItem";
 	}
