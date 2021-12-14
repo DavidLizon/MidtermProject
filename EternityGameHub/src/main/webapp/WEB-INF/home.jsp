@@ -14,11 +14,11 @@
       <div class="container">
 
         <div class="left-button">
-          <button href="addGame.jsp" class="sell-button">SELL</button>
+         	<button onclick="location.href='addGame.jsp'" class="sell-button" type="button">SELL</button>
         </div>
 
         <div class="right-button">
-          <button href="search.jsp" class="buy-button">BUY</button>
+          <button onclick="location.href='search.jsp'" class="buy-button" type="button">BUY</button>
         </div>
 
       </div>

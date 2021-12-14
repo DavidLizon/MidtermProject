@@ -9,8 +9,7 @@
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
-
-<!-- ADD NAV BAR HERE -->
+<jsp:include page="navBar.jsp"/>
 
 	<h1>Add New Game to EGH</h1>
 

@@ -9,6 +9,6 @@
 <jsp:include page="bootstrapHead.jsp"/>
 </head>
 <body>
-
+test page
 </body>
 </html>
