@@ -47,7 +47,7 @@
 	</div>
 	
 	<div>
-		<input type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!"/> <!-- Not 100% sure the on click command is correct -->
+		<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button> <!-- Not 100% sure the on click command is correct -->
 	</div>
 </body>
 </html>
