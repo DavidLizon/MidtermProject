@@ -20,12 +20,41 @@ public class GameDAOImple implements GameDAO {
 	private EntityManager em;
 
 	@Override
-	public List<GameInventory> findGameByKeywordSearch(String keyword) {
+	public List<GameInventory> findGameByKeywordSearch(String keyword, String[] filteredcondition) {
 		List<GameInventory> gamesByKeyword = new ArrayList<>();
-		String jpql = "SELECT gi FROM GameInventory gi WHERE gi.game.title LIKE :gametitle";
+		String jpql = "SELECT gi FROM GameInventory gi WHERE gi.available = true AND gi.game.title LIKE :searchkeyword OR gi.game.description LIKE :searchkeyword";
+		
+		if (filteredcondition != null && filteredcondition.length > 0) {
+			jpql += " and ("; 
+			boolean addedOne = false; 
+			for (String filtered : filteredcondition) {
+				switch (filtered) {
+					case "new": 
+						if (addedOne) {jpql += " OR "; } 
+						jpql += " conditionNew = true "; 
+						addedOne = true;
+						break;
+						
+					case "rentable": 
+						if (addedOne) {jpql += " OR "; } 
+						jpql += " rentPrice IS NOT null "; 
+						addedOne = true;
+						break;
+				
+				
+				}
+			} jpql += ")";
+		}
+		
+		System.out.println(jpql); 
+		
 		gamesByKeyword = em.createQuery(jpql, GameInventory.class)
-				.setParameter("gametitle", "%" + keyword + "%")
+				.setParameter("searchkeyword", "%" + keyword + "%")
 				.getResultList();
+		
+//		findGameByFilteredSearch(gamesByKeyword);
+		
+		
 		em.close();
 		return gamesByKeyword;
 	}
@@ -70,10 +99,20 @@ public class GameDAOImple implements GameDAO {
 		return recentlyAddedGameInventoryItem;
 	}
 	
+	@Override
+	public List<GameInventory> findGameByFilteredSearch(List<GameInventory> gamesByKeyword, Boolean conditionNew) {
+		
+		List<GameInventory> filteredGames = new ArrayList<>();
+		String jpql = "SELECT gi FROM GameInventory gi WHERE gi.game.title LIKE :searchkeyword OR gi.game.description LIKE :searchkeyword";
+		gamesByKeyword = em.createQuery(jpql, GameInventory.class)
+				.setParameter("searchkeyword", "%" + conditionNew + "%")
+				.getResultList();
+		em.close();
+		return filteredGames;
+	}
 	
 	
-	
-	
+
 
 
 }
