@@ -10,6 +10,7 @@
 
 </head>
 <body>
+<jsp:include page="navBar.jsp"/>
 
 	<div class="existingUserLogin">
 		<h2>Existing User Login</h2>
