@@ -15,7 +15,6 @@ public interface UserDAO {
 	User findAndPopulateUser(int userId, User user);
 
 	User createNewUser(String firstName, String lastName, String username, String password, String email);
-//	User findByUsername(String username);
-	User updateUserInfo(int id, String firstName, String lastName, String username, String biography, String email,
-			String profilePictureUrl);
+	
+	User updateUserInfo(User user, int id);
 }
