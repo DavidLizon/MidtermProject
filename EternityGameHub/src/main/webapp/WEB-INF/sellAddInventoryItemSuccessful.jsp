@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -9,7 +9,29 @@
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
-<jsp:include page="navBar.jsp" />
+	<jsp:include page="navBar.jsp" />
+
+	<h1>Great success!</h1>
+	<br>
+	<h4>You've successfully listed ${game.title} for sale!</h4>
+	<br>
+		<img src="${game.gameImageUrl}" alt="${game.title} Cover Art">
+		<br>
+		Description: ${game.description}
+		<br>
+		Max players: ${game.maxPlayers}
+		<br>
+		Genre: 	<c:forEach var="genre" items="${game.genres}">
+					${genre.name}
+				</c:forEach>		
+		<br>
+		Price: ${GameInventory.salePrice}
+		<br>
+		Condition: ${GameInventory.conditionNew}
+		<br>
+		Description: ${GameInventory.description}
+		<br>
+		
 
 </body>
 </html>
