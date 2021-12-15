@@ -8,5 +8,6 @@
 </head>
 <body>
 <jsp:include page="navBar.jsp" />
+<h1>Thank you for shopping with EGH!</h1>
 </body>
 </html>
