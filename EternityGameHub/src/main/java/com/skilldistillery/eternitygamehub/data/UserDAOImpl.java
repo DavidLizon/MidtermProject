@@ -89,6 +89,24 @@ public class UserDAOImpl implements UserDAO {
 		return updatedUser; 
 	}
 	
+	public List<Genre> listGenres() {
+		List<Genre> genres = new ArrayList<>();
+		String jpql = "Select g FROM Genre g";
+		genres = em.createQuery(jpql, Genre.class).getResultList();
+
+		em.close();
+		return genres;
+	}
+
+	public List<Rating> listRatings() {
+		List<Rating> ratings = new ArrayList<>();
+		String jpql = "Select r FROM Rating r";
+		ratings = em.createQuery(jpql, Rating.class).getResultList();
+
+		em.close();
+		return ratings;
+	}
+	
 //	@Override
 //	  public User resetPassword(User user, int id) {
 //		user = em.find(User.class, id);
