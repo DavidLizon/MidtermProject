@@ -29,32 +29,32 @@ public class UserDAOImpl implements UserDAO {
 //		}
 //	}
 
-	  @Override
-	  public User getUserByUserNameAndPassword(String userName, String password) {
-	    User u = null;
-	    Set<Integer> keys = users.keySet();
-	    for (Integer key : keys) {
-	      User user = users.get(key);
-	      if(user.getUsername().equals(userName) && user.getPassword().equals(password)) {
-	        u = user;
-	        break;
-	      }
-	    }
-	    return u;
-	  }
+	@Override
+	public User getUserByUserNameAndPassword(String userName, String password) {
+		User u = null;
+		Set<Integer> keys = users.keySet();
+		for (Integer key : keys) {
+			User user = users.get(key);
+			if (user.getUsername().equals(userName) && user.getPassword().equals(password)) {
+				u = user;
+				break;
+			}
+		}
+		return u;
+	}
 
-	  @Override
-	  public User findUserById(int id) {
-	    User u = users.get(id);
-	    return u;
-	  }
+	@Override
+	public User findUserById(int id) {
+		User u = users.get(id);
+		return u;
+	}
 
-	  @Override
-	  public User findAndPopulateUser(int id, User user) {
-			user = em.find(User.class, id); 
-			em.close();
-			return user;
-	  }
+	@Override
+	public User findAndPopulateUser(int id, User user) {
+		user = em.find(User.class, id);
+		em.close();
+		return user;
+	}
 
 	@Override
 	public User createNewUser(String firstName, String lastName, String username, String password, String email) {
@@ -68,13 +68,33 @@ public class UserDAOImpl implements UserDAO {
 		em.persist(newUser);
 		return newUser;
 	}
-	
+
 	@Override
-	  public User updateUserInfo(User user, int id) {
+	public User updateUserInfo(User user, int id) {
 		user = em.find(User.class, id);
 		user = updateUserFieldsHelper(id, user);
 		return user;
-	  }
+	}
+
+	@Override
+	public User resetPassword(User user, int id, String password) {
+		user = em.find(User.class, id);
+		user = updateUserPasswordHelper(id, user, password);
+		return user;
+	}
+	
+	public User updateUserPasswordHelper(int id, User user, String password) {
+		
+		User userToUpdatePassword = user;
+		userToUpdatePassword = em.find(User.class, 1);
+		String oldPassword = userToUpdatePassword.getPassword();
+		String newPassword = password;
+		oldPassword = newPassword;
+				userToUpdatePassword.setPassword(newPassword);
+		em.persist(userToUpdatePassword);
+		em.close();
+		return userToUpdatePassword;
+	}
 
 	public User updateUserFieldsHelper(int id, User user) {
 		User updatedUser = user;
@@ -86,9 +106,9 @@ public class UserDAOImpl implements UserDAO {
 		updatedUser.setProfilePictureUrl(user.getProfilePictureUrl());
 		em.persist(updatedUser);
 		em.close();
-		return updatedUser; 
+		return updatedUser;
 	}
-	
+
 	public List<Genre> listGenres() {
 		List<Genre> genres = new ArrayList<>();
 		String jpql = "Select g FROM Genre g";
@@ -106,17 +126,9 @@ public class UserDAOImpl implements UserDAO {
 		em.close();
 		return ratings;
 	}
-	
-//	@Override
-//	  public User resetPassword(User user, int id) {
-//		user = em.find(User.class, id);
-//		user = updateUserFieldsHelper(id, user);
-//		return user;
-//	  }
-	
+
 //	
 //	String firstName, String lastName, String username, String biography, String email,
 //	String profilePictureUrl
-	
-	
+
 }
