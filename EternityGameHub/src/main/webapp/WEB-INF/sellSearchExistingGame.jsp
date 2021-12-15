@@ -31,7 +31,7 @@
 		<c:when test="${! empty alreadyInGames}">
 			<ul>
 				<c:forEach var="item" items="${alreadyInGames}"> 
-					<li>	<a href="sellSearchGameToAddInventoryItem.do?inventoryItemId=${item.id}">${item.title}</a></li> <!-- Need to confirm href is correct -->
+					<li>	<a href="addGameInventoryItem.do?inventoryItemId=${item.id}">${item.title}</a></li> <!-- Need to confirm href is correct -->
 				</c:forEach>
 			</ul>
 		</c:when>

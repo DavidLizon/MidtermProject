@@ -73,7 +73,7 @@ public class GameController {
 		return "sellAddInventoryItem";
 	}
 
-	@RequestMapping(path = "addGameInventoryItem.do", method = RequestMethod.POST)
+	@RequestMapping(path = "addGameInventoryItem.do", method = RequestMethod.GET)
 	public String addGameInventoryItemToInventory(GameInventory GameInventoryItem, Model model) {
 		GameInventory newGameInventoryItem = gameDao.addGameInventory(GameInventoryItem);
 		model.addAttribute("newGameInventoryItem", newGameInventoryItem);
@@ -95,7 +95,7 @@ public class GameController {
 //	}
 	
 	@RequestMapping(path = "sellSearchGameToAddInventoryItem.do", method = RequestMethod.GET)
-	public String passGameToSellAddInventoryItem(int id, Model model) {
+	public String passGameToSellAddInventoryItem(Integer id, Model model) {
 		Game passingGameToSellInventory = gameDao.addGameInfoFromId(id);
 		
 		return "sellAddInventoryItem";
