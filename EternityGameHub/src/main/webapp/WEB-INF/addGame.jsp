@@ -9,35 +9,69 @@
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
-<jsp:include page="navBar.jsp"/>
+
+<!-- ADD NAV BAR HERE -->
 
 	<h1>Add New Game to EGH</h1>
 
-	<form action="addNewGame.do" method="get"> <!--Need to match action address & get/put method to controller  -->
+	<form action="addGame.do" method="POST"> <!--Need to match action address & get/put method to controller  -->
 	<br>
-	<label for="name">Name:</label>
-		<input type="text" name="name"/> <br>
-		
-	<label for="description">Description:</label>
-		<input type="text" name="description"/><br>
-		
-	<label for="maxPlayers">Max players:</label>
-		<input type="text" name="maxPlayers"/><br>
-		
-	<label for="genre">Genre:</label> 
-		<input type="text" name="genre"/><br>
 	
-	<label for="platform">Platform:</label> 
-		<input type="text" name="platform"/><br> <!-- What does "name"= need to match? -->
-	
-	<label for="rentalPrice">Rental price:</label> 
-		<input type="text" name="rentalPrice"/><br>
-	
-	<label for="salePrice">Sale price:</label>
-		<input type="text" name="salePrice"/><br>
+	<div class="addGame">
+	<c:if test="${duplicateTitle }">
+		Unable to add game. Game with same title already exists.	
+	</c:if>
+		<label for="title">Title:</label>
+			<input type="text" name="title" value="${newGame.title}" required/> <br>
+
+		<label for="description">Description:</label>
+			<input type="text" name="description" value="${newGame.description}" required/><br>
+
+		<label for="maxPlayers">Max players:</label>
+			<input type="text" name="maxPlayers" value="${newGame.maxPlayers}" required/><br>
+
+
+
+
+
+		<select name="genre">
+			<c:forEach items="${genre}" var="genre">
+				<option value="${genre.name}"
+					<c:if test="${genre.name eq selectedGenre}">selected="selected"</c:if>
+						>
+						${category.name}
+				</option>
+			</c:forEach>
+		</select>	
 		
-	<!-- need to add image upload field -->
-	
+		
+<%-- 		<select name="category">
+            <c:forEach items="${listCategory}" var="category">
+                <option value="${category.id}"
+                    <c:if test="${category.id eq selectedCatId}">selected="selected"</c:if>
+                    >
+                    ${category.name}
+                </option>
+            </c:forEach>
+        </select> --%>
+		
+		
+		
+<%-- 		<label for="genre">Genre:</label>						<!-- IS GENRE FROM PRE-POPULATED LIST OR USER ENTERS -->
+			<input type="text" name="genre" value="${newGame.genre}" required/><br> --%>
+
+		<label for="rating">Rating:</label>						
+			<input type="text" name="rating" value="${newGame.rating}" required/><br>
+
+		<br><br>
+
+<!-- need to add image upload field -->
+	If you know the URL image location enter it below: <br>
+	<label for="gameImageUrl">Image URL: </label>
+		<input type="text" name="gameImageUrl" />
+	<br><br>
+</div>
+
 	<input type="submit" value="Submit Game">
 	</form>
 </body>
