@@ -28,21 +28,37 @@ public class UserGameController {
 	
 	@RequestMapping(path = "goToAddGame.do", method = RequestMethod.GET) // testmapping
 	public String addNewGameButton(HttpSession session, Model model) {
-	  
+		if (session.getAttribute("user") == null) {
+			return "loginOrCreateAccount";
+		} 
+		
 	  List<Genre> genres = userDao.listGenres();
 	  model.addAttribute("genres", genres);
 
 	  List<Rating> ratings = userDao.listRatings();
 	  model.addAttribute("ratings", ratings);
-
+	  
 	  return "addGame";
 	}
 	
 	@RequestMapping(path = "addToCart.do", method = RequestMethod.POST)
-	public String addItemToCart(int inventoryItemId, Model model) {
+	public String addItemToCart(int inventoryItemId, Model model, HttpSession session) {
+		if (session.getAttribute("user") == null) {
+			return "loginOrCreateAccount";
+		} 
+		
 		List<GameInventory> gamesInCart = new ArrayList<>();
 		gamesInCart = gameDao.listGamesInCart(inventoryItemId);
 		model.addAttribute("userCart", gamesInCart);
+		
 		return "cart";
+	}
+	
+	@RequestMapping(path = "addToCart.do", method = RequestMethod.GET)
+	public String checkUserIsInSession(HttpSession session) {
+		if (session.getAttribute("user") == null) {
+			return "loginOrCreateAccount";
+		} 
+		return "";
 	}
 }

@@ -16,14 +16,14 @@
 		<h2>Existing User Login</h2>
 		<br>
 
-		<form action="getUserAccount.do" method="GET"> <!-- Need to confirm this is the correct mapping within controller -->
+		<form action="login.do" method="POST"> <!-- Need to confirm this is the correct mapping within controller -->
 
 			<label for="username">Username: </label> 
 			<input type="text" name="username" /> 
 			<br> 
 		
 			<label for="password">Password:</label> 
-			<input type="text" name="password" /> 
+			<input type="password" name="password" /> 
 			<br> 
 		
 			<input type="submit" value="Login">

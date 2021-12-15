@@ -17,7 +17,6 @@ public class UserDAOImpl implements UserDAO {
 	@PersistenceContext
 	private EntityManager em;
 
-	private Map<Integer, User> users;
 //	@Override
 //	public User findByUsername(String username) {
 //		String jpql = "SELECT u FROM User u WHERE u.username = :n";
@@ -30,29 +29,27 @@ public class UserDAOImpl implements UserDAO {
 //	}
 
 	@Override
-	public User getUserByUserNameAndPassword(String userName, String password) {
-		User u = null;
-		Set<Integer> keys = users.keySet();
-		for (Integer key : keys) {
-			User user = users.get(key);
-			if (user.getUsername().equals(userName) && user.getPassword().equals(password)) {
-				u = user;
-				break;
-			}
+	public User getUserByUserNameAndPassword(String username, String password) {
+		String jpql = "SELECT u FROM User u WHERE u.username = :n AND u.password = :p";
+		try {
+			return em.createQuery(jpql, User.class).setParameter("n", username)
+					.setParameter("p", password)
+					.getSingleResult();
+		} catch (Exception e) {
+			System.err.println("Invalid user name: " + username);
+			return null;
 		}
-		return u;
 	}
 
 	@Override
 	public User findUserById(int id) {
-		User u = users.get(id);
-		return u;
+		return em.find(User.class, id);
 	}
 
 	@Override
 	public User findAndPopulateUser(int id, User user) {
 		user = em.find(User.class, id);
-		em.close();
+		 
 		return user;
 	}
 
@@ -64,16 +61,24 @@ public class UserDAOImpl implements UserDAO {
 		newUser.setUsername(username);
 		newUser.setPassword(password);
 		newUser.setEmail(email);
-		users.put(newUser.getId(), newUser);
+
 		em.persist(newUser);
 		return newUser;
 	}
 
 	@Override
 	public User updateUserInfo(User user, int id) {
-		user = em.find(User.class, id);
-		user = updateUserFieldsHelper(id, user);
-		return user;
+		User updatedUser = em.find(User.class, id);
+		
+		updatedUser.setFirstName(user.getFirstName());
+		updatedUser.setLastName(user.getLastName());
+		updatedUser.setUsername(user.getUsername());
+		updatedUser.setBiography(user.getBiography());
+		updatedUser.setEmail(user.getEmail());
+		updatedUser.setProfilePictureUrl(user.getProfilePictureUrl());
+		
+//		user = updateUserFieldsHelper(id, user);
+		return updatedUser;
 	}
 
 	@Override
@@ -92,29 +97,30 @@ public class UserDAOImpl implements UserDAO {
 		oldPassword = newPassword;
 				userToUpdatePassword.setPassword(newPassword);
 		em.persist(userToUpdatePassword);
-		em.close();
+		 
 		return userToUpdatePassword;
 	}
 
-	public User updateUserFieldsHelper(int id, User user) {
-		User updatedUser = user;
-		updatedUser.setFirstName(user.getFirstName());
-		updatedUser.setLastName(user.getLastName());
-		updatedUser.setUsername(user.getUsername());
-		updatedUser.setBiography(user.getBiography());
-		updatedUser.setEmail(user.getEmail());
-		updatedUser.setProfilePictureUrl(user.getProfilePictureUrl());
-		em.persist(updatedUser);
-		em.close();
-		return updatedUser;
-	}
+//	public User updateUserFieldsHelper(int id, User user) {
+//		User updatedUser = user;
+//		updatedUser.setFirstName(user.getFirstName());
+//		updatedUser.setLastName(user.getLastName());
+//		updatedUser.setUsername(user.getUsername());
+//		updatedUser.setBiography(user.getBiography());
+//		updatedUser.setEmail(user.getEmail());
+//		updatedUser.setProfilePictureUrl(user.getProfilePictureUrl());
+//		
+//		em.persist(updatedUser);
+//		 
+//		return updatedUser;
+//	}
 
 	public List<Genre> listGenres() {
 		List<Genre> genres = new ArrayList<>();
 		String jpql = "Select g FROM Genre g";
 		genres = em.createQuery(jpql, Genre.class).getResultList();
 
-		em.close();
+		 
 		return genres;
 	}
 
@@ -123,7 +129,7 @@ public class UserDAOImpl implements UserDAO {
 		String jpql = "Select r FROM Rating r";
 		ratings = em.createQuery(jpql, Rating.class).getResultList();
 
-		em.close();
+		 
 		return ratings;
 	}
 

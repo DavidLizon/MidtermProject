@@ -43,8 +43,6 @@ public class GameDAOImple implements GameDAO {
 						jpql += " rentPrice IS NOT null "; 
 						addedOne = true;
 						break;
-				
-				
 				}
 			} jpql += ")";
 		}
@@ -158,6 +156,34 @@ public class GameDAOImple implements GameDAO {
 		em.close();
 		return userCart;
 	}
+
+//	@Override
+	public List<GameInventory> displayGameInfoById(int id) {
+		List<GameInventory> gameInventoryItemsToBuy = new ArrayList<>();
+		String jpql = "Select gi from GameInventory gi where gi.id = :gameinventoryid";
+		gameInventoryItemsToBuy = em.createQuery(jpql, GameInventory.class)
+				.setParameter("gameinventoryid", gameInventoryItemsToBuy)
+				.getResultList();
+		em.close();
+		return gameInventoryItemsToBuy;
+	}
+
+	@Override
+	public Game addGameInfoFromId(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+//	@Override
+//	public Game addGameInfoFromId(int id) {
+//		Game game = new Game();
+//		String jpql = "Select gi from GameInventory gi where gi.id = :gameinventoryid";
+//		userCart = em.createQuery(jpql, GameInventory.class)
+//				.setParameter("gameinventoryid", inventoryItemId)
+//				.getResultList();
+//		em.close();
+//		return userCart;
+//	}
 	
 	
 

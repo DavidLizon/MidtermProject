@@ -66,7 +66,7 @@ public class GameController {
 		return "sellSearchExistingGame";
 	}
 
-	@RequestMapping(path = "addGame.do", method = RequestMethod.POST)
+	@RequestMapping(path = "addGame.do", method = RequestMethod.POST) //
 	public String addGameToGames(Game game, Model model) {
 		Game newGame = gameDao.addGame(game);
 		model.addAttribute("newGameAdded", newGame);
@@ -77,14 +77,27 @@ public class GameController {
 	public String addGameInventoryItemToInventory(GameInventory GameInventoryItem, Model model) {
 		GameInventory newGameInventoryItem = gameDao.addGameInventory(GameInventoryItem);
 		model.addAttribute("newGameInventoryItem", newGameInventoryItem);
-		return "sellAddListingSuccessful";
+		return "sellAddInventoryItemSuccessful";
 	}
 
 	@RequestMapping(path = "displayNewlyAddedGameInventoryItem.do", method = RequestMethod.GET)
 	public String displayGameInventoryItem(int id, Model model) {
 		GameInventory newAddedGameInventoryItem = gameDao.displayCreatedGameInventoryItem(id);
 		model.addAttribute("newGameInventoryItemDisplayed", newAddedGameInventoryItem);
-		return "";
+		return "sellAddListingSuccessful";
 	}
-
+	
+//	@RequestMapping(path = "displayGameInfoFromSearch.do", method = RequestMethod.GET)
+//	public String displayGameInfoFromSearch(int id, Model model) {
+//		List <GameInventory> displayGameItemInGameInfo = gameDao.displayGameInfoById(id);
+//		model.addAttribute("gameItemInGameInfo", displayGameItemInGameInfo);
+//		return "gameInfo";
+//	}
+	
+	@RequestMapping(path = "sellSearchGameToAddInventoryItem.do", method = RequestMethod.GET)
+	public String passGameToSellAddInventoryItem(int id, Model model) {
+		Game passingGameToSellInventory = gameDao.addGameInfoFromId(id);
+		
+		return "sellAddInventoryItem";
+	}
 }

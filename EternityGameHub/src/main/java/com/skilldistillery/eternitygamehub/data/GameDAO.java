@@ -33,5 +33,9 @@ public interface GameDAO {
 	public List<Rating> listRatings();
 	
 	public List<Platform> listPlatforms();
+
+	public List<GameInventory> displayGameInfoById(int id);
+
+	public Game addGameInfoFromId(int id);
 	
 }

@@ -22,7 +22,10 @@ public class UserController {
 	private UserDAO userDao;
 
 	@RequestMapping(path = { "/", "home.do" })
-	public String home() {
+	public String home(HttpSession session) {
+		if (session.getAttribute("user") == null) {
+			return "loginOrCreateAccount";
+		}
 		return "home";
 	}
 
@@ -53,13 +56,13 @@ public class UserController {
 		}
 		return "accountinfo";
 	}
-
+	
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
-	public String getLogin(HttpSession session) {
+	public String getLogin(HttpSession session, User user) {
 		if (session.getAttribute("user") != null) {
-			return "redirect:account.do";
+			return "home";
 		}
-		return "login";
+		return "redirect:home.do";
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
@@ -68,15 +71,15 @@ public class UserController {
 		User u = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 		if (u != null) {
 			session.setAttribute("user", u);
-			return "redirect:account.do";
+			return "home";
 		}
-		return "login";
+		return "redirect:home.do";
 	}
 
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
 	public String logout(HttpSession session) {
 		session.removeAttribute("user");
-		return "redirect:index.do";
+		return "redirect:home.do";
 	}
 
 	@RequestMapping(path = "userAccount.do", method = RequestMethod.GET)
