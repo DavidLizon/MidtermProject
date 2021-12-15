@@ -10,5 +10,32 @@
 </head>
 <body>
 <jsp:include page="navBar.jsp" />
+
+
+
+<c:when test="${empty gamesInCart }" >
+	<h3>Your cart is empty.</h3>
+</c:when>
+<c:otherwise>
+		<label for="gamesInCart">
+			<c:forEach items="${game.id}" var="genres">
+				<div>
+					${game.title}
+					${game.}
+					${game.}
+					${game.}
+			</div>
+			</c:forEach>
+		</label>
+		<br>
+</c:otherwise>
+
+
+
+
+
+
+
+
 </body>
 </html>

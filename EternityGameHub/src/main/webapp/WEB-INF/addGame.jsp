@@ -34,9 +34,9 @@
 
 		<label for="genre">Genre: </label>
 			<c:forEach items="${genres}" var="genres">
-				<input type="checkbox" name="genres" value="${genres.id }"/>
+				<div title="${genres.description }"><input type="checkbox" name="genres" value="${genres.id }" title="${genres.description }"/>
 					${genres.name}
-			</c:forEach>
+			</div></c:forEach>
 			<br>
 
  		<label for="genre">Genre: </label>
