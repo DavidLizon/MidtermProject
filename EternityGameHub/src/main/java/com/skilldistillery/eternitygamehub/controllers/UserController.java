@@ -82,13 +82,30 @@ public class UserController {
 		return "accountinfo";
 	}
 	
-//	@RequestMapping(path = "userAccount.do", method = RequestMethod.POST)
-//	public String getUserInfoForAccountInfoPage(int id, User user, HttpSession session) {
-//		if (session.getAttribute("user") == null) {
-//			return "loginOrCreateAccount";
-//		} userDao.findAndPopulateUser(id, user);
-//		return "accountinfo";
-//	}
+	@RequestMapping(path = "updateUserAccount.do", method = RequestMethod.POST)
+	public String updateUserInfoForAccountInfoPage(int id, User user, HttpSession session) {
+		if (session.getAttribute("user") == null) {
+			return "loginOrCreateAccount";
+		} userDao.updateUserInfo(user, id);
+		return "accountinfo";
+	}
+	
+	@RequestMapping(path = "resetPassword.do", method = RequestMethod.GET)
+	public String getUserPasswordForReset(int id, User user, HttpSession session) {
+		if (session.getAttribute("user") == null) {
+			return "loginOrCreateAccount";
+		} userDao.findAndPopulateUser(id, user);
+		return "resetpassword";
+	}
+	
+	@RequestMapping(path = "resetUserPassword.do", method = RequestMethod.POST)
+	public String resetUserPassword(int id, User user, HttpSession session) {
+		if (session.getAttribute("user") == null) {
+			return "loginOrCreateAccount";
+		} 
+//		userDao.resetPassword(user, id);
+		return "resetpassword";
+	}
 
 //	@RequestMapping(path= "addNewGame.do", method = RequestMethod.POST)
 //	public String addNewGame(Game newGame) {

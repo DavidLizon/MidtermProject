@@ -46,7 +46,6 @@ public class UserDAOImpl implements UserDAO {
 	  @Override
 	  public User findUserById(int id) {
 	    User u = users.get(id);
-	    
 	    return u;
 	  }
 
@@ -71,17 +70,35 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	  public User updateUserInfo(int id, String firstName, String lastName, String username, String biography, String email, String profilePictureUrl) {
-		User userToUpdate = em.find(User.class, id); 	
-		userToUpdate.setFirstName(firstName);
-		userToUpdate.setLastName(lastName);
-		userToUpdate.setUsername(username);
-		userToUpdate.setBiography(biography);
-		userToUpdate.setEmail(email);
-		userToUpdate.setProfilePictureUrl(profilePictureUrl);
-		em.persist(userToUpdate);
-		em.close();
-		return userToUpdate;
+	  public User updateUserInfo(User user, int id) {
+		user = em.find(User.class, id);
+		user = updateUserFieldsHelper(id, user);
+		return user;
 	  }
 
+	public User updateUserFieldsHelper(int id, User user) {
+		User updatedUser = user;
+		updatedUser.setFirstName(user.getFirstName());
+		updatedUser.setLastName(user.getLastName());
+		updatedUser.setUsername(user.getUsername());
+		updatedUser.setBiography(user.getBiography());
+		updatedUser.setEmail(user.getEmail());
+		updatedUser.setProfilePictureUrl(user.getProfilePictureUrl());
+		em.persist(updatedUser);
+		em.close();
+		return updatedUser; 
+	}
+	
+//	@Override
+//	  public User resetPassword(User user, int id) {
+//		user = em.find(User.class, id);
+//		user = updateUserFieldsHelper(id, user);
+//		return user;
+//	  }
+	
+//	
+//	String firstName, String lastName, String username, String biography, String email,
+//	String profilePictureUrl
+	
+	
 }
