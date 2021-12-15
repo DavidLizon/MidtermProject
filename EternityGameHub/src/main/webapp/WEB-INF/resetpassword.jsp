@@ -7,6 +7,7 @@
 <title>Reset Password</title>
 </head>
 <body>
+<jsp:include page="navBar.jsp" />
 reset password here
 </body>
 </html>

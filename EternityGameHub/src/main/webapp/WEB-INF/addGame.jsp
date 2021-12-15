@@ -12,6 +12,7 @@
 
 <jsp:include page="navBar.jsp"/>
 
+
 	<h1>Add New Game to EGH</h1>
 
 	<form action="addGame.do">  <!-- REMOVE . PRIOR TO COMMENT method="POST"> --> <!--Need to match action address & get/put method to controller  -->
