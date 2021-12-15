@@ -155,7 +155,8 @@ public class GameDAOImple implements GameDAO {
 		userCart = em.createQuery(jpql, GameInventory.class)
 				.setParameter("gameinventoryid", inventoryItemId)
 				.getResultList();
-		return null;
+		em.close();
+		return userCart;
 	}
 	
 	

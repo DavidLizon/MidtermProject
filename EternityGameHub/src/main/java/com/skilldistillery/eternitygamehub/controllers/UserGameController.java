@@ -41,7 +41,7 @@ public class UserGameController {
 	@RequestMapping(path = "addToCart.do", method = RequestMethod.POST)
 	public String addItemToCart(int inventoryItemId, Model model) {
 		List<GameInventory> gamesInCart = new ArrayList<>();
-		gamesInCart = gameDao.listGamesInCart();
+		gamesInCart = gameDao.listGamesInCart(inventoryItemId);
 		model.addAttribute("userCart", gamesInCart);
 		return "cart";
 	}
