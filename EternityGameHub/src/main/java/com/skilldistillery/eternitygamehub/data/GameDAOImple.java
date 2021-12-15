@@ -82,7 +82,11 @@ public class GameDAOImple implements GameDAO {
 		em.close();
 		return gamesByTitleSearch;
 	}
-
+	
+	public GameInventory displaySelectedGameFromSearch(int inventoryItemId) {
+		GameInventory selectedGame = em.find(GameInventory.class, inventoryItemId);
+		return selectedGame;
+	}
 	@Override
 	public Game addGame(Game game) {
 		em.persist(game);
