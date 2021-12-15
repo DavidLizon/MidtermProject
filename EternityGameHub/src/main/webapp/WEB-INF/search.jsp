@@ -11,9 +11,57 @@
 <body>
 	<jsp:include page="navBar.jsp" />
 
-	<div>
-		<c:choose>
+  <div class="game-search">
+    <!-- have this div all on left or right side -->
+    <form class="search-criteria" action="findByKeyword.do" method="post">
 
+      <label for="title">Keyword search for Title or Description</label>
+      <input type="text" name="title" required><br>
+
+
+      <label for="condition">Condition</label>
+      <select class="condition" name="condition" required>
+        <option value="new">New</option>
+        <option value="used">Used</option>
+      </select><br>
+
+
+
+      <label for="genre">Genre</label>
+      <select class="genre" name="genre" required>
+        <c:forEach items="${genres}" var="genre">
+          <option value="${genre.id}">${genre.name}</option>
+        </c:forEach>
+      </select><br>
+
+      <label for="rating">Rating</label>
+      <select class="rating" name="rating" required>
+        <c:forEach items="${ratings}" var="rating">
+          <option value="${rating.id}">${rating.name}</option>
+        </c:forEach>
+      </select><br>
+
+      <label for="platform">Platform</label>
+      <select class="platfrom" name="platform" required>
+        <c:forEach items="${platforms}" var="platform">
+          <option value="${platform.id}">${platfrom.name}</option>
+        </c:forEach>
+      </select><br>
+
+      <label for="maxPlayers">Max Players</label>
+      <select class="maxPlayers" name="maxPlayers" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+      </select>
+      
+    </form>
+  </div>
+  <!-- must have a selection for all fields before submitting search -->
+  <!-- search conditions stretch goals  -sale/rent -->
+  <div class="searchResults">
+		<c:choose>
 			<c:when test="${! empty result}">
 				<ul>
 					<c:forEach var="item" items="${result}">
@@ -23,13 +71,8 @@
 					</c:forEach>
 				</ul>
 				<!-- Not seeing what you're looking for? -->
-
 			</c:when>
-
-
-
 		</c:choose>
-
 	</div>
 </body>
 </html>
