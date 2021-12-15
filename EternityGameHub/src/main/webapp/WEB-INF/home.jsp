@@ -10,7 +10,7 @@
 </head>
 <body>
 <jsp:include page="navBar.jsp"/>
-<section class="buy-sell">
+	<section class="buy-sell">
       <div class="container">
 
         <div class="left-button">
@@ -23,7 +23,7 @@
 
       </div>
     </section>
-
+<br>
     <section class="reviews">
       <div class="container">
         <ul>
