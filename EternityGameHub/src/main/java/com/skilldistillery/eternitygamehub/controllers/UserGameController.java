@@ -1,5 +1,6 @@
 package com.skilldistillery.eternitygamehub.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.eternitygamehub.data.GameDAO;
 import com.skilldistillery.eternitygamehub.data.UserDAO;
+import com.skilldistillery.eternitygamehub.entities.GameInventory;
 import com.skilldistillery.eternitygamehub.entities.Genre;
 import com.skilldistillery.eternitygamehub.entities.Rating;
 
@@ -36,4 +38,11 @@ public class UserGameController {
 	  return "addGame";
 	}
 	
+	@RequestMapping(path = "addToCart.do", method = RequestMethod.POST)
+	public String addItemToCart(int inventoryItemId, Model model) {
+		List<GameInventory> gamesInCart = new ArrayList<>();
+		gamesInCart = gameDao.listGamesInCart(inventoryItemId);
+		model.addAttribute("userCart", gamesInCart);
+		return "cart";
+	}
 }

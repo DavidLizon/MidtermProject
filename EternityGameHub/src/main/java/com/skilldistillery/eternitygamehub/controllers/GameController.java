@@ -53,7 +53,6 @@ public class GameController {
 		selectedGame = gameDao.displaySelectedGameFromSearch(inventoryItemId);
 		model.addAttribute(selectedGame);
 		return "gameInfo";
-		
 	}
 
 	@RequestMapping(path = "searchByTitle.do", method = RequestMethod.GET)
