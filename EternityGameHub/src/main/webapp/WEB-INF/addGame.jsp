@@ -10,11 +10,11 @@
 </head>
 <body>
 
-<!-- ADD NAV BAR HERE -->
+<jsp:include page="navBar.jsp"/>
 
 	<h1>Add New Game to EGH</h1>
 
-	<form action="addGame.do" method="POST"> <!--Need to match action address & get/put method to controller  -->
+	<form action="addGame.do">  <!-- REMOVE . PRIOR TO COMMENT method="POST"> --> <!--Need to match action address & get/put method to controller  -->
 	<br>
 	
 	<div class="addGame">
@@ -30,20 +30,28 @@
 		<label for="maxPlayers">Max players:</label>
 			<input type="text" name="maxPlayers" value="${newGame.maxPlayers}" required/><br>
 
-
-
-
-
+		<label for="genre">Genre: </label>
 		<select name="genre">
-			<c:forEach items="${genre}" var="genre">
-				<option value="${genre.name}"
-					<c:if test="${genre.name eq selectedGenre}">selected="selected"</c:if>
+			<c:forEach items="${genres}" var="genres">
+				<option value="${genres.id}"
+					<%-- <c:if test="${genres.name eq selectedGenre}">selected="selected"</c:if> --%>
 						>
-						${category.name}
+						${genres.name}: ${genres.description }
 				</option>
 			</c:forEach>
 		</select>	
-		
+		<br>
+
+		<label for="rating">Rating: </label>
+		<select name="rating">
+			<c:forEach items="${ratings}" var="ratings">
+				<option value="${ratings.id}"
+						>
+						${ratings.name}: ${ratings.description }
+				</option>
+			</c:forEach>
+		</select>	
+		<br><br>
 		
 <%-- 		<select name="category">
             <c:forEach items="${listCategory}" var="category">
@@ -60,10 +68,10 @@
 <%-- 		<label for="genre">Genre:</label>						<!-- IS GENRE FROM PRE-POPULATED LIST OR USER ENTERS -->
 			<input type="text" name="genre" value="${newGame.genre}" required/><br> --%>
 
-		<label for="rating">Rating:</label>						
+<%-- 		<label for="rating">Rating:</label>						
 			<input type="text" name="rating" value="${newGame.rating}" required/><br>
 
-		<br><br>
+		<br><br> --%>
 
 <!-- need to add image upload field -->
 	If you know the URL image location enter it below: <br>
@@ -74,5 +82,8 @@
 
 	<input type="submit" value="Submit Game">
 	</form>
+	
+	
+	
 </body>
 </html>
