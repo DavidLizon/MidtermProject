@@ -46,6 +46,15 @@ public class GameController {
 		model.addAttribute("allresults", allGames);
 		return "search";
 	}
+	
+	@RequestMapping(path = "goToItemListing.do", method = RequestMethod.GET)
+	public String displayGameDetailsFromSearch(int inventoryItemId, Model model) {
+		GameInventory selectedGame = null;
+		selectedGame = gameDao.displaySelectedGameFromSearch(inventoryItemId);
+		model.addAttribute(selectedGame);
+		return "gameInfo";
+		
+	}
 
 	@RequestMapping(path = "searchByTitle.do", method = RequestMethod.GET)
 	public String searchByTitle(String title, Model model) {

@@ -23,6 +23,8 @@ public interface GameDAO {
 	public GameInventory displayCreatedGameInventoryItem(int id);
 	
 	List<GameInventory> findGameByFilteredSearch(List<GameInventory> gamesByKeyword, Boolean conditionNew);
+	
+	public GameInventory displaySelectedGameFromSearch(int inventoryItemId);
 
 	public List<Genre> listGenres();
 	
