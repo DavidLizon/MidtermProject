@@ -104,25 +104,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "resetUserPassword.do", method = RequestMethod.POST)
-	public String resetUserPassword(int id, User user, HttpSession session) {
+	public String resetUserPassword(int id, User user, String password, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			return "loginOrCreateAccount";
 		} 
-//		userDao.resetPassword(user, id);
-		return "resetpassword";
+		userDao.resetPassword(user, id, password);
+		return "accountinfo";
 	}
 	
-	@RequestMapping(path = "goToAddGame.do", method = RequestMethod.GET) // testmapping
-	public String addNewGameButton(HttpSession session, Model model) {
-	  
-	  List<Genre> genres = userDao.listGenres();
-	  model.addAttribute("genres", genres);
-
-	  List<Rating> ratings = userDao.listRatings();
-	  model.addAttribute("ratings", ratings);
-
-	  return "addGame";
-	}
+	
 
 //	@RequestMapping(path= "addNewGame.do", method = RequestMethod.POST)
 //	public String addNewGame(Game newGame) {

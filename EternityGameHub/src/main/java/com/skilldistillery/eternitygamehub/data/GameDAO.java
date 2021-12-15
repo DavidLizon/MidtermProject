@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.skilldistillery.eternitygamehub.entities.Game;
 import com.skilldistillery.eternitygamehub.entities.GameInventory;
+import com.skilldistillery.eternitygamehub.entities.Genre;
+import com.skilldistillery.eternitygamehub.entities.Platform;
+import com.skilldistillery.eternitygamehub.entities.Rating;
 
 public interface GameDAO {
 
@@ -21,4 +24,10 @@ public interface GameDAO {
 	
 	List<GameInventory> findGameByFilteredSearch(List<GameInventory> gamesByKeyword, Boolean conditionNew);
 
+	public List<Genre> listGenres();
+	
+	public List<Rating> listRatings();
+	
+	public List<Platform> listPlatforms();
+	
 }

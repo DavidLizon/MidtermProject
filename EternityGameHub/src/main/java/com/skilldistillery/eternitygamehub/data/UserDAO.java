@@ -20,6 +20,8 @@ public interface UserDAO {
 	
 	User updateUserInfo(User user, int id);
 	
+	User resetPassword(User user, int id, String password);
+	
 	public List<Genre> listGenres();
 	
 	public List<Rating> listRatings();
