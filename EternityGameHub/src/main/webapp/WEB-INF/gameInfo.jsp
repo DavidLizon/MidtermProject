@@ -10,6 +10,7 @@
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
+<jsp:include page="navBar.jsp" />
 	<c:choose>
 		<c:when test="${! empty game}">
 		

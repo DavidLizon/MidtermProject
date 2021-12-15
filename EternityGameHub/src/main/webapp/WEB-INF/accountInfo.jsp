@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<!-- Nav bar link -->
+	<jsp:include page="navBar.jsp" />
 
 	<h1>Update Account</h1>
 
