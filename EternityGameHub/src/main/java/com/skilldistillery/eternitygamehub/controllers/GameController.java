@@ -59,10 +59,10 @@ public class GameController {
 	public String searchByTitle(String title, Model model) {
 		List<Game> alreadyInGames = new ArrayList<>();
 		alreadyInGames = gameDao.findTitlesInGames(title);
-		if (alreadyInGames.size() > 0) {
+		if (alreadyInGames.size() == 0) {
 			return "No results found"; // testing
 		}
-		model.addAttribute("searchedByTitles", alreadyInGames);
+		model.addAttribute("alreadyInGames", alreadyInGames);
 		return "sellSearchExistingGame";
 	}
 
