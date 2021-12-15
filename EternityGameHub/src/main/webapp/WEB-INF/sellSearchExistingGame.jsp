@@ -30,14 +30,12 @@
 		
 		<c:when test="${! empty alreadyInGames}">
 			<ul>
-				<c:forEach var="item" items="${alreadyInGames}"> <!-- Need to confirm these names are correct  -->
+				<c:forEach var="item" items="${alreadyInGames}"> 
 					<li>	<a href="sellSearchGameToAddInventoryItem.do?inventoryItemId=${item.id}">${item.game.title}</a></li> <!-- Need to confirm href is correct -->
 				</c:forEach>
 			</ul>
 		</c:when>
-		<!-- Not seeing what you're looking for? -->
-		<!-- add catch for when first coming to page that user doesnt have option to add game or see
-		this message prior to doing 1 search first??????? -->
+	
 		<c:when test="${empty alreadyInGames }">
 			<h3>We don't have that game yet!</h3>
 		</c:when>
@@ -45,7 +43,9 @@
 	</c:choose>	
 	
 	</div>
-	
+		<!-- Not seeing what you're looking for? -->
+		<!-- add catch for when first coming to page that user doesnt have option to add game or see
+		this message prior to doing 1 search first??????? -->
 	<div>
 		<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button> <!-- Not 100% sure the on click command is correct -->
 	</div>
