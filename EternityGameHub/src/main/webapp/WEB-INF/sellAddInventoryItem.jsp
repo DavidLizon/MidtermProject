@@ -31,7 +31,9 @@
 		<label for="price"> Price: </label>
 			<input type="number" name="price"/>
 			<br>
-
+		<label for=Platform> Platform: </label>
+			<input type="text" name="platform">
+			<br>
 		<label for="conditionNew">Condition: </label>
 			<input type="radio" name="conditionNew" value="New"/> New 	<!-- Do these values need to be true/false? -->
 			<input type="radio" name="conditionNew" value="Used"/> Used
