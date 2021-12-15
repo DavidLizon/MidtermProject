@@ -9,6 +9,24 @@
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
-	reset password here
+	
+	<div>
+	<h2>Reset your password, ${user.username}</h2>
+	
+	<form action="resetUserPassword.do" method="POST">
+	
+	<label for="oldPassword"> Old Password: </label> <input type="password" name=oldPassword>
+	<br>
+	<label for="newPassword"> New Password: </label> <input type="password" name=newPassword>
+	<br>
+	<input type="submit" value="Update"/>
+	
+	</form>
+	</div>
+	
+	<!-- If oldPassword matches current password AND newPassword != oldPassword 
+	 	reset password to newPassword and show "Password reset success"-->
+	<!-- Else, password reset unsuccessful -->
+	
 </body>
 </html>
