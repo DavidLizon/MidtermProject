@@ -10,16 +10,66 @@
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
-<jsp:include page="navBar.jsp" />
-	<c:choose>
-		<c:when test="${! empty game}">
-		
-			<h1>${game.name}</h1>
-			<br>
-			<!-- Display image of game -->		
+	<jsp:include page="navBar.jsp" />
 
-		</c:when>
+	<div>
+		<h2>${game.title}</h2>
+		<br> 
+		<img src="${game.gameImageUrl}" alt="${game.title} Cover Art">
+	</div>
 
-	</c:choose>
+	<!-- Rental code, for when we decide to implement it
+	 
+	<div>
+	Rent for $${GameInventory.rentPrice} per night
+	</div>
+	
+	<div>
+	
+	<!-- Have to confirm action & method type
+	
+	<form action="addRentalToCart.do" method="GET">
+	<label for="rentalDuration">Rental Duration:</label>
+	<input type="number" id="rentalDuration" name="rentalDuration" min="3" max="14" placeholder="Min 3, Max 14">
+	<input type="submit" value="Add Rental to Cart">
+	</form>
+	</div>
+	
+	-->
+
+	<div>
+	Buy for $${GameInventory.salePrice}
+	</div>
+
+	<div>
+		<!-- Have to confirm action & method type -->
+		<form action="addPurchaseToCart.do" method="GET">
+			<input type="submit" value="Add Purchase to Cart">
+		</form>
+	</div>
+
+	<div>
+		<!-- this can be wrapped in a box, these are instructions how  https://www.w3schools.com/css/css_boxmodel.asp -->
+		${game.description} <br> ${GameInventory.description }
+	</div>
+
+	<!-- Seller description/rating/history, for when we decide to implement it -->
+
+	<!-- <div>
+		<h4>${user.name}History</h4>
+		<!-- need to be sure the user name is of the seller, not the buyer -->
+		<!-- need to add if/choose logic in case the seller has no history
+		<ol>
+			<c:forEach var="sale" items="${sale.seller_id}">
+				<!-- ${sale.name} is temporary, I have to figure out how to map the game 
+					title to sale object (sale.game_inventory_id >> game_inventory.game_id >> game.title 
+				<li>${sale.game_inventory_id.name}<br> Rating:
+					${sale.rating_by_buyer} <br> ${sale.comment_by_buyer}
+				</li>
+			</c:forEach>
+		</ol>
+	</div>
+	  -->
+
 </body>
 </html>

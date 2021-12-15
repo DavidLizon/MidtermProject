@@ -1,13 +1,18 @@
 package com.skilldistillery.eternitygamehub.controllers;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.eternitygamehub.data.UserDAO;
+import com.skilldistillery.eternitygamehub.entities.Genre;
+import com.skilldistillery.eternitygamehub.entities.Rating;
 import com.skilldistillery.eternitygamehub.entities.User;
 
 @Controller
@@ -31,10 +36,10 @@ public class UserController {
 		return "search";
 	}
 	
-	@RequestMapping(path = "goToAddGame.do") // testmapping
-	public String addNewGameButton() {
-		return "addGame";
-	}
+//	@RequestMapping(path = "goToAddGame.do") // testmapping
+//	public String addNewGameButton() {
+//		return "addGame";
+//	}
 	
 	@RequestMapping(path = "gameLinkToSAII.do") // testmapping
 	public String gameLinkClicked() {
@@ -99,13 +104,15 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "resetUserPassword.do", method = RequestMethod.POST)
-	public String resetUserPassword(int id, User user, HttpSession session) {
+	public String resetUserPassword(int id, User user, String password, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			return "loginOrCreateAccount";
 		} 
-//		userDao.resetPassword(user, id);
-		return "resetpassword";
+		userDao.resetPassword(user, id, password);
+		return "accountinfo";
 	}
+	
+	
 
 //	@RequestMapping(path= "addNewGame.do", method = RequestMethod.POST)
 //	public String addNewGame(Game newGame) {

@@ -11,6 +11,9 @@ import org.springframework.stereotype.Repository;
 
 import com.skilldistillery.eternitygamehub.entities.Game;
 import com.skilldistillery.eternitygamehub.entities.GameInventory;
+import com.skilldistillery.eternitygamehub.entities.Genre;
+import com.skilldistillery.eternitygamehub.entities.Platform;
+import com.skilldistillery.eternitygamehub.entities.Rating;
 
 @Repository
 @Transactional
@@ -109,6 +112,36 @@ public class GameDAOImple implements GameDAO {
 				.getResultList();
 		em.close();
 		return filteredGames;
+	}
+
+	@Override
+	public List<Genre> listGenres() {
+		List<Genre> genres = new ArrayList<>();
+		String jpql = "Select g FROM Genre g";
+		genres = em.createQuery(jpql, Genre.class).getResultList();
+
+		em.close();
+		return genres;
+	}
+
+	@Override
+	public List<Rating> listRatings() {
+		List<Rating> ratings = new ArrayList<>();
+		String jpql = "Select r FROM Rating r";
+		ratings = em.createQuery(jpql, Rating.class).getResultList();
+
+		em.close();
+		return ratings;
+	}
+
+	@Override
+	public List<Platform> listPlatforms() {
+		List<Platform> platforms = new ArrayList<>();
+		String jpql = "Select p FROM Platform p";
+		platforms = em.createQuery(jpql, Platform.class).getResultList();
+
+		em.close();
+		return platforms;
 	}
 	
 	
