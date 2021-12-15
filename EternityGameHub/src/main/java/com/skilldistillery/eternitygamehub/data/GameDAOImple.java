@@ -147,6 +147,16 @@ public class GameDAOImple implements GameDAO {
 		em.close();
 		return platforms;
 	}
+
+	@Override
+	public List<GameInventory> listGamesInCart(int inventoryItemId) {
+		List<GameInventory> userCart = new ArrayList<>();
+		String jpql = "Select gi from GameInventory gi where gi.id = :gameinventoryid";
+		userCart = em.createQuery(jpql, GameInventory.class)
+				.setParameter("gameinventoryid", inventoryItemId)
+				.getResultList();
+		return null;
+	}
 	
 	
 
