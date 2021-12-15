@@ -31,17 +31,34 @@
 		<label for="maxPlayers">Max players:</label>
 			<input type="text" name="maxPlayers" value="${newGame.maxPlayers}" required/><br>
 
+
 		<label for="genre">Genre: </label>
+			<c:forEach items="${genres}" var="genres">
+				<input type="checkbox" name="genres" value="${genres.id }"/>
+					${genres.name}
+			</c:forEach>
+			<br>
+
+ 		<label for="genre">Genre: </label>
 		<select name="genre">
 			<c:forEach items="${genres}" var="genres">
 				<option value="${genres.id}"
-					<%-- <c:if test="${genres.name eq selectedGenre}">selected="selected"</c:if> --%>
+					<c:if test="${genres.name eq selectedGenre}">selected="selected"</c:if>
 						>
 						${genres.name}: ${genres.description }
 				</option>
 			</c:forEach>
 		</select>	
-		<br>
+		<br> 
+		
+
+		<label for="rating">Rating: </label>
+			<c:forEach items="${ratings}" var="ratings">
+				<input type="checkbox" name="ratings" value="${ratings.id }"/>
+					${ratings.name}
+			</c:forEach>
+		<br><br>
+
 
 		<label for="rating">Rating: </label>
 		<select name="rating">
@@ -52,7 +69,7 @@
 				</option>
 			</c:forEach>
 		</select>	
-		<br><br>
+		<br><br> 
 		
 <%-- 		<select name="category">
             <c:forEach items="${listCategory}" var="category">
