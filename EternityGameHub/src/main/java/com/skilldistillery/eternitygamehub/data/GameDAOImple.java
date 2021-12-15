@@ -173,6 +173,13 @@ public class GameDAOImple implements GameDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	@Override
+	public Game findGameById(int id) {
+		Game findGameToPassToSell = new Game();
+		findGameToPassToSell = em.find(Game.class, id);
+		return findGameToPassToSell;
+	}
 
 //	@Override
 //	public Game addGameInfoFromId(int id) {
