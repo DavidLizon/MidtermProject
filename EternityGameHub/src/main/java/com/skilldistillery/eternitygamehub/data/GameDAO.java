@@ -39,5 +39,6 @@ public interface GameDAO {
 	public Game addGameInfoFromId(int id);
 
 	Game findGameById(int id);
+
 	
 }
