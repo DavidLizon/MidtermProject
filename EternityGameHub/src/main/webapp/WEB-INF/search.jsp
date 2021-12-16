@@ -74,7 +74,7 @@
 				<ul>
 					<c:forEach var="item" items="${result}">
 						<!-- Need to confirm these names are correct  -->
-						<li><a href="goToItemListing.do?inventoryItemId=${item.id}">${item.title}</a></li>
+						<li><a href="goToItemListing.do?inventoryItemId=${item.id}">${item.game.title}</a></li>
 						<!-- Need to confirm href is correct -->
 					</c:forEach>
 				</ul>
