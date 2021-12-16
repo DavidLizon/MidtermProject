@@ -36,8 +36,8 @@
 			</ul>
 		</c:when>
 	
-		<c:when test="${empty alreadyInGames }">
-			<h3>We don't have that game yet!</h3>
+		<c:when test="${!empty noGamesFound }">
+			<h3>"${noGamesFound}"</h3>
 		</c:when>
 	
 	</c:choose>	

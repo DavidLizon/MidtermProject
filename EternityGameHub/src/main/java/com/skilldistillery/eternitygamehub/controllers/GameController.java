@@ -60,10 +60,15 @@ public class GameController {
 		List<Game> alreadyInGames = new ArrayList<>();
 		alreadyInGames = gameDao.findTitlesInGames(title);
 		if (alreadyInGames.size() == 0) {
-			return "No results found"; // testing
+			String noneFound = "No games found with that search keyword, try again or add your game!";
+			model.addAttribute("noGamesFound", noneFound);
+			return "sellSearchExistingGame";
 		}
-		model.addAttribute("alreadyInGames", alreadyInGames);
-		return "sellSearchExistingGame";
+		else {
+			model.addAttribute("alreadyInGames", alreadyInGames);
+			return "sellSearchExistingGame";
+		}
+		
 	}
 
 	@RequestMapping(path = "addGame.do", method = RequestMethod.POST) //
