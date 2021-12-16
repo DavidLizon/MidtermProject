@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>EGH Account Info</title>s
+<title>EGH Account Info</title> 
 <jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
@@ -14,19 +14,21 @@
 
 	<h1>Update Account</h1>
 
-	<div class="accountInfo">
-		<form action="updateAccount.do" method="POST">
+	<div class="accountinfo">
+		<form action="updateUserAccount.do" method="GET">
 			<br /> 
+			<input type="hidden" name="id" value="${user.id}"/>
+			
 			<label for="firstName">First Name: </label> 
-				<input required type="text" name="firstName" /><br> 
-			<label for="lastName">Last Name: </label> 
-				<input required type="text" name="lastName" /><br> 
+				<input required type="text" name="firstName" value = "${user.firstName}"/><br> 
+			 <label for="lastName">Last Name: </label> 
+				<input required type="text" name="lastName" value = "${user.lastName}"/><br> 
 			<label for="username">Username: </label> 
-				<input required type="text" name="username" /><br> 
+				<input required readonly type="text" name="username" value = "${user.username}"/><br> 
 			<label for="password">Password: </label> 
-				<input required type="text" name="password" /><br> 
+				<input required type="text" name="password" value = "${user.password}"/><br>  
 		 	<label for="email">Email: </label> 
-		 		<input required type="text" name="email" /><br>
+		 		<input required type="text" name="email" value = "${user.email}"/><br> 
 
 			<input type="submit" value="Update Account">
 		</form>

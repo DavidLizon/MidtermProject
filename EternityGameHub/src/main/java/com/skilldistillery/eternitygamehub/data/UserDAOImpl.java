@@ -17,17 +17,6 @@ public class UserDAOImpl implements UserDAO {
 	@PersistenceContext
 	private EntityManager em;
 
-//	@Override
-//	public User findByUsername(String username) {
-//		String jpql = "SELECT u FROM User u WHERE u.username = :n";
-//		try {
-//			return em.createQuery(jpql, User.class).setParameter("n", username).getSingleResult();
-//		} catch (Exception e) {
-//			System.err.println("Invalid user name: " + username);
-//			return null;
-//		}
-//	}
-
 	@Override
 	public User getUserByUserNameAndPassword(String username, String password) {
 		String jpql = "SELECT u FROM User u WHERE u.username = :n AND u.password = :p";
@@ -49,7 +38,6 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User findAndPopulateUser(int id, User user) {
 		user = em.find(User.class, id);
-		 
 		return user;
 	}
 
@@ -70,8 +58,6 @@ public class UserDAOImpl implements UserDAO {
 		updatedUser.setBiography(user.getBiography());
 		updatedUser.setEmail(user.getEmail());
 		updatedUser.setProfilePictureUrl(user.getProfilePictureUrl());
-		
-//		user = updateUserFieldsHelper(id, user);
 		return updatedUser;
 	}
 
@@ -82,8 +68,14 @@ public class UserDAOImpl implements UserDAO {
 		return user;
 	}
 	
+//	public User resetPassword(User user, int id) {
+//		User userToUpdatePassword = em.find(User.class, id);
+//		userToUpdatePassword.setPassword(user.getPassword());
+//		return userToUpdatePassword;
+//	}
+//	working on refactoring this right now! -allysa
+	
 	public User updateUserPasswordHelper(int id, User user, String password) {
-		
 		User userToUpdatePassword = user;
 		userToUpdatePassword = em.find(User.class, 1);
 		String oldPassword = userToUpdatePassword.getPassword();
@@ -91,39 +83,20 @@ public class UserDAOImpl implements UserDAO {
 		oldPassword = newPassword;
 				userToUpdatePassword.setPassword(newPassword);
 		em.persist(userToUpdatePassword);
-		 
 		return userToUpdatePassword;
 	}
-
-//	public User updateUserFieldsHelper(int id, User user) {
-//		User updatedUser = user;
-//		updatedUser.setFirstName(user.getFirstName());
-//		updatedUser.setLastName(user.getLastName());
-//		updatedUser.setUsername(user.getUsername());
-//		updatedUser.setBiography(user.getBiography());
-//		updatedUser.setEmail(user.getEmail());
-//		updatedUser.setProfilePictureUrl(user.getProfilePictureUrl());
-//		
-//		em.persist(updatedUser);
-//		 
-//		return updatedUser;
-//	}
 
 	public List<Genre> listGenres() {
 		List<Genre> genres = new ArrayList<>();
 		String jpql = "Select g FROM Genre g";
-		genres = em.createQuery(jpql, Genre.class).getResultList();
-
-		 
+		genres = em.createQuery(jpql, Genre.class).getResultList(); 
 		return genres;
 	}
 
 	public List<Rating> listRatings() {
 		List<Rating> ratings = new ArrayList<>();
 		String jpql = "Select r FROM Rating r";
-		ratings = em.createQuery(jpql, Rating.class).getResultList();
-
-		 
+		ratings = em.createQuery(jpql, Rating.class).getResultList(); 
 		return ratings;
 	}
 

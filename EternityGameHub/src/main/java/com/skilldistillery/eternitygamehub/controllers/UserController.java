@@ -60,19 +60,21 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
-	public String getLogin(HttpSession session, User user) {
+	public String getLogin(HttpSession session, User user, Model model) {
 		if (session.getAttribute("user") != null) {
+			model.addAttribute("user", user);
 			return "home";
 		}
 		return "redirect:home.do";
 	}
 
 	@RequestMapping(path = "login.do", method = RequestMethod.POST)
-	public String postLogin(User user, HttpSession session) {
+	public String postLogin(User user, HttpSession session, Model model) {
 
 		User u = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 		if (u != null) {
 			session.setAttribute("user", u);
+			model.addAttribute("user", u);
 			return "home";
 		}
 		return "redirect:home.do";
@@ -85,19 +87,20 @@ public class UserController {
 	}
 
 	@RequestMapping(path = "userAccount.do", method = RequestMethod.GET)
-	public String getUserInfoForAccountInfoPage(int id, User user, HttpSession session) {
+	public String getUserInfoForAccountInfoPage(HttpSession session, Model model) {
 		if (session.getAttribute("user") == null) {
 			return "loginOrCreateAccount";
-		} userDao.findAndPopulateUser(id, user);
-		return "accountinfo";
+		} 
+		return "accountInfo";
 	}
 	
-	@RequestMapping(path = "updateUserAccount.do", method = RequestMethod.POST)
-	public String updateUserInfoForAccountInfoPage(int id, User user, HttpSession session) {
+	@RequestMapping(path = "updateUserAccount.do", method = RequestMethod.GET)
+	public String updateUserInfoForAccountInfoPage(User user, HttpSession session, Model model) {
 		if (session.getAttribute("user") == null) {
 			return "loginOrCreateAccount";
-		} userDao.updateUserInfo(user, id);
-		return "accountinfo";
+		} user = userDao.updateUserInfo(user, user.getId());
+		session.setAttribute("user", user);
+		return "accountInfo";
 	}
 	
 	@RequestMapping(path = "createUserAccount.do", method = RequestMethod.POST)
