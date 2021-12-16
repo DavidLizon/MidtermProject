@@ -17,16 +17,28 @@
 	<h3>Your cart is empty.</h3>
 </c:when>
 <c:otherwise>
-		<label for="gamesInCart">
-			<c:forEach items="${game.id}" var="genres">
-				<div>
-					${game.title}
-					${game.}
-					${game.}
-					${game.}
-			</div>
-			</c:forEach>
-		</label>
+		<table id="cart" >
+			<thead>
+				<tr>
+					<th></th>
+					<th><h6>Title</h6></th>
+					<th><h6>Description</h6></th>
+					<th><h6>Condition</h6></th>
+					<th><h6>Price</h6></th>
+				</tr>
+			</thead>
+				<!-- <label for="cartList"> -->
+				<tr>
+					<c:forEach items="${game.id}" var="genres">
+				
+						<td>${game.title}</td>
+						<td>${game.description}</td>
+						<td>${game.condition}</td>
+						<td>${game.price}</td>
+					</c:forEach>
+				</tr>
+		<!-- </label> -->
+		</table>
 		<br>
 </c:otherwise>
 
