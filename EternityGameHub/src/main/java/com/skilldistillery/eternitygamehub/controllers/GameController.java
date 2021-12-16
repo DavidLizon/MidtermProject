@@ -73,8 +73,13 @@ public class GameController {
 
 	@RequestMapping(path = "addGame.do", method = RequestMethod.POST) //
 	public String addGameToGames(Game game, Model model) {
+		List<Rating> ratings = gameDao.listRatings();
+		model.addAttribute("ratings", ratings);
+		List<Genre> genres = gameDao.listGenres();
+		model.addAttribute("genres", genres);
 		Game newGame = gameDao.addGame(game);
-		model.addAttribute("newGameAdded", newGame);
+		model.addAttribute("newGame", newGame);
+//		model.addAttribute("newGameAdded", newGame);
 		return "sellAddInventoryItem";
 	}
 

@@ -19,9 +19,12 @@
 	<br>
 	
 	<div class="addGame">
+	<input type="hidden" name="user.id" value="${user.id}"/>
+	
 	<c:if test="${duplicateTitle }">
 		Unable to add game. Game with same title already exists.	
 	</c:if>
+		
 		<label for="title">Title:</label>
 			<input type="text" name="title" value="${newGame.title}" required/> <br>
 
@@ -32,14 +35,26 @@
 			<input type="text" name="maxPlayers" value="${newGame.maxPlayers}" required/><br>
 
 
-		<label for="genre">Genre: </label>
-			<c:forEach items="${genres}" var="genres">
-				<div title="${genres.description }"><input type="checkbox" name="genres" value="${genres.id }" title="${genres.description }"/>
-					${genres.name}
-			</div></c:forEach>
+		
+		<%-- <label for="genre">Genre: </label>
+			<c:forEach items="${genres}" var="genreList">
+				<div title="${genreList.description }">
+					<input type="checkbox" name="genres" value="${genreList.name}" title="${genreList.description }"/> ${genreList.name}		
+				</div>
+			</c:forEach> --%>
+			
 			<br>
+			
+		<label for="genre">Genre: </label>
+		<select name="genre.id">
+			<c:forEach items="${genres}" var="genre">
+				<option value="${genre.id}">
+						${genre.name}
+				</option>
+			</c:forEach>
+		</select>	
 
- 		<label for="genre">Genre: </label>
+ 		<%-- <label for="genre">Genre: </label>
 		<select name="genre">
 			<c:forEach items="${genres}" var="genres">
 				<option value="${genres.id}"
@@ -49,18 +64,27 @@
 				</option>
 			</c:forEach>
 		</select>	
-		<br> 
+		<br>  --%>
 		
 
-		<label for="rating">Rating: </label>
+		<%-- <label for="rating">Rating: </label>
 			<c:forEach items="${ratings}" var="ratings">
 				<input type="checkbox" name="ratings" value="${ratings.id }"/>
 					${ratings.name}
+			</c:forEach> --%>
+			
+			<label for="rating">Rating: </label>
+		<select name="rating.id">
+			<c:forEach items="${ratings}" var="rating">
+				<option value="${rating.id}">
+						${rating.name}
+				</option>
 			</c:forEach>
+		</select>	
 		<br><br>
 
 
-		<label for="rating">Rating: </label>
+		<%-- <label for="rating">Rating: </label>
 		<select name="rating">
 			<c:forEach items="${ratings}" var="ratings">
 				<option value="${ratings.id}"
@@ -69,7 +93,7 @@
 				</option>
 			</c:forEach>
 		</select>	
-		<br><br> 
+		<br><br>  --%>
 		
 <%-- 		<select name="category">
             <c:forEach items="${listCategory}" var="category">

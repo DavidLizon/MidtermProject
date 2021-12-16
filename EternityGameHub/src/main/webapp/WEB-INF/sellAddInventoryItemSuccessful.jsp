@@ -29,9 +29,12 @@
 					${genre.name}
 				</c:forEach>		
 		<br>
-		Price: ${newGameInventoryItem.salePrice}
+		Price: $${newGameInventoryItem.salePrice}
 		<br>
-		Condition: ${newGameInventoryItem.conditionNew}
+		Condition: <c:choose>
+						<c:when test="${ not newGameInventoryItem.conditionNew}"> Used </c:when>		
+						<c:when test="${newGameInventoryItem.conditionNew}"> New </c:when>		
+					</c:choose>	
 		<br>
 		Description: ${newGameInventoryItem.description}
 		<br>
