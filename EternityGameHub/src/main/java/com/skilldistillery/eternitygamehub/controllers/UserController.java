@@ -1,6 +1,8 @@
 package com.skilldistillery.eternitygamehub.controllers;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.eternitygamehub.data.UserDAO;
+import com.skilldistillery.eternitygamehub.entities.Genre;
+import com.skilldistillery.eternitygamehub.entities.Platform;
+import com.skilldistillery.eternitygamehub.entities.Rating;
 import com.skilldistillery.eternitygamehub.entities.User;
 
 @Controller
@@ -31,10 +36,10 @@ public class UserController {
 		return "sellSearchExistingGame";
 	}
 
-	@RequestMapping(path = "search.do") // testmapping
-	public String buyButton() {
-		return "search";
-	}
+//	@RequestMapping(path = "search.do") // testmapping
+//	public String buyButton() {
+//		return "search";
+//	}
 	
 //	@RequestMapping(path = "goToAddGame.do") // testmapping
 //	public String addNewGameButton() {

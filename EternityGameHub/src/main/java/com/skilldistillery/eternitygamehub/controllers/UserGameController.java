@@ -15,6 +15,7 @@ import com.skilldistillery.eternitygamehub.data.GameDAO;
 import com.skilldistillery.eternitygamehub.data.UserDAO;
 import com.skilldistillery.eternitygamehub.entities.GameInventory;
 import com.skilldistillery.eternitygamehub.entities.Genre;
+import com.skilldistillery.eternitygamehub.entities.Platform;
 import com.skilldistillery.eternitygamehub.entities.Rating;
 
 @Controller
@@ -25,6 +26,18 @@ public class UserGameController {
 	
 	@Autowired
 	private GameDAO gameDao;
+	
+	
+	@RequestMapping(path = "search.do") // testmapping
+	public String buyButton(Model model) {
+		List<Platform> platforms = gameDao.listPlatforms();
+		model.addAttribute("platforms", platforms);
+		List<Rating> ratings = gameDao.listRatings();
+		model.addAttribute("ratings", ratings);
+		List<Genre> genres = gameDao.listGenres();
+		model.addAttribute("genres", genres);
+		return "search";
+	}
 	
 	@RequestMapping(path = "goToAddGame.do", method = RequestMethod.GET) // testmapping
 	public String addNewGameButton(HttpSession session, Model model) {

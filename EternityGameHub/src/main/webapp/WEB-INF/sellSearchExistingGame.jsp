@@ -33,14 +33,13 @@
 				<c:forEach var="item" items="${alreadyInGames}"> 
 					<li>	<a href="populateItem.do?gameItemId=${item.id}">${item.title}</a></li> <!-- Need to confirm href is correct -->
 				</c:forEach>
-						<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button> <!-- Not 100% sure the on click command is correct -->
-				
 			</ul>
+			<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button> <!-- Not 100% sure the on click command is correct -->
 		</c:when>
 	
 		<c:when test="${!empty noGamesFound }">
 			<h3>"${noGamesFound}"</h3>
-					<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button> <!-- Not 100% sure the on click command is correct -->
+			<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button> <!-- Not 100% sure the on click command is correct -->
 			
 		</c:when>
 	
