@@ -93,7 +93,6 @@ public class GameDAOImple implements GameDAO {
 
 	@Override
 	public GameInventory addGameInventory(GameInventory newGameInventoryItem) {
-		System.out.println(newGameInventoryItem);
 		em.persist(newGameInventoryItem);
 		return newGameInventoryItem;
 	}
@@ -142,10 +141,6 @@ public class GameDAOImple implements GameDAO {
 		List<Platform> platforms = new ArrayList<>();
 		String jpql = "Select p FROM Platform p";
 		platforms = em.createQuery(jpql, Platform.class).getResultList();
-		for (Platform platform : platforms) {
-			System.out.println(platform);
-		}
-		 
 		return platforms;
 	}
 
@@ -184,6 +179,7 @@ public class GameDAOImple implements GameDAO {
 		return findGameToPassToSell;
 	}
 
+	
 //	@Override
 //	public Game addGameInfoFromId(int id) {
 //		Game game = new Game();

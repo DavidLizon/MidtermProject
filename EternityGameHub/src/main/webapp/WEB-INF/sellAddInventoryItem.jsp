@@ -37,9 +37,9 @@
 			
 			 <label for="platform">Platform: </label>
 		<select name="platform">
-			<c:forEach items="${platforms}" var="platforms">
-				<option value="${platforms.id}">
-						${platforms.name}
+			<c:forEach items="${platforms}" var="platform">
+				<option value="${platform}">
+						${platform.name}
 				</option>
 			</c:forEach>
 		</select>	
