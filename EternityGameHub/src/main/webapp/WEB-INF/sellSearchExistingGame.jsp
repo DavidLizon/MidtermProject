@@ -36,10 +36,11 @@
 			</ul>
 		</c:when>
 	
+	<div class="noResults">
 		<c:when test="${!empty noGamesFound }">
 			<h3>"${noGamesFound}"</h3>
 		</c:when>
-	
+	</div>
 	</c:choose>	
 	
 	</div>
