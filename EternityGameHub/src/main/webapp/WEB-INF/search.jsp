@@ -20,7 +20,7 @@
 
 
       <label for="condition">Condition</label>
-      <select class="condition" name="condition" required>
+      <select class="condition" name="condition" required multiple>
         <option value="new">New</option>
         <option value="used">Used</option>
       </select><br>
@@ -28,28 +28,28 @@
 
 
       <label for="genre">Genre</label>
-      <select class="genre" name="genre" required>
+      <select class="genre" name="genre" required multiple>
         <c:forEach items="${genres}" var="genre">
           <option value="${genre.id}">${genre.name}</option>
         </c:forEach>
       </select><br>
 
       <label for="rating">Rating</label>
-      <select class="rating" name="rating" required>
+      <select class="rating" name="rating" required multiple>
         <c:forEach items="${ratings}" var="rating">
           <option value="${rating.id}">${rating.name}</option>
         </c:forEach>
       </select><br>
 
       <label for="platform">Platform</label>
-      <select class="platfrom" name="platform" required>
+      <select class="platfrom" name="platform" required multiple>
         <c:forEach items="${platforms}" var="platform">
-          <option value="${platform.id}">${platfrom.name}</option>
+          <option value="${platform.id}">${platform.name}</option>
         </c:forEach>
       </select><br>
 
       <label for="maxPlayers">Max Players</label>
-      <select class="maxPlayers" name="maxPlayers" required>
+      <select class="maxPlayers" name="maxPlayers" required multiple>
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
