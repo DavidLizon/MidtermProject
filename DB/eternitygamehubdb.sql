@@ -99,7 +99,7 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `game_inventory` ;
 
 CREATE TABLE IF NOT EXISTS `game_inventory` (
-  `id` INT NOT NULL,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `game_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   `description` TEXT NULL,
