@@ -15,7 +15,7 @@
 
 	<h1>Add New Game to EGH</h1>
 
-	<form action="addGame.do">  <!-- REMOVE . PRIOR TO COMMENT method="POST"> --> <!--Need to match action address & get/put method to controller  -->
+	<form action="addGame.do" method = "POST">  <!-- REMOVE . PRIOR TO COMMENT method="POST"> --> <!--Need to match action address & get/put method to controller  -->
 	<br>
 	
 	<div class="addGame">
