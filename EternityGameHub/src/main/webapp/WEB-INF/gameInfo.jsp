@@ -13,9 +13,9 @@
 	<jsp:include page="navBar.jsp" />
 
 	<div>
-		<h2>${game.title}</h2>
+		<h2>${gameItem.game.title}</h2>
 		<br> 
-		<img src="${game.gameImageUrl}" alt="${game.title} Cover Art">
+		<img src="${game.gameImageUrl}" alt="${gameItem.game.title} Cover Art">
 	</div>
 
 	<!-- Rental code, for when we decide to implement it
@@ -38,7 +38,7 @@
 	-->
 
 	<div>
-	Buy for $${GameInventory.salePrice}
+	Buy for $${gameItem.salePrice}
 	</div>
 
 	<div>
@@ -50,7 +50,7 @@
 
 	<div>
 		<!-- this can be wrapped in a box, these are instructions how  https://www.w3schools.com/css/css_boxmodel.asp -->
-		${game.description} <br> ${GameInventory.description }
+		${gameItem.game.description} <br> ${gameItem.description }
 	</div>
 
 	<!-- Seller description/rating/history, for when we decide to implement it -->
