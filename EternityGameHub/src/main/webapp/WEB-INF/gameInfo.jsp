@@ -56,7 +56,6 @@
 	<!-- Seller description/rating/history, for when we decide to implement it -->
 
 	<!-- <div>
-		<h4>${user.name}History</h4>
 		<!-- need to be sure the user name is of the seller, not the buyer -->
 		<!-- need to add if/choose logic in case the seller has no history
 		<ol>
