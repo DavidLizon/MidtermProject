@@ -52,7 +52,7 @@ public class GameController {
 	public String displayGameDetailsFromSearch(int inventoryItemId, Model model) {
 		GameInventory selectedGame = null;
 		selectedGame = gameDao.displaySelectedGameFromSearch(inventoryItemId);
-		model.addAttribute(selectedGame);
+		model.addAttribute("gameItem",selectedGame);
 		return "gameInfo";
 	}
 
