@@ -56,6 +56,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User createNewUser(String firstName, String lastName, String username, String password, String email) {
 		User newUser = null;
+		
 		newUser.setFirstName(firstName);
 		newUser.setLastName(lastName);
 		newUser.setUsername(username);

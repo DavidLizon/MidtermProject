@@ -2,10 +2,13 @@ package com.skilldistillery.eternitygamehub.controllers;
 
 
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 import com.skilldistillery.eternitygamehub.data.UserDAO;
 import com.skilldistillery.eternitygamehub.entities.User;
 
@@ -90,6 +93,27 @@ public class UserController {
 			return "loginOrCreateAccount";
 		} userDao.updateUserInfo(user, id);
 		return "accountinfo";
+	}
+	
+	@RequestMapping(path = "createUserAccount.do", method = RequestMethod.POST)
+	public String createNewUserAccount(User user, HttpSession session, Model model) {
+		
+		User newUser = new User();
+		String newUserFirstName = newUser.setFirstName(firstName);
+		String newUserLastName = newUser.getLastName();
+		String newUserUsername = newUser.getUsername();
+		String newUserPassword = newUser.getPassword();
+		String newUserEmail = newUser.getEmail();
+		userDao.createNewUser(firstName, lastName, username, password, email);
+		System.out.println("*****************");
+		session.setAttribute("user", newUser);
+		
+		if (session.getAttribute("user") == null) {
+			return "loginOrCreateAccount";
+		}
+		
+		model.addAttribute("newUser", newUser);
+		return "home";
 	}
 	
 	@RequestMapping(path = "resetPassword.do", method = RequestMethod.GET)

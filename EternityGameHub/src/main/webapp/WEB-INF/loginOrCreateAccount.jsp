@@ -56,8 +56,9 @@
 	
 		<h2>New Account Creation</h2>
 
-		<form action="createAccount.do"> <!-- Need to confirm this is the correct mapping within controller -->
-
+		<form action="createUserAccount.do" method="POST"> <!-- Need to confirm this is the correct mapping within controller -->
+			<%-- <input type="hidden" name="user.id" value="${newUser.id}"/> --%>
+			
 			<label for="firstName">First Name: </label> 
 			<input required type="text" name="firstName" /> 
 			<br> 
@@ -89,7 +90,7 @@
 			Unable to create account. Email already in use.
 		</c:if>
 
-			<c:if test="goodUsername }">
+			<c:if test="${goodUsername}">
 			Unable to create account. Username already in use.
 		</c:if>
 
