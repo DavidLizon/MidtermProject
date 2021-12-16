@@ -56,7 +56,7 @@ public class GameDAOImple implements GameDAO {
 //		findGameByFilteredSearch(gamesByKeyword);
 		
 		
-		em.close();
+		 
 		return gamesByKeyword;
 	}
 
@@ -66,7 +66,7 @@ public class GameDAOImple implements GameDAO {
 		String jpql = "Select gi FROM GameInventory gi";
 		allGames = em.createQuery(jpql, GameInventory.class)
 				.getResultList();
-		em.close();
+		 
 		return allGames;
 	}
 	
@@ -77,7 +77,7 @@ public class GameDAOImple implements GameDAO {
 		gamesByTitleSearch = em.createQuery(jpql, Game.class)
 				.setParameter("gametitle", "%" + title + "%")
 				.getResultList();
-		em.close();
+		 
 		return gamesByTitleSearch;
 	}
 	
@@ -93,6 +93,7 @@ public class GameDAOImple implements GameDAO {
 
 	@Override
 	public GameInventory addGameInventory(GameInventory newGameInventoryItem) {
+		System.out.println(newGameInventoryItem);
 		em.persist(newGameInventoryItem);
 		return newGameInventoryItem;
 	}
@@ -112,7 +113,7 @@ public class GameDAOImple implements GameDAO {
 		gamesByKeyword = em.createQuery(jpql, GameInventory.class)
 				.setParameter("searchkeyword", "%" + conditionNew + "%")
 				.getResultList();
-		em.close();
+		 
 		return filteredGames;
 	}
 
@@ -122,7 +123,7 @@ public class GameDAOImple implements GameDAO {
 		String jpql = "Select g FROM Genre g";
 		genres = em.createQuery(jpql, Genre.class).getResultList();
 
-		em.close();
+		 
 		return genres;
 	}
 
@@ -132,7 +133,7 @@ public class GameDAOImple implements GameDAO {
 		String jpql = "Select r FROM Rating r";
 		ratings = em.createQuery(jpql, Rating.class).getResultList();
 
-		em.close();
+		 
 		return ratings;
 	}
 
@@ -141,8 +142,10 @@ public class GameDAOImple implements GameDAO {
 		List<Platform> platforms = new ArrayList<>();
 		String jpql = "Select p FROM Platform p";
 		platforms = em.createQuery(jpql, Platform.class).getResultList();
-
-		em.close();
+		for (Platform platform : platforms) {
+			System.out.println(platform);
+		}
+		 
 		return platforms;
 	}
 
@@ -153,7 +156,7 @@ public class GameDAOImple implements GameDAO {
 		userCart = em.createQuery(jpql, GameInventory.class)
 				.setParameter("gameinventoryid", inventoryItemId)
 				.getResultList();
-		em.close();
+		 
 		return userCart;
 	}
 
@@ -164,7 +167,7 @@ public class GameDAOImple implements GameDAO {
 		gameInventoryItemsToBuy = em.createQuery(jpql, GameInventory.class)
 				.setParameter("gameinventoryid", gameInventoryItemsToBuy)
 				.getResultList();
-		em.close();
+		 
 		return gameInventoryItemsToBuy;
 	}
 
@@ -188,7 +191,7 @@ public class GameDAOImple implements GameDAO {
 //		userCart = em.createQuery(jpql, GameInventory.class)
 //				.setParameter("gameinventoryid", inventoryItemId)
 //				.getResultList();
-//		em.close();
+//		 
 //		return userCart;
 //	}
 	

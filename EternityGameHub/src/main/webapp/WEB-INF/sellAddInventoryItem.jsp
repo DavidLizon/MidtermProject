@@ -31,12 +31,25 @@
 		<label for="price"> Price: </label>
 			<input type="number" name="price"/>
 			<br>
-		<label for=Platform> Platform: </label> <!-- This should be a dropdown with pre-existing platforms, not a text box -->
+<!-- 		<label for="platform"> Platform: </label> This should be a dropdown with pre-existing platforms, not a text box
 			<input type="text" name="platform">
-			<br>
+			<br> -->
+			
+			 <label for="platform">Platform: </label>
+		<select name="platform">
+			<c:forEach items="${platforms}" var="platforms">
+				<option value="${platforms.id}">
+						${platforms.name}
+				</option>
+			</c:forEach>
+		</select>	
+		<br><br>  
+			
+			
+			
 		<label for="conditionNew">Condition: </label>
-			<input type="radio" name="conditionNew" value="New"/> New 	<!-- Do these values need to be true/false? -->
-			<input type="radio" name="conditionNew" value="Used"/> Used
+			<input type="radio" name="conditionNew" value="1"/> New 	<!-- Do these values need to be true/false? -->
+			<input type="radio" name="conditionNew" value="0"/> Used
 			<br>
 
 		<label for="description">Description: </label>
