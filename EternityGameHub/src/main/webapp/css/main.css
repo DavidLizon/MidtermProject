@@ -1,16 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
+/* this maps these var across everything */
 :root{
   --primary-green: limegreen;
   --primary-yellow: yellow;
 }
 
+/* every page */
 body{
   background: #F2F2F2;
   margin: 0;
   font-family: Poppins;
 }
 
+/* navbar.jsp */
 .navbar{
   background: darkgray;
   padding: 1em;
@@ -55,7 +58,7 @@ body{
   font-weight: bold;
   color: var(--primary-yellow);
 }
-
+/* home.jsp */
 button{
   text-align: center;
   display: block;
@@ -94,3 +97,5 @@ button{
   list-style-type: none;
   margin-bottom: 3em;
 }
+
+/* sellSearchExistingGame.jsp */
