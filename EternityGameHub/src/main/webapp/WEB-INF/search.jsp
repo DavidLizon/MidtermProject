@@ -13,49 +13,57 @@
 
   <div class="game-search">
     <!-- have this div all on left or right side -->
-    <form class="search-criteria" action="findByKeyword.do" method="post">
+    <form class="search-criteria" action="findByKeyword.do" method="GET">
 
       <label for="title">Keyword search for Title or Description</label>
       <input type="text" name="title" required><br>
 
 
       <label for="condition">Condition</label>
-      <select class="condition" name="condition" required multiple>
+      <select class="condition" name="condition">
         <option value="new">New</option>
         <option value="used">Used</option>
       </select><br>
 
-
-
-      <label for="genre">Genre</label>
-      <select class="genre" name="genre" required multiple>
-        <c:forEach items="${genres}" var="genre">
-          <option value="${genre.id}">${genre.name}</option>
-        </c:forEach>
-      </select><br>
-
-      <label for="rating">Rating</label>
-      <select class="rating" name="rating" required multiple>
-        <c:forEach items="${ratings}" var="rating">
-          <option value="${rating.id}">${rating.name}</option>
-        </c:forEach>
-      </select><br>
-
-      <label for="platform">Platform</label>
-      <select class="platfrom" name="platform" required multiple>
-        <c:forEach items="${platforms}" var="platform">
-          <option value="${platform.id}">${platform.name}</option>
-        </c:forEach>
-      </select><br>
+		
+		<label for="genre">Genre: </label>
+			<select name="genre.id">
+				<c:forEach items="${genres}" var="genre">
+					<option value="${genre.id}">
+							${genre.name}
+					</option>
+				</c:forEach>
+			</select>	
+		<br>
+      
+      <label for="rating">Rating: </label>
+			<select name="rating.id">
+				<c:forEach items="${ratings}" var="rating">
+					<option value="${rating.id}">
+							${rating.name}
+					</option>
+				</c:forEach>
+			</select>	
+		<br>
+      
+      <label for="platform">Platform: </label>
+			<select name="platform.id">
+				<c:forEach items="${platforms}" var="platform">
+					<option value="${platform.id}">
+							${platform.name}
+					</option>
+				</c:forEach>
+			</select>	
+		<br>
 
       <label for="maxPlayers">Max Players</label>
-      <select class="maxPlayers" name="maxPlayers" required multiple>
+      <select class="maxPlayers" name="maxPlayers">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
-      </select>
-      
+      </select><br>
+      <input type="submit" value="Search">
     </form>
   </div>
   <!-- must have a selection for all fields before submitting search -->
