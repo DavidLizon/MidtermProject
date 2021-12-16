@@ -29,16 +29,18 @@
 		<form action="addGameInventoryItem.do" method="POST">
 
 		<label for="price"> Price: </label>
-			<input type="number" name="price"/>
+			<input type="number" name="salePrice"/>
+			<input type="hidden" name="game.id" value="${game.id}"/>
+			<input type="hidden" name="user.id" value="${user.id}"/>
 			<br>
 <!-- 		<label for="platform"> Platform: </label> This should be a dropdown with pre-existing platforms, not a text box
 			<input type="text" name="platform">
 			<br> -->
 			
 			 <label for="platform">Platform: </label>
-		<select name="platform">
+		<select name="platform.id">
 			<c:forEach items="${platforms}" var="platform">
-				<option value="${platform}">
+				<option value="${platform.id}">
 						${platform.name}
 				</option>
 			</c:forEach>

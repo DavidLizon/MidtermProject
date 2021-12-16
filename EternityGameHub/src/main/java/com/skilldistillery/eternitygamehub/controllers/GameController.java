@@ -94,8 +94,9 @@ public class GameController {
 	}
 	
 	@RequestMapping(path = "addGameInventoryItem.do", method = RequestMethod.POST)
-	public String addGameInventoryItemToInventory(GameInventory GameInventoryItem, Model model) {
-		GameInventory newGameInventoryItem = gameDao.addGameInventory(GameInventoryItem);
+	public String addGameInventoryItemToInventory(GameInventory gameInventoryItem, Model model) {
+		gameInventoryItem.setAvailable(true);
+		GameInventory newGameInventoryItem = gameDao.addGameInventory(gameInventoryItem);
 		model.addAttribute("newGameInventoryItem", newGameInventoryItem);
 		return "sellAddInventoryItemSuccessful";
 	}

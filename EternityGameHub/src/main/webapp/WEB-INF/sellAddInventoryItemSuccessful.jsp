@@ -25,11 +25,11 @@
 					${genre.name}
 				</c:forEach>		
 		<br>
-		Price: ${GameInventory.salePrice}
+		Price: ${newGameInventoryItem.salePrice}
 		<br>
-		Condition: ${GameInventory.conditionNew}
+		Condition: ${newGameInventoryItem.conditionNew}
 		<br>
-		Description: ${GameInventory.description}
+		Description: ${newGameInventoryItem.description}
 		<br>
 		
 
