@@ -57,7 +57,7 @@
 		<h2>New Account Creation</h2>
 
 		<form action="createUserAccount.do" method="POST"> <!-- Need to confirm this is the correct mapping within controller -->
-			<%-- <input type="hidden" name="user.id" value="${newUser.id}"/> --%>
+			<input type="hidden" name="user.id" value="${newUser.id}"/> 
 			
 			<label for="firstName">First Name: </label> 
 			<input required type="text" name="firstName" /> 

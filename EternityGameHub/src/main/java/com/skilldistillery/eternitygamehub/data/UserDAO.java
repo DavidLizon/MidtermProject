@@ -16,7 +16,7 @@ public interface UserDAO {
 	
 	User findAndPopulateUser(int userId, User user);
 
-	User createNewUser(String firstName, String lastName, String username, String password, String email);
+//	User createNewUser(String firstName, String lastName, String username, String password, String email);
 	
 	User updateUserInfo(User user, int id);
 	
@@ -25,5 +25,8 @@ public interface UserDAO {
 	public List<Genre> listGenres();
 	
 	public List<Rating> listRatings();
+	
+	
+	User createNewUser(User user);
 	
 }
