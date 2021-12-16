@@ -12,7 +12,9 @@ public interface GameDAO {
 
 	public List<GameInventory> findGameByKeywordSearch(String keyword, String[] filteredcondition);
 
-	public List<GameInventory> findAllGames();
+	public List<Game> findAllGames();
+	
+	public List<GameInventory> findAllGameInventoryItems();
 
 	public List<Game> findTitlesInGames(String title);
 	

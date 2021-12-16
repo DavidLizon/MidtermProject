@@ -42,7 +42,7 @@ public class GameController {
 	@RequestMapping(path = "displayAllGames.do", method = RequestMethod.GET)
 	public String displayAllGames(String keyword, Model model) {
 		List<GameInventory> allGames = new ArrayList<>();
-		allGames = gameDao.findAllGames();
+		allGames = gameDao.findAllGameInventoryItems();
 		model.addAttribute("allresults", allGames);
 		return "search";
 	}
@@ -78,9 +78,15 @@ public class GameController {
 		List<Genre> genres = gameDao.listGenres();
 		model.addAttribute("genres", genres);
 		Game newGame = gameDao.addGame(game);
-		model.addAttribute("newGame", newGame);
-//		model.addAttribute("newGameAdded", newGame);
-		return "sellAddInventoryItem";
+		if (newGame == null) {
+			String gameAlreadyExists = "Unable to add game. Game with same title already exists.";
+			model.addAttribute("gameExists", gameAlreadyExists);
+			return "addGame";
+		} else {
+			model.addAttribute("newGame", newGame);
+			model.addAttribute("platforms", gameDao.listPlatforms());
+			return "sellAddInventoryItem";			
+		}
 	}
 
 	@RequestMapping(path = "populateItem.do", method = RequestMethod.GET)

@@ -59,14 +59,22 @@ public class GameDAOImple implements GameDAO {
 		 
 		return gamesByKeyword;
 	}
+	
+	@Override
+	public List<Game> findAllGames() {
+		List<Game> allGames = new ArrayList<>();
+		String jpql = "Select g FROM Game g";
+		allGames = em.createQuery(jpql, Game.class)
+				.getResultList();
+		return allGames;
+	}
 
 	@Override
-	public List<GameInventory> findAllGames() {
+	public List<GameInventory> findAllGameInventoryItems() {
 		List<GameInventory> allGames = new ArrayList<>();
 		String jpql = "Select gi FROM GameInventory gi";
 		allGames = em.createQuery(jpql, GameInventory.class)
 				.getResultList();
-		 
 		return allGames;
 	}
 	
@@ -85,8 +93,17 @@ public class GameDAOImple implements GameDAO {
 		GameInventory selectedGame = em.find(GameInventory.class, inventoryItemId);
 		return selectedGame;
 	}
+	
+	
+	
 	@Override
 	public Game addGame(Game game) {
+		List<Game> allGames = findAllGames();
+		for (Game game2 : allGames) {
+			if (game2.getTitle().equalsIgnoreCase(game.getTitle())) {
+				return null;
+			}
+		}
 		em.persist(game);
 		return game;
 	}
