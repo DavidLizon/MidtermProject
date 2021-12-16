@@ -36,10 +36,6 @@ public class UserController {
 		return "sellSearchExistingGame";
 	}
 
-//	@RequestMapping(path = "search.do") // testmapping
-//	public String buyButton() {
-//		return "search";
-//	}
 	
 //	@RequestMapping(path = "goToAddGame.do") // testmapping
 //	public String addNewGameButton() {

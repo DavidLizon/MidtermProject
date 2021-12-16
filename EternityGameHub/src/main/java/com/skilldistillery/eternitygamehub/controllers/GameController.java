@@ -26,7 +26,7 @@ public class GameController {
 //	<input type = checkbox name = "filteredcondition" value ="rentable">
 
 	@RequestMapping(path = "findByKeyword.do", method = RequestMethod.GET)
-	public String findByKeyword(String keyword, Model model, String[] filteredcondition) {
+	public String findByKeyword(String title, Model model, String[] filteredcondition) {
 		List<GameInventory> games = new ArrayList<>();
 		List<Platform> platforms = gameDao.listPlatforms();
 		model.addAttribute("platforms", platforms);
@@ -34,8 +34,9 @@ public class GameController {
 		model.addAttribute("ratings", ratings);
 		List<Genre> genres = gameDao.listGenres();
 		model.addAttribute("genres", genres);
-		games = gameDao.findGameByKeywordSearch(keyword, filteredcondition);
+		games = gameDao.findGameByKeywordSearch(title, filteredcondition);
 		model.addAttribute("result", games);
+		System.out.println(games + "******************");
 		return "search";
 	}
 

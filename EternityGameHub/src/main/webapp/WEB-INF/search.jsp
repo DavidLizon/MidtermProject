@@ -26,7 +26,7 @@
       </select><br>
 
 		
-		<label for="genre">Genre: </label>
+		<%-- <label for="genre">Genre: </label>
 			<select name="genre.id" required>
 				<c:forEach items="${genres}" var="genre">
 					<option value="${genre.id}">
@@ -62,7 +62,7 @@
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
-      </select><br>
+      </select><br> --%>
       <input type="submit" value="Search">
     </form>
   </div>
@@ -74,7 +74,7 @@
 				<ul>
 					<c:forEach var="item" items="${result}">
 						<!-- Need to confirm these names are correct  -->
-						<li><a href="goToItemListing.do?inventoryItemId=${item.id}">${item.game.title}</a></li>
+						<li><a href="goToItemListing.do?inventoryItemId=${item.id}">${item.title}</a></li>
 						<!-- Need to confirm href is correct -->
 					</c:forEach>
 				</ul>
