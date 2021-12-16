@@ -11,6 +11,10 @@
 <body>
 	<jsp:include page="navBar.jsp" />
 
+
+<div>
+			<input type="hidden" name="game.id" value="${game.id}"/>
+			
 	<h1>Great success!</h1>
 	<br>
 	<h4>You've successfully listed ${game.title} for sale!</h4>
@@ -31,7 +35,7 @@
 		<br>
 		Description: ${newGameInventoryItem.description}
 		<br>
-		
+</div>		
 
 </body>
 </html>

@@ -96,8 +96,11 @@ public class GameController {
 	@RequestMapping(path = "addGameInventoryItem.do", method = RequestMethod.POST)
 	public String addGameInventoryItemToInventory(GameInventory gameInventoryItem, Model model) {
 		gameInventoryItem.setAvailable(true);
+//		Game passGameToSuccessfulListingPage = gameInventoryItem.getGame();	
+		Game passGameToSuccessfulListingPage = gameDao.findGameById(gameInventoryItem.getGame().getId());	
 		GameInventory newGameInventoryItem = gameDao.addGameInventory(gameInventoryItem);
 		model.addAttribute("newGameInventoryItem", newGameInventoryItem);
+		model.addAttribute("game", passGameToSuccessfulListingPage);
 		return "sellAddInventoryItemSuccessful";
 	}
 	
