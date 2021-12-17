@@ -56,7 +56,7 @@ public class UserGameController {
 	}
 	
 	@RequestMapping(path = "addToCart.do", params="addToCartByInventoryId", method = RequestMethod.GET)
-	public String addItemToCart( Integer addToCartByInventoryId, HttpSession session) {
+	public String addItemToCart( Integer addToCartByInventoryId, HttpSession session, Model model) {
 		if (session.getAttribute("user") == null) {
 			return "loginOrCreateAccount";
 		} 
@@ -69,18 +69,21 @@ public class UserGameController {
 		} else {
 			List<GameInventory> gamesInCart = (List<GameInventory>) session.getAttribute("gamesInCart");
 			GameInventory game = gameDao.findGameInventoryById(addToCartByInventoryId);
-			gamesInCart.add(game);
-			session.setAttribute("gamesInCart", gamesInCart);
+			if (gamesInCart.contains(game)) {
+				String gameAlreadyInCart = "Sorry, game is already in cart";
+				model.addAttribute("gameAlreadyInCart", gameAlreadyInCart);
+				model.addAttribute("gameItem", game);
+				return "gameInfo";
+			} else {
+				gamesInCart.add(game);
+				session.setAttribute("gamesInCart", gamesInCart);
+			}
 		}
-		
 		return "cart";
 	}
 	
-//	@RequestMapping(path = "addToCart.do", method = RequestMethod.GET)
-//	public String checkUserIsInSession(HttpSession session) {
-//		if (session.getAttribute("user") == null) {
-//			return "loginOrCreateAccount";
-//		} 
-//		return "";
-//	}
+	@RequestMapping(path = "navToCart.do", method = RequestMethod.GET)
+	public String checkUserIsInSession(HttpSession session) {
+		return "cart";
+	}
 }

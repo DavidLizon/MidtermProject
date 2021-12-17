@@ -15,7 +15,7 @@
 	<div>
 		<h2>${gameItem.game.title}</h2>
 		<br> 
-		<img src="${game.gameImageUrl}" alt="${gameItem.game.title} Cover Art">
+		<img src="${gameItem.game.gameImageUrl}" alt="${gameItem.game.title} Cover Art">
 	</div>
 
 	<!-- Rental code, for when we decide to implement it
@@ -48,10 +48,15 @@
 			<input type="hidden" name="addToCartByInventoryId" value="${gameItem.id}"/>
 		</form>
 	</div>
-
+		<c:choose>
+			<c:when test="${!empty gameAlreadyInCart}">
+				<h5>${gameAlreadyInCart}</h5>
+			</c:when>
+		</c:choose>
 	<div>
 		<!-- this can be wrapped in a box, these are instructions how  https://www.w3schools.com/css/css_boxmodel.asp -->
-		${gameItem.game.description} <br><br> User description: ${gameItem.description } <br>game_inventory.id= ${ gameItem.id}
+		${gameItem.game.description} <br><br> User description: ${gameItem.description } <br>
+			
 	</div>
 
 	<!-- Seller description/rating/history, for when we decide to implement it -->
