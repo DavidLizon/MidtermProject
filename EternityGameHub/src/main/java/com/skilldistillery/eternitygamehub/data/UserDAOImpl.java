@@ -42,7 +42,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public boolean checkIfEmailIsInUseAlready (User user) throws Exception{
+	public boolean checkIfEmailIsInUseAlready (User user){
 		String jpql = "SELECT u FROM User u WHERE u.email = :e";
 		
 		List<User> users = 	em.createQuery(jpql, User.class).setParameter("e", user.getEmail()).getResultList();
@@ -50,7 +50,7 @@ public class UserDAOImpl implements UserDAO {
 	}
 	
 	@Override
-	public boolean checkIfUsernameIsInUseAlready (User user) throws Exception{
+	public boolean checkIfUsernameIsInUseAlready (User user){
 		String jpql = "SELECT u FROM User u WHERE u.username = :u";
 		
 			List<User> users = em.createQuery(jpql, User.class).setParameter("u", user.getUsername()).getResultList();
