@@ -36,16 +36,15 @@
 						<img src="${cartItem.game.gameImageUrl}" alt="${game.title} Cover Art">
 						<td>${cartItem.game.title}</td>
 						<td>${cartItem.description}</td>
-						<td>$ ${cartItem.salePrice}</td>
+						<td>$${cartItem.salePrice}</td>
 					</tr>
 				</c:forEach>
 			</tbody>	
 			<tfoot>
 				<tr>
 					<td colspan="3" align="right">Total: </td>
-					<td>${total }</td>
+					<td>$${total}</td>
 				</tr>
-			
 			</tfoot>
 		<!-- </label> -->
 		</table>
