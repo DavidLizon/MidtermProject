@@ -82,7 +82,7 @@ public class GameDAOImple implements GameDAO {
 	@Override
 	public List<Game> findTitlesInGames(String title) {
 		List<Game> gamesByTitleSearch = new ArrayList<>();
-		String jpql = "SELECT g FROM Game g WHERE g.title LIKE :gametitle";
+		String jpql = "SELECT g FROM Game g WHERE g.title LIKE :gametitle ORDER BY g.title ASC";
 		gamesByTitleSearch = em.createQuery(jpql, Game.class)
 				.setParameter("gametitle", "%" + title + "%")
 				.getResultList();
@@ -112,7 +112,7 @@ public class GameDAOImple implements GameDAO {
 	@Override
 	public GameInventory addGameInventory(GameInventory newGameInventoryItem) {
 		em.persist(newGameInventoryItem);
-		return newGameInventoryItem;
+		return newGameInventoryItem; 
 	}
 
 	@Override
