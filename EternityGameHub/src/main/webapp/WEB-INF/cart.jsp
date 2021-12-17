@@ -34,7 +34,7 @@
 					<c:set var="total" value="${total + cartItem.salePrice }"></c:set>
 					<tr>
 				
-						<img src="${game.gameImageUrl}" alt="${game.title} Cover Art">
+						<img src="${cartItem.game.gameImageUrl}" alt="${game.title} Cover Art">
 						<td>${cartItem.game.title}</td>
 						<td>${cartItem.description}</td>
 						<td>$ ${cartItem.salePrice}</td>
