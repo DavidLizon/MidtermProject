@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.eternitygamehub.data.UserDAO;
-import com.skilldistillery.eternitygamehub.entities.Genre;
-import com.skilldistillery.eternitygamehub.entities.Platform;
-import com.skilldistillery.eternitygamehub.entities.Rating;
-import com.skilldistillery.eternitygamehub.entities.User;
+import com.skilldistillery.eternitygamehub.entities.*;
 
 @Controller
 public class UserController {

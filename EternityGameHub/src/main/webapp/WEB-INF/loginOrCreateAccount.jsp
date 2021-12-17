@@ -30,7 +30,7 @@
 		</form><br>
 		<c:choose>
 			<c:when test="${!empty tryAgain}">
-				<h5>"${tryAgain}"</h5>
+				<h5>${tryAgain}</h5>
 			</c:when>
 		</c:choose>
 	</div><br>
