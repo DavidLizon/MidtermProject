@@ -1,14 +1,18 @@
 package com.skilldistillery.eternitygamehub.data;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.UnexpectedRollbackException;
 
-import com.skilldistillery.eternitygamehub.entities.*;
+import com.skilldistillery.eternitygamehub.entities.Genre;
+import com.skilldistillery.eternitygamehub.entities.Rating;
+import com.skilldistillery.eternitygamehub.entities.User;
 
 @Repository
 @Transactional
@@ -39,6 +43,22 @@ public class UserDAOImpl implements UserDAO {
 	public User findAndPopulateUser(int id, User user) {
 		user = em.find(User.class, id);
 		return user;
+	}
+	
+	@Override
+	public boolean checkIfEmailIsInUseAlready (User user) throws Exception{
+		String jpql = "SELECT u FROM User u WHERE u.email = :e";
+		
+		List<User> users = 	em.createQuery(jpql, User.class).setParameter("e", user.getEmail()).getResultList();
+		return users.size() > 0;
+	}
+	
+	@Override
+	public boolean checkIfUsernameIsInUseAlready (User user) throws Exception{
+		String jpql = "SELECT u FROM User u WHERE u.username = :u";
+		
+			List<User> users = em.createQuery(jpql, User.class).setParameter("u", user.getUsername()).getResultList();
+			return users.size() > 0;
 	}
 
 	@Override

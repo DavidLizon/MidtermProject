@@ -39,7 +39,7 @@
 	
 		<h2>New Account Creation</h2>
 
-		<form action="createUserAccount.do" method="POST"> <!-- Need to confirm this is the correct mapping within controller -->
+		<form action="createUserAccount.do" method="POST">
 			<input type="hidden" name="user.id" value="${newUser.id}"/> 
 			
 			<label for="firstName">First Name: </label> 
@@ -55,7 +55,7 @@
 			<br> 
 			
 			<label for="password">Password:</label> 
-			<input required type="text" name="password" /> 
+			<input required type="password" name="password" /> 
 			<br> 
 			
 			<label for="email">Email: </label> 
@@ -66,18 +66,17 @@
 		
 		</form>
 		
-
-		<c:if test="${!accountConfirm }">
-
-			<c:if test="${ !goodEmailAddress }">
-			Unable to create account. Email already in use.
-		</c:if>
-
-			<c:if test="${goodUsername}">
-			Unable to create account. Username already in use.
-		</c:if>
-
-		</c:if>
+			<c:choose>
+				<c:when test="${!empty emailInUse}">
+					<h5>${emailInUse}</h5>
+				</c:when>
+			</c:choose>
+			<c:choose>
+				<c:when test="${!empty usernameInUse}">
+					<h5>${usernameInUse}</h5>
+				</c:when>
+			</c:choose>
+		
 	</div>
 
 </body>

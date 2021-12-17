@@ -26,7 +26,10 @@ public interface UserDAO {
 	
 	public List<Rating> listRatings();
 	
-	
 	User createNewUser(User user);
+	
+	boolean checkIfEmailIsInUseAlready(User user) throws Exception;
+	
+	boolean checkIfUsernameIsInUseAlready(User user) throws Exception;
 	
 }

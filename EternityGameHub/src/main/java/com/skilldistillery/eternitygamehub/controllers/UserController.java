@@ -100,11 +100,23 @@ public class UserController {
 	}
 	
 	@RequestMapping(path = "createUserAccount.do", method = RequestMethod.POST)
-	public String createNewUserAccount(User user, HttpSession session, Model model) {
-			model.addAttribute("newUser", new User());
-			userDao.createNewUser(user);
-			session.setAttribute("user", user);
-			return "home";
+	public String createNewUserAccount(User user, HttpSession session, Model model) throws Exception {
+			model.addAttribute("newUser", new User()); //what is this doing?
+			if(userDao.checkIfEmailIsInUseAlready(user)){
+				String emailInUse = "Sorry, an account using this email has already been made";
+				model.addAttribute("emailInUse", emailInUse);
+				return "loginOrCreateAccount";
+			}
+			else if(userDao.checkIfUsernameIsInUseAlready(user)) {
+				String usernameInUse = "Sorry, an account using this username has already been made";
+				model.addAttribute("usernameInUse", usernameInUse);
+				return "loginOrCreateAccount";
+			}
+			else {
+				userDao.createNewUser(user);
+				session.setAttribute("user", user);
+				return "home";
+			}
 	}
 	
 	@RequestMapping(path = "resetPassword.do", method = RequestMethod.GET)
