@@ -61,50 +61,18 @@ public class UserGameController {
 			return "loginOrCreateAccount";
 		} 
 		
-		// looks at session to see if gamesInCart attribute is null, if null create new ArrayList
-		// creates GameInventory object (from passed in Integer addToCartByInventoryId from the gameInfo.jsp
-		// adds GameInventory object to the List<GameInventory> and adds the object id to the session
 		if(session.getAttribute("gamesInCart") == null) {
 			List<GameInventory> gamesInCart = new ArrayList<>();
 			GameInventory game = gameDao.findGameInventoryById(addToCartByInventoryId);
 			gamesInCart.add(game);
-//			attribute name in "" is what matters in the JSP and can be named what ever you want CHANGED to lotsOgamesInCart and
-//			still worked if <c:when test="${empty gamesInCart }" >  AND <c:forEach items="${gamesInCart}" var="cartItem"> are changed
-//			to match the session attribute name.
 			session.setAttribute("gamesInCart", gamesInCart);
-
-			
-			
-//			used for testing
-			System.out.println("Cart size: " + gamesInCart.size() + " ====================================");
-			System.out.println("addToCartByInventoryId: " + addToCartByInventoryId + " =============================================\n");
-			System.out.println("SESSION: " + session + "=============================================\n");
-			
 		} else {
-//			if gamesInCart was found in session this should be second time page was visited. Problem may arise when 
-//			link directly to cart is added instead of getting to page from adding game to cart.
-			
-//			gamesInCart is populated with previous list stored in the session variable, recently added game object
-//			is created and added to the gamesInCart List, and is then added to the session
 			List<GameInventory> gamesInCart = (List<GameInventory>) session.getAttribute("gamesInCart");
 			GameInventory game = gameDao.findGameInventoryById(addToCartByInventoryId);
 			gamesInCart.add(game);
-			
-//			used for testing
-			System.out.println("addToCartByInventoryId: " + addToCartByInventoryId + " =============================================\n");
-
-			System.out.println(session.getAttribute("gamesInCart"));
-			System.out.println("Cart size: " + gamesInCart.size() + " ====================================");
-			System.out.println("addToCartByInventoryId: " + addToCartByInventoryId + " =============================================\n");
-			System.out.println("SESSION: " + session + "=============================================\n");
-			for (GameInventory game1 : gamesInCart) {
-				System.out.println(game1);
-			}
-//			above used for testing =============================================
-			
 			session.setAttribute("gamesInCart", gamesInCart);
-
 		}
+		
 		return "cart";
 	}
 	

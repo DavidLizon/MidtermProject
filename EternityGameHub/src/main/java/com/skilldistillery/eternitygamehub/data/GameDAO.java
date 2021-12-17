@@ -42,7 +42,6 @@ public interface GameDAO {
 
 	Game findGameById(int id);
 
-//	***********************************************
 	public GameInventory findGameInventoryById(int id);
 	
 }

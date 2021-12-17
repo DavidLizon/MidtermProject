@@ -196,7 +196,6 @@ public class GameDAOImple implements GameDAO {
 		return findGameToPassToSell;
 	}
 
-//	***********************************************
 	public GameInventory findGameInventoryById(int id) {
 		GameInventory findGameToAddToCart = new GameInventory();
 		String jpql = "Select gi from GameInventory gi where gi.id = :findGameToAddToCart";
