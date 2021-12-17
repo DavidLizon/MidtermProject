@@ -29,7 +29,7 @@
 		<form action="addGameInventoryItem.do" method="POST">
 
 		<label for="price"> Price: </label>
-			<input type="number" name="salePrice"/>
+			<input type="text" name="salePrice"/>
 			<input type="hidden" name="game.id" value="${game.id}"/>
 			<input type="hidden" name="user.id" value="${user.id}"/>
 			<br>

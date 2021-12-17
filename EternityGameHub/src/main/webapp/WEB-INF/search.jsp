@@ -15,6 +15,9 @@
     <!-- have this div all on left or right side -->
     <form class="search-criteria" action="findByKeyword.do" method="GET">
 
+
+
+
       <label for="title">Keyword search for Title or Description</label>
       <input type="text" name="title" required><br>
 
@@ -68,14 +71,21 @@
   </div>
   <!-- must have a selection for all fields before submitting search -->
   <!-- search conditions stretch goals  -sale/rent -->
+
+  
+  
   <div class="searchResults">
 		<c:choose>
 			<c:when test="${! empty result}">
 				<ul>
 					<c:forEach var="item" items="${result}">
-						<!-- Need to confirm these names are correct  -->
-						<li><a href="goToItemListing.do?inventoryItemId=${item.id}">${item.game.title}</a></li>
-						<!-- Need to confirm href is correct -->
+						<c:choose>
+							<c:when test="${item.available}">
+							<!-- Need to confirm these names are correct  -->
+								<li><a href="goToItemListing.do?inventoryItemId=${item.id}">${item.game.title} ${item.salePrice} </a></li>
+							<!-- Need to confirm href is correct -->
+							</c:when>
+						</c:choose>
 					</c:forEach>
 				</ul>
 				<!-- Not seeing what you're looking for? -->
