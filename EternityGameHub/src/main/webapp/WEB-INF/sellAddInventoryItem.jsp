@@ -20,12 +20,26 @@
 		<br>
 		Max players: ${game.maxPlayers}
 		<br>
-		Genre: 	<c:forEach var="genre" items="${game.genres}">
-					${genre.name}
+			
+		<label for="genre">Genre: </label>
+			<select name="genre.id">
+				<c:forEach items="${genres}" var="genre">
+					<option value="${genre.id}" title="${genre.description}">
+							${genre.name}
+					</option>
 				</c:forEach>
+			</select>	
+		<br> 
+		<label for="rating">Rating: </label>
+		<select name="rating.id">
+			<c:forEach items="${ratings}" var="rating">
+				<option value="${rating.id}" title="${rating.description}">
+						${rating.name}
+				</option>
+			</c:forEach>
+		</select>			
 		<br>
-		<br>
-
+		
 		<form action="addGameInventoryItem.do" method="POST">
 
 		<label for="price"> Price: </label>

@@ -95,6 +95,10 @@ public class GameController {
 		Game passGameToInventoryItem= gameDao.findGameById(gameItemId);
 		model.addAttribute("platforms", gameDao.listPlatforms());
 		model.addAttribute("game", passGameToInventoryItem);
+		List<Genre> genres = gameDao.listGenres();
+		model.addAttribute("genres", genres);
+		List<Rating> ratings = gameDao.listRatings();
+		model.addAttribute("ratings", ratings);
 		return "sellAddInventoryItem";
 	}
 

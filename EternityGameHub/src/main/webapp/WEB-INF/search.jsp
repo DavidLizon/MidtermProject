@@ -82,7 +82,7 @@
 						<c:choose>
 							<c:when test="${item.available}">
 							<!-- Need to confirm these names are correct  -->
-								<li><a href="goToItemListing.do?inventoryItemId=${item.id}">${item.game.title} ${item.salePrice} </a></li>
+								<li><a href="goToItemListing.do?inventoryItemId=${item.id}">${item.game.title} $${item.salePrice} </a></li>
 							<!-- Need to confirm href is correct -->
 							</c:when>
 						</c:choose>
