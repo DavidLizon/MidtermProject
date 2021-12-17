@@ -1,6 +1,7 @@
 package com.skilldistillery.eternitygamehub.data;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -129,17 +130,14 @@ public class GameDAOImple implements GameDAO {
 		gamesByKeyword = em.createQuery(jpql, GameInventory.class)
 				.setParameter("searchkeyword", "%" + conditionNew + "%")
 				.getResultList();
-		 
 		return filteredGames;
 	}
 
 	@Override
 	public List<Genre> listGenres() {
 		List<Genre> genres = new ArrayList<>();
-		String jpql = "Select g FROM Genre g";
+		String jpql = "Select g FROM Genre g ORDER BY g.name ASC";
 		genres = em.createQuery(jpql, Genre.class).getResultList();
-
-		 
 		return genres;
 	}
 
@@ -148,15 +146,13 @@ public class GameDAOImple implements GameDAO {
 		List<Rating> ratings = new ArrayList<>();
 		String jpql = "Select r FROM Rating r";
 		ratings = em.createQuery(jpql, Rating.class).getResultList();
-
-		 
 		return ratings;
 	}
 
 	@Override
 	public List<Platform> listPlatforms() {
 		List<Platform> platforms = new ArrayList<>();
-		String jpql = "Select p FROM Platform p";
+		String jpql = "Select p FROM Platform p ORDER BY p.name ASC";
 		platforms = em.createQuery(jpql, Platform.class).getResultList();
 		return platforms;
 	}
@@ -168,7 +164,6 @@ public class GameDAOImple implements GameDAO {
 		userCart = em.createQuery(jpql, GameInventory.class)
 				.setParameter("gameinventoryid", inventoryItemId)
 				.getResultList();
-		 
 		return userCart;
 	}
 
