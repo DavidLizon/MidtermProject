@@ -2,9 +2,16 @@ package com.skilldistillery.eternitygamehub;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 @SpringBootApplication
-public class EternityGameHubApplication {
+public class EternityGameHubApplication extends SpringBootServletInitializer {
+	
+	@Override
+	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+		return application.sources(EternityGameHubApplication.class);
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(EternityGameHubApplication.class, args);

@@ -81,7 +81,7 @@ public class GameController {
 		Game newGame = gameDao.addGame(game);
 		if (newGame == null) {
 			String gameAlreadyExists = "Unable to add game. Game with same title already exists.";
-			model.addAttribute("gameExists", gameAlreadyExists);
+			model.addAttribute("gameExists", gameAlreadyExists); 
 			return "addGame";
 		} else {
 			model.addAttribute("newGame", newGame);
