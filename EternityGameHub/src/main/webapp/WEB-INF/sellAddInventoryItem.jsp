@@ -43,7 +43,7 @@
 		<form action="addGameInventoryItem.do" method="POST">
 
 		<label for="price"> Price: </label>
-			<input type="text" name="salePrice"/>
+			<input type="number" step="0.01" name="salePrice" min="0" max="99"/>
 			<input type="hidden" name="game.id" value="${game.id}"/>
 			<input type="hidden" name="user.id" value="${user.id}"/>
 			<br>
