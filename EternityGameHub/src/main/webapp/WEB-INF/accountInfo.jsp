@@ -34,24 +34,17 @@
 		</form>
 		<br>
 
-		<!-- test if profile was updated -->
-		<c:if test="${profileUpdateConfirm }">
-			<c:choose>
-				<c:when test="${profileUpdated}">
-					<div class="profileUpdated">
-						<h4>Profile was updated.</h4>
-					</div>
-				</c:when>
-				<c:when test="${!profileUpdated}">
-					<div class="profileNotUpdated">
-						<h4>Unable to update profile.</h4>
-						<c:if test="${!uniqueEmailAddress}">
-							Email address was already used.
-						</c:if>
-					</div>
-				</c:when>
-			</c:choose>
-		</c:if>
+		<c:choose>
+			<c:when test="${!empty updatedAccount}">
+				<h5>${updatedAccount}</h5>
+			</c:when>
+		</c:choose>
+		
+		<c:choose>
+			<c:when test="${!empty emailInUseAlready}">
+				<h5>${emailInUseAlready}</h5>
+			</c:when>
+		</c:choose>
 
 		<!-- redirect to reset password page???? -->
 		<div class="restPassword">

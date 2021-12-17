@@ -24,8 +24,8 @@ public interface UserDAO {
 	
 	User createNewUser(User user);
 	
-	boolean checkIfEmailIsInUseAlready(User user) throws Exception;
+	boolean checkIfEmailIsInUseAlready(User user);
 	
-	boolean checkIfUsernameIsInUseAlready(User user) throws Exception;
+	boolean checkIfUsernameIsInUseAlready(User user);
 	
 }

@@ -90,9 +90,21 @@ public class UserController {
 		if (session.getAttribute("user") == null) {
 			return "loginOrCreateAccount";
 		}
-		user = userDao.updateUserInfo(user, user.getId());
-		session.setAttribute("user", user);
-		return "accountInfo";
+		User sessionUser = (User) session.getAttribute("user");
+		System.out.println("**************" + user.getEmail() + "*****************" );
+		if(userDao.checkIfEmailIsInUseAlready(user) && !sessionUser.getEmail().equals(user.getEmail())) {
+			String emailInUse = "There is already an account with that email, please use a different email";
+			model.addAttribute("emailInUseAlready", emailInUse);
+			return "accountInfo";
+		}
+		else {
+			user = userDao.updateUserInfo(user, user.getId());
+			session.setAttribute("user", user);
+			String updated = "Account information has been updated!";
+			model.addAttribute("updatedAccount", updated);
+			return "accountInfo";
+		}
+		
 	}
 
 	@RequestMapping(path = "createUserAccount.do", method = RequestMethod.POST)
