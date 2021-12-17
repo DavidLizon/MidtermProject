@@ -12,7 +12,7 @@
 <jsp:include page="navBar.jsp" />
 
 
-
+<c:choose>
 <c:when test="${empty gamesInCart }" >
 	<h3>Your cart is empty.</h3>
 </c:when>
@@ -29,10 +29,10 @@
 			</thead>
 				<!-- <label for="cartList"> -->
 				<tr>
-					<c:forEach items="${game.id}" var="genres">
+					<c:forEach items="${gamesInCart.id}" var="genres">
 				
-						<td>${game.title}</td>
-						<td>${game.description}</td>
+						<td>${gamesInCart.game.title}</td>
+						<td>${gamesInCart.game.description}</td>
 						<td>${game.condition}</td>
 						<td>${game.price}</td>
 					</c:forEach>
@@ -41,7 +41,7 @@
 		</table>
 		<br>
 </c:otherwise>
-
+</c:choose>
 
 
 

@@ -43,7 +43,7 @@
 
 	<div>
 		<!-- Have to confirm action & method type -->
-		<form action="addPurchaseToCart.do" method="GET">
+		<form action="addToCart.do" method="GET">
 			<input type="submit" value="Add Purchase to Cart">
 		</form>
 	</div>
