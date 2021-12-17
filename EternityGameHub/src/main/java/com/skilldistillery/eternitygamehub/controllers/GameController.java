@@ -106,17 +106,23 @@ public class GameController {
 	public String displayGameInventoryItem(int id, Model model) {
 		GameInventory newAddedGameInventoryItem = gameDao.displayCreatedGameInventoryItem(id);
 		model.addAttribute("newGameInventoryItemDisplayed", newAddedGameInventoryItem);
+		List<Genre> genres = gameDao.listGenres();
+		model.addAttribute("genres", genres);
+		List<Rating> ratings = gameDao.listRatings();
+		model.addAttribute("ratings", ratings);
 		return "sellAddListingSuccessful";
 	}
 	
-	@RequestMapping(path = "addGameInventoryItem.do", method = RequestMethod.POST)
-	public String addGameInventoryItemToInventory(GameInventory gameInventoryItem, Model model) {
+	@RequestMapping(path = "addGameInventoryItem.do", params={"genres","ratings"}, method = RequestMethod.POST)
+	public String addGameInventoryItemToInventory(GameInventory gameInventoryItem, Model model, Genre genres, Rating ratings) {
 		gameInventoryItem.setAvailable(true);
 //		Game passGameToSuccessfulListingPage = gameInventoryItem.getGame();	
 		Game passGameToSuccessfulListingPage = gameDao.findGameById(gameInventoryItem.getGame().getId());	
 		GameInventory newGameInventoryItem = gameDao.addGameInventory(gameInventoryItem);
 		model.addAttribute("newGameInventoryItem", newGameInventoryItem);
 		model.addAttribute("game", passGameToSuccessfulListingPage);
+		model.addAttribute("genres", genres);
+		model.addAttribute("ratings", ratings);
 		return "sellAddInventoryItemSuccessful";
 	}
 	

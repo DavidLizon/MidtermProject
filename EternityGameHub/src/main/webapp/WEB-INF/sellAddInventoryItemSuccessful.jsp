@@ -13,7 +13,7 @@
 
 
 <div>
-			<input type="hidden" name="game.id" value="${game.id}"/>
+	<input type="hidden" name="game.id" value="${game.id}"/>
 			
 	<h1>Great success!</h1>
 	<br>
@@ -25,10 +25,10 @@
 		<br>
 		Max players: ${game.maxPlayers}
 		<br>
-		Genre: 	<c:forEach var="genre" items="${game.genres}">
-					${genre.name}
-				</c:forEach>		
-		<br>
+		Genre: ${genres.name}
+		<br> 
+		Rating: ${ratings.name}
+		<br>			
 		Price: $${newGameInventoryItem.salePrice}
 		<br>
 		Condition: <c:choose>

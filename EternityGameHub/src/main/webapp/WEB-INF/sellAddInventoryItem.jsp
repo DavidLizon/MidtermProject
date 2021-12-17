@@ -32,7 +32,7 @@
 		<br> 
 		<label for="rating">Rating: </label>
 		<select name="rating.id">
-			<c:forEach items="${ratings}" var="rating">
+			<c:forEach items="${ratings}" var="rating">	
 				<option value="${rating.id}" title="${rating.description}">
 						${rating.name}
 				</option>
@@ -72,6 +72,8 @@
 			<input type="text" name="description"/>
 			<br>
 			<br>
+		<input type="hidden" name="genres" value="${genre.id}"/>	
+		<input type="hidden" name="ratings" value="${rating.id}"/>	
 		<input type="submit" value="List Game for Sale"/>
 		</form>
 
