@@ -8,11 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.UnexpectedRollbackException;
-
-import com.skilldistillery.eternitygamehub.entities.Genre;
-import com.skilldistillery.eternitygamehub.entities.Rating;
-import com.skilldistillery.eternitygamehub.entities.User;
+import com.skilldistillery.eternitygamehub.entities.*;
 
 @Repository
 @Transactional
@@ -118,6 +114,13 @@ public class UserDAOImpl implements UserDAO {
 		String jpql = "Select r FROM Rating r";
 		ratings = em.createQuery(jpql, Rating.class).getResultList(); 
 		return ratings;
+	}
+	
+	public List<Sale> listSales() {
+		List<Sale> sales = new ArrayList<>();
+		String jpql = "Select s FROM Sale s";
+		sales = em.createQuery(jpql, Sale.class).getResultList(); 
+		return sales;
 	}
 
 //	

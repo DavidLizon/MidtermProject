@@ -56,7 +56,12 @@
 </c:choose>
 
 
-
+<div>
+		<!-- Have to confirm action & method type -->
+		<form action="completePurchase.do" method="GET">
+			<input type="submit" value="Complete Transaction">
+		</form>
+	</div>
 
 
 

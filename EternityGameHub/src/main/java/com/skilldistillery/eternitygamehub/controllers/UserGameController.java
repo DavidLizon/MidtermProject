@@ -12,23 +12,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.skilldistillery.eternitygamehub.data.GameDAO;
+import com.skilldistillery.eternitygamehub.data.SaleDAO;
 import com.skilldistillery.eternitygamehub.data.UserDAO;
-import com.skilldistillery.eternitygamehub.entities.GameInventory;
-import com.skilldistillery.eternitygamehub.entities.Genre;
-import com.skilldistillery.eternitygamehub.entities.Platform;
-import com.skilldistillery.eternitygamehub.entities.Rating;
-import com.skilldistillery.eternitygamehub.entities.User;
+import com.skilldistillery.eternitygamehub.entities.*;
 
 @Controller
 public class UserGameController {
 
 	@Autowired
 	private UserDAO userDao;
-	
+
 	@Autowired
 	private GameDAO gameDao;
-	
-	
+
+	@Autowired
+	private SaleDAO saleDao;
+
 	@RequestMapping(path = "search.do") // testmapping
 	public String buyButton(Model model) {
 		List<Platform> platforms = gameDao.listPlatforms();
@@ -39,29 +38,28 @@ public class UserGameController {
 		model.addAttribute("genres", genres);
 		return "search";
 	}
-	
+
 	@RequestMapping(path = "goToAddGame.do", method = RequestMethod.GET) // testmapping
 	public String addNewGameButton(HttpSession session, Model model) {
 		if (session.getAttribute("user") == null) {
 			return "loginOrCreateAccount";
-		} 
-		
-	  List<Genre> genres = userDao.listGenres();
-	  model.addAttribute("genres", genres);
+		}
 
-	  List<Rating> ratings = userDao.listRatings();
-	  model.addAttribute("ratings", ratings);
-	  
-	  return "addGame";
+		List<Genre> genres = userDao.listGenres();
+		model.addAttribute("genres", genres);
+
+		List<Rating> ratings = userDao.listRatings();
+		model.addAttribute("ratings", ratings);
+
+		return "addGame";
 	}
-	
-	@RequestMapping(path = "addToCart.do", params="addToCartByInventoryId", method = RequestMethod.GET)
-	public String addItemToCart( Integer addToCartByInventoryId, HttpSession session, Model model) {
+
+	@RequestMapping(path = "addToCart.do", params = "addToCartByInventoryId", method = RequestMethod.GET)
+	public String addItemToCart(Integer addToCartByInventoryId, HttpSession session, Model model) {
 		if (session.getAttribute("user") == null) {
 			return "loginOrCreateAccount";
-		} 
-		
-		if(session.getAttribute("gamesInCart") == null) {
+		}
+		if (session.getAttribute("gamesInCart") == null) {
 			List<GameInventory> gamesInCart = new ArrayList<>();
 			GameInventory game = gameDao.findGameInventoryById(addToCartByInventoryId);
 			gamesInCart.add(game);
@@ -81,9 +79,35 @@ public class UserGameController {
 		}
 		return "cart";
 	}
-	
+
 	@RequestMapping(path = "navToCart.do", method = RequestMethod.GET)
 	public String checkUserIsInSession(HttpSession session) {
 		return "cart";
 	}
+
+	@RequestMapping(path = "completePurchase.do", method = RequestMethod.GET)
+	public String checkUserIsInSession(HttpSession session, User user, Model model) {
+		user = (User) session.getAttribute("user");
+
+		List<GameInventory> itemsInCart = (List<GameInventory>) session.getAttribute("gamesInCart");
+		if (itemsInCart != null && itemsInCart.size() > 0) {
+			List<Sale> listofSales = new ArrayList<>();
+
+			for (GameInventory item : itemsInCart) {
+				Sale sale = new Sale();
+				sale.setBuyer(user);
+				sale.setSeller(item.getUser());
+				sale.setGameInventory(item);
+				sale = saleDao.processPurchase(sale);
+//				itemsInCart.remove(item);
+				listofSales.add(sale);
+			}
+			model.addAttribute("listofSales", listofSales);
+			return "confirmpurchase";
+		} else {
+			return "cart";
+		}
+//		
+	}
+
 }
