@@ -45,6 +45,7 @@
 		<!-- Have to confirm action & method type -->
 		<form action="addToCart.do" method="GET">
 			<input type="submit" value="Add Purchase to Cart">
+			<input type="hidden" name="gameItem.id" value="${gameItem.id}"/>
 		</form>
 	</div>
 
