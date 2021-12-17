@@ -6,11 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Reset Password | Eternity GameHub</title>
+<jsp:include page="bootstrapHead.jsp" />
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
 	
 	<div>
+	
 	<h2>Reset your password, ${user.username}</h2>
 	
 	<form action="resetUserPassword.do" method="POST">
@@ -27,6 +29,11 @@
 	<!-- If oldPassword matches current password AND newPassword != oldPassword 
 	 	reset password to newPassword and show "Password reset success"-->
 	<!-- Else, password reset unsuccessful -->
+	<c:if test="${!empty oldPasswordIsIncorrect }">
+		<h5>${oldPasswordIsIncorrect} </h5>
+	</c:if>
+	
+	
 	
 </body>
 </html>

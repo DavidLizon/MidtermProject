@@ -67,7 +67,6 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User updateUserInfo(User user, int id) {
 		User updatedUser = em.find(User.class, id);
-		
 		updatedUser.setFirstName(user.getFirstName());
 		updatedUser.setLastName(user.getLastName());
 		updatedUser.setUsername(user.getUsername());
@@ -79,9 +78,10 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public User resetPassword(User user, int id, String password) {
-		user = em.find(User.class, id);
+		User user1 = em.find(User.class, id);	
+		user1.setPassword(user.getPassword());	
 		user = updateUserPasswordHelper(id, user, password);
-		return user;
+		return user1;
 	}
 	
 //	public User resetPassword(User user, int id) {
@@ -92,14 +92,11 @@ public class UserDAOImpl implements UserDAO {
 //	working on refactoring this right now! -allysa
 	
 	public User updateUserPasswordHelper(int id, User user, String password) {
-		User userToUpdatePassword = user;
-		userToUpdatePassword = em.find(User.class, 1);
-		String oldPassword = userToUpdatePassword.getPassword();
+		String oldPassword = user.getPassword();
 		String newPassword = password;
 		oldPassword = newPassword;
-				userToUpdatePassword.setPassword(newPassword);
-		em.persist(userToUpdatePassword);
-		return userToUpdatePassword;
+		user.setPassword(newPassword);
+		return user;
 	}
 
 	public List<Genre> listGenres() {
@@ -115,16 +112,11 @@ public class UserDAOImpl implements UserDAO {
 		ratings = em.createQuery(jpql, Rating.class).getResultList(); 
 		return ratings;
 	}
-	
+
 	public List<Sale> listSales() {
 		List<Sale> sales = new ArrayList<>();
 		String jpql = "Select s FROM Sale s";
 		sales = em.createQuery(jpql, Sale.class).getResultList(); 
 		return sales;
 	}
-
-//	
-//	String firstName, String lastName, String username, String biography, String email,
-//	String profilePictureUrl
-
 }

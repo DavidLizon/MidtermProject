@@ -55,7 +55,10 @@
 
 		<!-- redirect to reset password page???? -->
 		<div class="restPassword">
-			<form action="resetPassword.do">
+			<input type="hidden" name="id" value="${user.id}"/>
+		
+			<form action="resetPassword.do" method="GET">
+			<input type="hidden" name="user.id" value="${user.id}"/>
 				<input type="submit" value="Reset Password">
 			</form>
 		</div>
