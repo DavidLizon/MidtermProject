@@ -196,6 +196,14 @@ public class GameDAOImple implements GameDAO {
 		return findGameToPassToSell;
 	}
 
+	public GameInventory findGameInventoryById(int id) {
+		GameInventory findGameToAddToCart = new GameInventory();
+		String jpql = "Select gi from GameInventory gi where gi.id = :findGameToAddToCart";
+		findGameToAddToCart = em.createQuery(jpql, GameInventory.class)
+				.setParameter("findGameToAddToCart", id)
+				.getSingleResult();
+		return findGameToAddToCart;
+	}
 	
 //	@Override
 //	public Game addGameInfoFromId(int id) {

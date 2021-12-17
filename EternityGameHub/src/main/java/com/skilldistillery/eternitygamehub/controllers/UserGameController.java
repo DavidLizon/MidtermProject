@@ -55,21 +55,23 @@ public class UserGameController {
 	  return "addGame";
 	}
 	
-	@RequestMapping(path = "addToCart.do", method = RequestMethod.GET)
-	public String addItemToCart( User user, Model model, HttpSession session) {
+	@RequestMapping(path = "addToCart.do", params="addToCartByInventoryId", method = RequestMethod.GET)
+	public String addItemToCart( Integer addToCartByInventoryId, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			return "loginOrCreateAccount";
 		} 
 		
-		
-		
-		
-		List<GameInventory> gamesInCart = new ArrayList<>();
-//		gamesInCart = gameDao.displaySelectedGameFromSearch(inventoryItemId);
-		
-//		User currentUser = (User) session.getAttribute("user");
-//		gamesInCart = gameDao.listGamesInCart(currentUser);
-		model.addAttribute("gameItem", gamesInCart);
+		if(session.getAttribute("gamesInCart") == null) {
+			List<GameInventory> gamesInCart = new ArrayList<>();
+			GameInventory game = gameDao.findGameInventoryById(addToCartByInventoryId);
+			gamesInCart.add(game);
+			session.setAttribute("gamesInCart", gamesInCart);
+		} else {
+			List<GameInventory> gamesInCart = (List<GameInventory>) session.getAttribute("gamesInCart");
+			GameInventory game = gameDao.findGameInventoryById(addToCartByInventoryId);
+			gamesInCart.add(game);
+			session.setAttribute("gamesInCart", gamesInCart);
+		}
 		
 		return "cart";
 	}
