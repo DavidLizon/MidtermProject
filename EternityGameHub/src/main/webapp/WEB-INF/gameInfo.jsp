@@ -13,9 +13,9 @@
 	<jsp:include page="navBar.jsp" />
 
 	<div>
-		<h2>${game.title}</h2>
+		<h2>${gameItem.game.title}</h2>
 		<br> 
-		<img src="${game.gameImageUrl}" alt="${game.title} Cover Art">
+		<img src="${game.gameImageUrl}" alt="${gameItem.game.title} Cover Art">
 	</div>
 
 	<!-- Rental code, for when we decide to implement it
@@ -38,25 +38,24 @@
 	-->
 
 	<div>
-	Buy for $${GameInventory.salePrice}
+	Buy for $${gameItem.salePrice}
 	</div>
 
 	<div>
 		<!-- Have to confirm action & method type -->
-		<form action="addPurchaseToCart.do" method="GET">
+		<form action="addToCart.do" method="GET">
 			<input type="submit" value="Add Purchase to Cart">
 		</form>
 	</div>
 
 	<div>
 		<!-- this can be wrapped in a box, these are instructions how  https://www.w3schools.com/css/css_boxmodel.asp -->
-		${game.description} <br> ${GameInventory.description }
+		${gameItem.game.description} <br> ${gameItem.description }
 	</div>
 
 	<!-- Seller description/rating/history, for when we decide to implement it -->
 
 	<!-- <div>
-		<h4>${user.name}History</h4>
 		<!-- need to be sure the user name is of the seller, not the buyer -->
 		<!-- need to add if/choose logic in case the seller has no history
 		<ol>

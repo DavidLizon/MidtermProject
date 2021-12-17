@@ -17,6 +17,7 @@ import com.skilldistillery.eternitygamehub.entities.GameInventory;
 import com.skilldistillery.eternitygamehub.entities.Genre;
 import com.skilldistillery.eternitygamehub.entities.Platform;
 import com.skilldistillery.eternitygamehub.entities.Rating;
+import com.skilldistillery.eternitygamehub.entities.User;
 
 @Controller
 public class UserGameController {
@@ -54,24 +55,26 @@ public class UserGameController {
 	  return "addGame";
 	}
 	
-	@RequestMapping(path = "addToCart.do", method = RequestMethod.POST)
-	public String addItemToCart(int inventoryItemId, Model model, HttpSession session) {
+	@RequestMapping(path = "addToCart.do", method = RequestMethod.GET)
+	public String addItemToCart(User user, Model model, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			return "loginOrCreateAccount";
 		} 
 		
 		List<GameInventory> gamesInCart = new ArrayList<>();
-		gamesInCart = gameDao.listGamesInCart(inventoryItemId);
-		model.addAttribute("userCart", gamesInCart);
+		gamesInCart = null;
+//		User currentUser = (User) session.getAttribute("user");
+//		gamesInCart = gameDao.listGamesInCart(currentUser);
+		model.addAttribute("gamesInCart", gamesInCart);
 		
 		return "cart";
 	}
 	
-	@RequestMapping(path = "addToCart.do", method = RequestMethod.GET)
-	public String checkUserIsInSession(HttpSession session) {
-		if (session.getAttribute("user") == null) {
-			return "loginOrCreateAccount";
-		} 
-		return "";
-	}
+//	@RequestMapping(path = "addToCart.do", method = RequestMethod.GET)
+//	public String checkUserIsInSession(HttpSession session) {
+//		if (session.getAttribute("user") == null) {
+//			return "loginOrCreateAccount";
+//		} 
+//		return "";
+//	}
 }
