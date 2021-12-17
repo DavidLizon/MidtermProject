@@ -27,30 +27,13 @@
 			<br> 
 		
 			<input type="submit" value="Login">
-		</form>
-		
-		<!-- It's possible the logic below needs to be wrapped around/within the entire existingUserLogin class -->
-		
-		<c:if test="${loginConfirmation}">
-			<c:choose>
-				
-				<c:when test="${loginSuccessful}">
-					<div>		
-						<form action="home.do"> <!-- Need to confirm this is the correct mapping within controller -->
-							<input type="submit" value="Home"/>
-						</form>	
-					</div>
-				</c:when>
-				
-				<c:when test="${!loginSuccessful}">
-					<div>
-						<p>Your username or password was incorrect.</p>
-					</div>
-				</c:when>
-				
-			</c:choose>
-		</c:if>
-	</div>
+		</form><br>
+		<c:choose>
+			<c:when test="${!empty tryAgain}">
+				<h5>"${tryAgain}"</h5>
+			</c:when>
+		</c:choose>
+	</div><br>
 
 	<div class="newAccountCreation">
 	

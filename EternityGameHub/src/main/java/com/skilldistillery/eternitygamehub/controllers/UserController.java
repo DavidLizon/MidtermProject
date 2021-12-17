@@ -1,10 +1,7 @@
 package com.skilldistillery.eternitygamehub.controllers;
 
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,6 +52,7 @@ public class UserController {
 		return "accountinfo";
 	}
 	
+	//what is this method doing??????
 	@RequestMapping(path = "login.do", method = RequestMethod.GET)
 	public String getLogin(HttpSession session, User user, Model model) {
 		if (session.getAttribute("user") != null) {
@@ -73,7 +71,9 @@ public class UserController {
 			model.addAttribute("user", u);
 			return "home";
 		}
-		return "redirect:home.do";
+		String incorrectLogin = "Please check your username and password and try again.";
+		model.addAttribute("tryAgain", incorrectLogin);
+		return "loginOrCreateAccount";
 	}
 
 	@RequestMapping(path = "logout.do", method = RequestMethod.GET)
