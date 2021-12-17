@@ -45,13 +45,13 @@
 		<!-- Have to confirm action & method type -->
 		<form action="addToCart.do" method="GET">
 			<input type="submit" value="Add Purchase to Cart">
-			<input type="hidden" name="gameItem.id" value="${gameItem.id}"/>
+			<input type="hidden" name="addToCartByInventoryId" value="${gameItem.id}"/>
 		</form>
 	</div>
 
 	<div>
 		<!-- this can be wrapped in a box, these are instructions how  https://www.w3schools.com/css/css_boxmodel.asp -->
-		${gameItem.game.description} <br> ${gameItem.description }
+		${gameItem.game.description} <br><br> User description: ${gameItem.description } <br>game_inventory.id= ${ gameItem.id}
 	</div>
 
 	<!-- Seller description/rating/history, for when we decide to implement it -->

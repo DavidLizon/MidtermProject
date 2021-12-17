@@ -27,16 +27,28 @@
 					<th><h6>Price</h6></th>
 				</tr>
 			</thead>
+			<tbody>
 				<!-- <label for="cartList"> -->
-				<tr>
-					<c:forEach items="${gamesInCart.id}" var="genres">
+				<c:set var="total" value="0"></c:set>
+				<c:forEach items="${gamesInCart}" var="cartItem">
+					<c:set var="total" value="${total + cartItem.salePrice }"></c:set>
+					<tr>
 				
-						<td>${gamesInCart.game.title}</td>
-						<td>${gamesInCart.game.description}</td>
-						<td>${game.condition}</td>
-						<td>${game.price}</td>
-					</c:forEach>
+						<td><h3>Default</h3><br><h3>image</h3></td>
+						<td>${cartItem.game.title}</td>
+						<td>${cartItem.description}</td>
+						<td>$ ${cartItem.salePrice}</td>
+				
+					</tr>
+				</c:forEach>
+			</tbody>	
+			<tfoot>
+				<tr>
+					<td colspan="3" align="right">Total: </td>
+					<td>${total }</td>
 				</tr>
+			
+			</tfoot>
 		<!-- </label> -->
 		</table>
 		<br>
