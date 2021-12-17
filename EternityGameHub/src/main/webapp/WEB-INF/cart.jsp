@@ -33,12 +33,10 @@
 				<c:forEach items="${gamesInCart}" var="cartItem">
 					<c:set var="total" value="${total + cartItem.salePrice }"></c:set>
 					<tr>
-				
 						<img src="${cartItem.game.gameImageUrl}" alt="${game.title} Cover Art">
 						<td>${cartItem.game.title}</td>
 						<td>${cartItem.description}</td>
 						<td>$ ${cartItem.salePrice}</td>
-				
 					</tr>
 				</c:forEach>
 			</tbody>	
@@ -52,16 +50,18 @@
 		<!-- </label> -->
 		</table>
 		<br>
+		<div>
+			<!-- Have to confirm action & method type -->
+			<form action="completePurchase.do" method="GET">
+				<input type="submit" value="Complete Transaction">
+			</form>
+		</div>
+		
 </c:otherwise>
 </c:choose>
 
 
-<div>
-		<!-- Have to confirm action & method type -->
-		<form action="completePurchase.do" method="GET">
-			<input type="submit" value="Complete Transaction">
-		</form>
-	</div>
+
 
 
 

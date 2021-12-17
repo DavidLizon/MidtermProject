@@ -93,6 +93,9 @@ public class UserGameController {
 		if (itemsInCart != null && itemsInCart.size() > 0) {
 			List<Sale> listofSales = new ArrayList<>();
 
+			//TODO check if game is still available for purchase 
+			//TODO check search.do page only shows available games
+			
 			for (GameInventory item : itemsInCart) {
 				Sale sale = new Sale();
 				sale.setBuyer(user);
@@ -103,6 +106,7 @@ public class UserGameController {
 				listofSales.add(sale);
 			}
 			model.addAttribute("listofSales", listofSales);
+			session.removeAttribute("gamesInCart");
 			return "confirmpurchase";
 		} else {
 			return "cart";

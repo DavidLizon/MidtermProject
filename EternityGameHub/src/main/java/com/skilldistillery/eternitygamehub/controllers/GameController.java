@@ -36,7 +36,7 @@ public class GameController {
 		model.addAttribute("genres", genres);
 		games = gameDao.findGameByKeywordSearch(title, filteredcondition);
 		model.addAttribute("result", games);
-		System.out.println(games + "******************");
+		
 		return "search";
 	}
 
