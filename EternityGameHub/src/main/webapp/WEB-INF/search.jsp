@@ -19,7 +19,7 @@
 
 
       <label for="title">Keyword search for Title or Description</label>
-      <input type="text" name="title" required><br>
+      <input type="text" name="title"><br>
 
 
       <label for="condition">Condition</label>
@@ -41,7 +41,7 @@
 		<br>
       
        <label for="rating">Rating: </label>
-			<select name="ratingId" required>
+			<select name="ratingId">
 			<option value=0>--Choose Rating--</option>
 				<c:forEach items="${ratings}" var="rating">
 					<option value="${rating.id}">
@@ -52,7 +52,7 @@
 		<br>
       
       <label for="platform">Platform: </label>
-			<select name="platformId" required>
+			<select name="platformId">
 			<option value=0>--Choose Platform--</option>
 				<c:forEach items="${platforms}" var="platform">
 					<option value="${platform.id}">
