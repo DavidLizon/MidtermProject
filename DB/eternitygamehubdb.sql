@@ -444,6 +444,15 @@ COMMIT;
 START TRANSACTION;
 USE `eternitygamehubdb`;
 INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`, `condition_new`) VALUES (1, 1, 1, 'Sellers personal description goes here.', 25.99, 1, 2.99, 1, 1);
+INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`, `condition_new`) VALUES (2, 50, 1, 'Pristine copy', 0.99, 1, 0.99, 5, 1);
+INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`, `condition_new`) VALUES (3, 4, 2, 'Pristine copy', 1.50, 1, 1.50, 1, 0);
+INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`, `condition_new`) VALUES (4, 87, 1, 'Pristine copy', 2.90, 1, 2.90, 2, 1);
+INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`, `condition_new`) VALUES (5, 46, 2, 'Pristine copy', 0.99, 1, 0.99, 3, 0);
+INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`, `condition_new`) VALUES (6, 45, 1, 'Pristine copy', 1.50, 1, 1.50, 4, 1);
+INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`, `condition_new`) VALUES (7, 7, 2, 'Pristine copy', 2.90, 1, 2.90, 5, 0);
+INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`, `condition_new`) VALUES (8, 123, 1, 'Pristine copy', 0.99, 1, 0.99, 6, 1);
+INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`, `condition_new`) VALUES (9, 120, 2, 'Pristine copy', 1.50, 1, 1.50, 7, 0);
+INSERT INTO `game_inventory` (`id`, `game_id`, `user_id`, `description`, `sale_price`, `available`, `rent_price`, `platform_id`, `condition_new`) VALUES (10, 2, 1, 'Pristine copy', 2.90, 1, 2.90, 8, 1);
 
 COMMIT;
 
