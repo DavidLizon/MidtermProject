@@ -27,7 +27,30 @@ public class GameDAOImple implements GameDAO {
 	@Override
 	public List<GameInventory> findGameByKeywordSearch(String keyword, String[] filteredcondition, int genreId, int ratingId, int platformId) {
 		List<GameInventory> gamesByKeyword = new ArrayList<>();
-		String jpql = "SELECT gi FROM GameInventory gi JOIN gi.game.genres gg WHERE gi.available = true AND gi.game.title LIKE :searchkeyword";
+		String jpql = "SELECT gi FROM GameInventory gi LEFT JOIN gi.game.genres gg WHERE gi.available = true AND gi.game.title LIKE :searchkeyword";
+		
+		if (filteredcondition != null && filteredcondition.length > 0) {
+
+			jpql += " and ("; 
+			boolean addedOne = false; 
+			for (String filtered : filteredcondition) {
+				switch (filtered) {
+					case "new": 
+						if (addedOne) {jpql += " OR "; } 
+						jpql += " gi.conditionNew = 1 "; 
+//						jpql += " conditionNew = true "; 
+						addedOne = true;
+						break;
+					case "used": 
+						if (addedOne) {jpql += " OR "; } 
+						jpql += " gi.conditionNew = 0 "; 
+//						jpql += " conditionNew = false "; 
+						addedOne = true;
+						break;
+				}
+			} jpql += ")";
+		}
+		
 		
 		if (genreId > 0) {
 			jpql += " and gg.id = :genreId";
@@ -38,8 +61,13 @@ public class GameDAOImple implements GameDAO {
 		if (platformId > 0) {
 			jpql += " and gi.platform.id = :platformId";
 		}
-			
+		
+		System.out.println("*******************");
+		System.out.println(jpql);
+		
 		TypedQuery<GameInventory> query = em.createQuery(jpql, GameInventory.class);
+		System.out.println("*******************");
+		System.out.println(query);
 		
 		if (genreId > 0) {
 			query.setParameter("genreId", genreId);
@@ -53,27 +81,7 @@ public class GameDAOImple implements GameDAO {
 		
 		
 		
-		if (filteredcondition != null && filteredcondition.length > 0) {
-
-			jpql += " and ("; 
-			boolean addedOne = false; 
-			for (String filtered : filteredcondition) {
-				switch (filtered) {
-					case "new": 
-						if (addedOne) {jpql += " OR "; } 
-						jpql += " conditionNew = 1 "; 
-//						jpql += " conditionNew = true "; 
-						addedOne = true;
-						break;
-					case "used": 
-						if (addedOne) {jpql += " OR "; } 
-						jpql += " conditionNew = 0 "; 
-//						jpql += " conditionNew = false "; 
-						addedOne = true;
-						break;
-				}
-			} jpql += ")";
-		}
+		
 		
 //		gamesByKeyword = em.createQuery(jpql, GameInventory.class)
 		gamesByKeyword = query
