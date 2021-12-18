@@ -23,14 +23,15 @@
 
 
       <label for="condition">Condition</label>
-      <select class="condition" name="condition" required>
+      <select class="condition" name="filteredcondition">
         <option value="new">New</option>
         <option value="used">Used</option>
       </select><br>
 
 		
-		<%-- <label for="genre">Genre: </label>
-			<select name="genre.id" required>
+		<label for="genre">Genre: </label>
+			<select name="genreId">
+				<option value=0>--Choose Genre--</option>
 				<c:forEach items="${genres}" var="genre">
 					<option value="${genre.id}">
 							${genre.name}
@@ -39,8 +40,9 @@
 			</select>	
 		<br>
       
-      <label for="rating">Rating: </label>
-			<select name="rating.id" required>
+       <label for="rating">Rating: </label>
+			<select name="ratingId" required>
+			<option value=0>--Choose Rating--</option>
 				<c:forEach items="${ratings}" var="rating">
 					<option value="${rating.id}">
 							${rating.name}
@@ -50,7 +52,8 @@
 		<br>
       
       <label for="platform">Platform: </label>
-			<select name="platform.id" required>
+			<select name="platformId" required>
+			<option value=0>--Choose Platform--</option>
 				<c:forEach items="${platforms}" var="platform">
 					<option value="${platform.id}">
 							${platform.name}
@@ -59,7 +62,7 @@
 			</select>	
 		<br>
 
-      <label for="maxPlayers">Max Players</label>
+    <%--  <label for="maxPlayers">Max Players</label>
       <select class="maxPlayers" name="maxPlayers" required>
         <option value="1">1</option>
         <option value="2">2</option>

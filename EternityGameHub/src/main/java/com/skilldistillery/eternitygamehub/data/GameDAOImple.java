@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
@@ -24,33 +25,58 @@ public class GameDAOImple implements GameDAO {
 	private EntityManager em;
 
 	@Override
-	public List<GameInventory> findGameByKeywordSearch(String keyword, String[] filteredcondition) {
+	public List<GameInventory> findGameByKeywordSearch(String keyword, String[] filteredcondition, int genreId, int ratingId, int platformId) {
 		List<GameInventory> gamesByKeyword = new ArrayList<>();
-		String jpql = "SELECT gi FROM GameInventory gi WHERE gi.available = true AND gi.game.title LIKE :searchkeyword OR gi.game.description LIKE :searchkeyword";
+		String jpql = "SELECT gi FROM GameInventory gi JOIN gi.game.genres gg WHERE gi.available = true AND gi.game.title LIKE :searchkeyword";
+		
+		if (genreId > 0) {
+			jpql += " and gg.id = :genreId";
+		}
+		if (ratingId > 0) {
+			jpql += " and gi.rating.id = :ratingId";
+		}
+		if (platformId > 0) {
+			jpql += " and gi.platform.id = :platformId";
+		}
+			
+		TypedQuery<GameInventory> query = em.createQuery(jpql, GameInventory.class);
+		
+		if (genreId > 0) {
+			query.setParameter("genreId", genreId);
+		}
+		if (ratingId > 0) {
+			query.setParameter("ratingId", ratingId);
+		}	
+		if (platformId > 0) {
+			query.setParameter("platformId", platformId);
+		}
+		
+		
 		
 		if (filteredcondition != null && filteredcondition.length > 0) {
+
 			jpql += " and ("; 
 			boolean addedOne = false; 
 			for (String filtered : filteredcondition) {
 				switch (filtered) {
 					case "new": 
 						if (addedOne) {jpql += " OR "; } 
-						jpql += " conditionNew = true "; 
+						jpql += " conditionNew = 1 "; 
+//						jpql += " conditionNew = true "; 
 						addedOne = true;
 						break;
-						
-					case "rentable": 
+					case "used": 
 						if (addedOne) {jpql += " OR "; } 
-						jpql += " rentPrice IS NOT null "; 
+						jpql += " conditionNew = 0 "; 
+//						jpql += " conditionNew = false "; 
 						addedOne = true;
 						break;
 				}
 			} jpql += ")";
 		}
 		
-		System.out.println(jpql); 
-		
-		gamesByKeyword = em.createQuery(jpql, GameInventory.class)
+//		gamesByKeyword = em.createQuery(jpql, GameInventory.class)
+		gamesByKeyword = query
 				.setParameter("searchkeyword", "%" + keyword + "%")
 				.getResultList();
 		

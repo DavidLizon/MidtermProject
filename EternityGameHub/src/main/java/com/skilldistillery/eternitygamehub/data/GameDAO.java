@@ -10,7 +10,7 @@ import com.skilldistillery.eternitygamehub.entities.Rating;
 
 public interface GameDAO {
 
-	public List<GameInventory> findGameByKeywordSearch(String keyword, String[] filteredcondition);
+	public List<GameInventory> findGameByKeywordSearch(String keyword, String[] filteredcondition, int genreId, int ratingId, int platformId);
 
 	public List<Game> findAllGames();
 	
