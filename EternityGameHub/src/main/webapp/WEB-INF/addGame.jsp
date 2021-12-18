@@ -15,7 +15,7 @@
 
 	<h1>Add New Game to EGH</h1>
 	
-	<form action="addGame.do" method = "POST">  <!-- REMOVE . PRIOR TO COMMENT method="POST"> --> <!--Need to match action address & get/put method to controller  -->
+	<form action="addGame.do" method = "POST" modelAttribute="newGame">  <!-- REMOVE . PRIOR TO COMMENT method="POST"> --> <!--Need to match action address & get/put method to controller  -->
 	<br>
 	
 	<div class="addGame">
@@ -36,9 +36,9 @@
 		<br>		
 			
 		<label for="genre">Genre: </label>
-			<select name="genre.id">
+			<select name="genreId">
 				<c:forEach items="${genres}" var="genre">
-					<option value="${newGame.genre.id}">
+					<option value="${genre.id}">
 							${genre.name}
 					</option>
 				</c:forEach>
@@ -48,7 +48,7 @@
 		<label for="rating">Rating: </label>
 			<select name="rating.id">
 				<c:forEach items="${ratings}" var="rating">
-					<option value="${newGame.rating.id}">
+					<option value="${rating.id}">
 							${rating.name}
 					</option>
 				</c:forEach>

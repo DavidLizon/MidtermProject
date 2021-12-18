@@ -231,6 +231,15 @@ public class GameDAOImple implements GameDAO {
 		return findGameToAddToCart;
 	}
 	
+	public Genre findGenreById(int id) {
+		Genre findGenreToAddToGame = new Genre();
+		String jpql = "Select g from Genre g where g.id = :findGenreToAddToGame";
+		findGenreToAddToGame = em.createQuery(jpql, Genre.class)
+				.setParameter("findGenreToAddToGame", id)
+				.getSingleResult();
+		return findGenreToAddToGame;
+	}
+	
 //	@Override
 //	public Game addGameInfoFromId(int id) {
 //		Game game = new Game();

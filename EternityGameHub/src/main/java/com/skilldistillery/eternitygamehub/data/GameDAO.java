@@ -44,4 +44,6 @@ public interface GameDAO {
 
 	public GameInventory findGameInventoryById(int id);
 	
+	public Genre findGenreById(int id);
+	
 }

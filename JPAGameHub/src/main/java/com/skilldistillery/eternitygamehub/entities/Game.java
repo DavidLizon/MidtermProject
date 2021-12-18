@@ -1,5 +1,6 @@
 package com.skilldistillery.eternitygamehub.entities;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -46,7 +47,22 @@ public class Game {
 	
 	
 	public Game() {}
-
+	
+	public void addGenre(Genre genre) {
+		if (genres == null) {
+			genres = new ArrayList<>();
+		}
+		
+		if (!genres.contains(genre)) {
+			genres.add(genre);
+			genre.addGame(this);
+		}
+	}
+	
+	public void removeGenre(Genre genre) {
+		
+	}
+	
 	public int getId() {
 		return id;
 	}
