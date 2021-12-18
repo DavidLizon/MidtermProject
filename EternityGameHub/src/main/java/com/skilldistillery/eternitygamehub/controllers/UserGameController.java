@@ -1,6 +1,7 @@
 package com.skilldistillery.eternitygamehub.controllers;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -14,7 +15,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.skilldistillery.eternitygamehub.data.GameDAO;
 import com.skilldistillery.eternitygamehub.data.SaleDAO;
 import com.skilldistillery.eternitygamehub.data.UserDAO;
-import com.skilldistillery.eternitygamehub.entities.*;
+import com.skilldistillery.eternitygamehub.entities.GameInventory;
+import com.skilldistillery.eternitygamehub.entities.Genre;
+import com.skilldistillery.eternitygamehub.entities.Platform;
+import com.skilldistillery.eternitygamehub.entities.Rating;
+import com.skilldistillery.eternitygamehub.entities.Sale;
+import com.skilldistillery.eternitygamehub.entities.User;
 
 @Controller
 public class UserGameController {
@@ -92,17 +98,12 @@ public class UserGameController {
 		List<GameInventory> itemsInCart = (List<GameInventory>) session.getAttribute("gamesInCart");
 		if (itemsInCart != null && itemsInCart.size() > 0) {
 			List<Sale> listofSales = new ArrayList<>();
-
-			//TODO check if game is still available for purchase 
-			//TODO check search.do page only shows available games
-			
 			for (GameInventory item : itemsInCart) {
 				Sale sale = new Sale();
 				sale.setBuyer(user);
 				sale.setSeller(item.getUser());
 				sale.setGameInventory(item);
 				sale = saleDao.processPurchase(sale);
-//				itemsInCart.remove(item);
 				listofSales.add(sale);
 			}
 			model.addAttribute("listofSales", listofSales);
@@ -111,7 +112,14 @@ public class UserGameController {
 		} else {
 			return "cart";
 		}
-//		
 	}
-
+	
+	@RequestMapping(path = "removeItemFromCart.do", params="removeItemId", method = RequestMethod.GET)
+	public String removeItemFromCart(HttpSession session, Integer removeItemId) {
+		List<GameInventory> itemsInCart = (List<GameInventory>) session.getAttribute("gamesInCart");
+		session.setAttribute("gamesInCart", itemsInCart);
+		GameInventory itemToRemove = gameDao.findGameInventoryById(removeItemId);
+		itemsInCart.remove(itemToRemove);
+		return "cart";
+	}
 }

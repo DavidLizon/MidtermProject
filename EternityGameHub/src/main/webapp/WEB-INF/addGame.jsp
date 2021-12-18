@@ -20,6 +20,7 @@
 	
 	<div class="addGame">
 	<input type="hidden" name="user.id" value="${user.id}"/>
+	
 
 		
 		<label for="title">Title:</label>
@@ -37,7 +38,7 @@
 		<label for="genre">Genre: </label>
 			<select name="genre.id">
 				<c:forEach items="${genres}" var="genre">
-					<option value="${genre.id}">
+					<option value="${newGame.genre.id}">
 							${genre.name}
 					</option>
 				</c:forEach>
@@ -47,7 +48,7 @@
 		<label for="rating">Rating: </label>
 			<select name="rating.id">
 				<c:forEach items="${ratings}" var="rating">
-					<option value="${rating.id}">
+					<option value="${newGame.rating.id}">
 							${rating.name}
 					</option>
 				</c:forEach>
@@ -62,6 +63,7 @@
 	</div>
 
 	<input type="submit" value="Submit Game">
+	<input type="hidden" name="newGame.id" value="${newGame.id}"/>
 	</form>
 	
 	

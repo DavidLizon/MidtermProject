@@ -3,6 +3,8 @@ package com.skilldistillery.eternitygamehub.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -74,10 +76,6 @@ public class GameController {
 
 	@RequestMapping(path = "addGame.do", method = RequestMethod.POST) //
 	public String addGameToGames(Game game, Model model) {
-		List<Rating> ratings = gameDao.listRatings();
-		model.addAttribute("ratings", ratings);
-		List<Genre> genres = gameDao.listGenres();
-		model.addAttribute("genres", genres);
 		Game newGame = gameDao.addGame(game);
 		if (newGame == null) {
 			String gameAlreadyExists = "Unable to add game. Game with same title already exists.";
@@ -90,15 +88,11 @@ public class GameController {
 		}
 	}
 
-	@RequestMapping(path = "populateItem.do", method = RequestMethod.GET)
-	public String populateGameItemForGameInventoryItem(int gameItemId, Model model) {
-		Game passGameToInventoryItem= gameDao.findGameById(gameItemId);
+	@RequestMapping(path = "populateItem.do", params="id", method = RequestMethod.GET)
+	public String populateGameItemForGameInventoryItem(int id, Model model) {
+		Game passGameToInventoryItem= gameDao.findGameById(id);
 		model.addAttribute("platforms", gameDao.listPlatforms());
-		model.addAttribute("game", passGameToInventoryItem);
-		List<Genre> genres = gameDao.listGenres();
-		model.addAttribute("genres", genres);
-		List<Rating> ratings = gameDao.listRatings();
-		model.addAttribute("ratings", ratings);
+		model.addAttribute("newGame", passGameToInventoryItem);
 		return "sellAddInventoryItem";
 	}
 

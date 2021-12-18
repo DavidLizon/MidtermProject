@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +87,7 @@
 						<c:choose>
 							<c:when test="${item.available}">
 							<!-- Need to confirm these names are correct  -->
-								<li><a href="goToItemListing.do?inventoryItemId=${item.id}">${item.game.title} $${item.salePrice} </a></li>
+								<li><a href="goToItemListing.do?inventoryItemId=${item.id}">${item.game.title} <fmt:formatNumber type="currency" value="${item.salePrice}"/> </a></li>
 							<!-- Need to confirm href is correct -->
 							</c:when>
 						</c:choose>

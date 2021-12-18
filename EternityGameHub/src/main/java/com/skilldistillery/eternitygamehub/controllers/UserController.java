@@ -1,14 +1,16 @@
 package com.skilldistillery.eternitygamehub.controllers;
 
 import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.skilldistillery.eternitygamehub.data.AdminDAO;
 import com.skilldistillery.eternitygamehub.data.UserDAO;
-import com.skilldistillery.eternitygamehub.entities.*;
+import com.skilldistillery.eternitygamehub.entities.User;
 
 @Controller
 public class UserController {
@@ -48,7 +50,7 @@ public class UserController {
 	}
 
 	// what is this method doing??????
-	@RequestMapping(path = "login.do", method = RequestMethod.GET)
+	@RequestMapping(path = {"login.do"}, method = RequestMethod.GET)
 	public String getLogin(HttpSession session, User user, Model model) {
 		if (session.getAttribute("user") != null) {
 			model.addAttribute("user", user);
@@ -57,16 +59,18 @@ public class UserController {
 		return "redirect:home.do";
 	}
 
-	@RequestMapping(path = "login.do", method = RequestMethod.POST)
+	@RequestMapping(path = {"login.do"}, method = RequestMethod.POST)
 	public String postLogin(User user, HttpSession session, Model model) {
-
 		User u = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 		if (u != null) {
-			session.setAttribute("user", u);
+			if (u.getId() == 1) {
+				session.setAttribute("admin", u);
+				model.addAttribute("admin", u);
+				return "adminhome";
+			} session.setAttribute("user", u);
 			model.addAttribute("user", u);
 			return "home";
-		}
-		String incorrectLogin = "Please check your username and password and try again.";
+		} String incorrectLogin = "Please check your username and password and try again.";
 		model.addAttribute("tryAgain", incorrectLogin);
 		return "loginOrCreateAccount";
 	}
@@ -103,8 +107,7 @@ public class UserController {
 			String updated = "Account information has been updated!";
 			model.addAttribute("updatedAccount", updated);
 			return "accountInfo";
-		}
-		
+		}	
 	}
 
 	@RequestMapping(path = "createUserAccount.do", method = RequestMethod.POST)
@@ -129,8 +132,7 @@ public class UserController {
 	public String getUserPasswordForReset(User user, HttpSession session) {
 		if (session.getAttribute("user") == null) {
 			return "loginOrCreateAccount";
-		}
-		return "resetpassword";
+		} return "resetpassword";
 	}
 
 	@RequestMapping(path = "resetUserPassword.do", method = RequestMethod.POST)

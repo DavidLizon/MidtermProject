@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +15,7 @@
 
 
 <c:choose>
-<c:when test="${empty gamesInCart }" >
+<c:when test="${empty gamesInCart}" >
 	<h3>Your cart is empty.</h3>
 </c:when>
 <c:otherwise>
@@ -31,19 +33,28 @@
 				<!-- <label for="cartList"> -->
 				<c:set var="total" value="0"></c:set>
 				<c:forEach items="${gamesInCart}" var="cartItem">
-					<c:set var="total" value="${total + cartItem.salePrice }"></c:set>
+					<c:set var="total" ><fmt:formatNumber type="number" value="${total + cartItem.salePrice}"/></c:set>
 					<tr>
 						<img src="${cartItem.game.gameImageUrl}" alt="${game.title} Cover Art">
 						<td>${cartItem.game.title}</td>
 						<td>${cartItem.description}</td>
-						<td>$${cartItem.salePrice}</td>
+						<td><fmt:formatNumber type="currency" value="${cartItem.salePrice}"/></td>
+						<td>
+							<div>
+								<!-- Have to confirm action & method type -->
+								<form action="removeItemFromCart.do" method="GET">
+									<input type="submit" value="Remove">
+									<input type="hidden" value="${cartItem.id}" name="removeItemId">
+								</form>
+							</div>						
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>	
 			<tfoot>
 				<tr>
 					<td colspan="3" align="right">Total: </td>
-					<td>$${total}</td>
+					<td><fmt:formatNumber type="currency" value="${total}"/></td>
 				</tr>
 			</tfoot>
 		<!-- </label> -->

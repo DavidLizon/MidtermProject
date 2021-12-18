@@ -120,7 +120,6 @@ public class GameDAOImple implements GameDAO {
 		gamesByTitleSearch = em.createQuery(jpql, Game.class)
 				.setParameter("gametitle", "%" + title + "%")
 				.getResultList();
-		 
 		return gamesByTitleSearch;
 	}
 	
@@ -138,8 +137,7 @@ public class GameDAOImple implements GameDAO {
 			if (game2.getTitle().equalsIgnoreCase(game.getTitle())) {
 				return null;
 			}
-		}
-		em.persist(game);
+		} em.persist(game);
 		return game;
 	}
 
@@ -158,7 +156,6 @@ public class GameDAOImple implements GameDAO {
 	
 	@Override
 	public List<GameInventory> findGameByFilteredSearch(List<GameInventory> gamesByKeyword, Boolean conditionNew) {
-		
 		List<GameInventory> filteredGames = new ArrayList<>();
 		String jpql = "SELECT gi FROM GameInventory gi WHERE gi.game.title LIKE :searchkeyword OR gi.game.description LIKE :searchkeyword";
 		gamesByKeyword = em.createQuery(jpql, GameInventory.class)

@@ -11,41 +11,32 @@
 	<jsp:include page="navBar.jsp" />
 
 	<div>
-		<h3>${game.title} Info</h3>
-		<img src="${game.gameImageUrl}" alt="${game.title} Cover Art">
+	<input type="hidden" name="newGame.id" value="${newGame.id}"/>
+		<h3>${newGame.title} Info</h3>
+		<img src="${newGame.gameImageUrl}" alt="${newGame.title} Cover Art">
 		<br>
-		Title: ${game.title}
+		Title: ${newGame.title}
 		<br>
-		Description: ${game.description}
+		Description: ${newGame.description}
 		<br>
-		Max players: ${game.maxPlayers}
+		Max players: ${newGame.maxPlayers}
 		<br>
-			
-		<label for="genre">Genre: </label>
-			<select name="genre.id">
-				<c:forEach items="${genres}" var="genre">
-					<option value="${genre.id}" title="${genre.description}">
-							${genre.name}
-					</option>
-				</c:forEach>
-			</select>	
+		Genre: ${newGame.genres}
 		<br> 
-		<label for="rating">Rating: </label>
+		<%-- <label for="rating">Rating: </label>
 		<select name="rating.id">
 			<c:forEach items="${ratings}" var="rating">	
 				<option value="${rating.id}" title="${rating.description}">
 						${rating.name}
 				</option>
 			</c:forEach>
-		</select>			
+		</select>		 --%>	
 		<br>
 		
 		<form action="addGameInventoryItem.do" method="POST">
 
 		<label for="price"> Price: </label>
 			<input type="number" step="0.01" name="salePrice" min="0" max="99"/>
-			<input type="hidden" name="game.id" value="${game.id}"/>
-			<input type="hidden" name="user.id" value="${user.id}"/>
 			<br>
 <!-- 		<label for="platform"> Platform: </label> This should be a dropdown with pre-existing platforms, not a text box
 			<input type="text" name="platform">
@@ -72,9 +63,14 @@
 			<input type="text" name="description"/>
 			<br>
 			<br>
-		<input type="hidden" name="genres" value="${genre.id}"/>	
-		<input type="hidden" name="ratings" value="${rating.id}"/>	
+		<%-- <input type="hidden" name="genres" value="${genre.id}"/>	
+		<input type="hidden" name="ratings" value="${rating.id}"/>	 --%>
+		
+		
+		<input type="hidden" name="user.id" value="${user.id}"/>
+		
 		<input type="submit" value="List Game for Sale"/>
+		
 		</form>
 
 	</div>
