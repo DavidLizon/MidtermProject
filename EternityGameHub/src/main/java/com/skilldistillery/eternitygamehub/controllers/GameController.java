@@ -116,6 +116,8 @@ public class GameController {
 		Game passGameToSuccessfulListingPage = gameDao.findGameById(gameInventoryItem.getGame().getId());	
 		gameInventoryItem.setGame(passGameToSuccessfulListingPage);
 		GameInventory newGameInventoryItem = gameDao.addGameInventory(gameInventoryItem);
+		System.out.println("*******************");
+		System.out.println(gameInventoryItem);
 		model.addAttribute("newGameInventoryItem", newGameInventoryItem);
 		model.addAttribute("game", passGameToSuccessfulListingPage);
 		model.addAttribute("genres", genres);

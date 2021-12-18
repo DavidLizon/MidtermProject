@@ -63,8 +63,8 @@
 			<input type="text" name="description"/>
 			<br>
 			<br>
-		<%-- <input type="hidden" name="genres" value="${genre.id}"/>	
-		<input type="hidden" name="ratings" value="${rating.id}"/>	 --%>
+		<input type="hidden" name="genres" value="${genre.id}"/>	
+		<input type="hidden" name="ratings" value="${rating.id}"/>
 		
 		
 		<input type="hidden" name="user.id" value="${user.id}"/>

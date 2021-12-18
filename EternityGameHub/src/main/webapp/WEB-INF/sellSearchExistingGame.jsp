@@ -31,7 +31,7 @@
 		<c:when test="${! empty alreadyInGames}">
 			<ul>
 				<c:forEach var="item" items="${alreadyInGames}"> 
-					<li>	<a href="populateItem.do?gameItemId=${item.id}">${item.title}</a></li> <!-- Need to confirm href is correct -->
+					<li>	<a href="populateItem.do?id=${item.id}">${item.title}</a></li> <!-- Need to confirm href is correct -->
 				</c:forEach>
 			</ul>
 			<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button> <!-- Not 100% sure the on click command is correct -->
