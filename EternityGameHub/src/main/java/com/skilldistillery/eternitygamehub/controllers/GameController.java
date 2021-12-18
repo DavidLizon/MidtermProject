@@ -118,6 +118,7 @@ public class GameController {
 		gameInventoryItem.setAvailable(true);
 //		Game passGameToSuccessfulListingPage = gameInventoryItem.getGame();	
 		Game passGameToSuccessfulListingPage = gameDao.findGameById(gameInventoryItem.getGame().getId());	
+		gameInventoryItem.setGame(passGameToSuccessfulListingPage);
 		GameInventory newGameInventoryItem = gameDao.addGameInventory(gameInventoryItem);
 		model.addAttribute("newGameInventoryItem", newGameInventoryItem);
 		model.addAttribute("game", passGameToSuccessfulListingPage);

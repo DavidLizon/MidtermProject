@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,11 +26,16 @@
 		<br>
 		Max players: ${game.maxPlayers}
 		<br>
-		Genre: ${genres.name}
+		Genre: 
+			<ul>
+				<c:forEach var="g" items="${game.genres }">
+					<li>${g.name }</li>
+				</c:forEach>
+			</ul>
 		<br> 
-		Rating: ${ratings.name}
+		Rating: ${game.rating.name}
 		<br>			
-		Price: $${newGameInventoryItem.salePrice}
+		Price: <fmt:formatNumber type="currency" value="${newGameInventoryItem.salePrice}"/>  
 		<br>
 		Condition: <c:choose>
 						<c:when test="${ not newGameInventoryItem.conditionNew}"> Used </c:when>		
