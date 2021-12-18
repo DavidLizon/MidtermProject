@@ -1,0 +1,23 @@
+Table 1
+id,username,first_name,last_name,Password,email,account_created,biography,enabled,role,profile_picture_url 
+3,__catlady ,Ashe,Ubert,password,au@fake.com,2021-12-11 03:25:29,im cool n so r u,1,buyer,default.png
+4,keylimepie,Sylvain,Gautier,password,sg@fake.com,2021-12-12 03:25:29,im cool n so r u,1,buyer,default.png
+5,tatertots,Mercedes,Martriz,password,mm@fake.com,2021-12-13 03:25:29,im cool n so r u,1,buyer,default.png
+6,sourdoe,Ingrid,Fantine,password,if@fake.com,2021-12-14 03:25:29,im cool n so r u,1,buyer,default.png
+7,cobb,Ignatz,Galatea,password,ig@fake.com,2021-12-15 03:25:29,im cool n so r u,1,buyer,default.png
+8,potroast,Victor,Kirsten,password,vk@fake.com,2021-12-16 03:25:29,im cool n so r u,1,buyer,default.png
+9,twinkies,Felix,Credelia,password,fc@fake.com,2021-12-17 03:25:29,im cool n so r u,1,buyer,default.png
+10,fajitas,Marianne,Edmund,password,me@fake.com,2021-12-18 03:25:29,im cool n so r u,1,buyer,default.png
+11,cornbread,Yuri,Leclerc,password,yl@fake.com,2021-12-19 03:25:29,im cool n so r u,1,seller,default.png
+12,biscuits,Annette,Dominic,password,ad@fake.com,2021-12-20 03:25:29,im cool n so r u,1,seller,default.png
+13,User13,Raphael ,Kirsten,password,rk@fake.com,2021-12-21 03:25:29,im cool n so r u,1,seller,default.png
+14,User14,Lysithea,Ordelia,password,lo@fake.com,2021-12-22 03:25:29,im cool n so r u,1,seller,default.png
+15,User15,Duke,Aegir,password,duke@fake.com,2021-12-23 03:25:29,im cool n so r u,1,seller,default.png
+16,User16,Ionius,IX,password,IX@fake.com,2021-12-24 03:25:29,im cool n so r u,1,seller,default.png
+17,User17,Aelfric,Dahlman,password,dahh@fake.com,2021-12-25 03:25:29,im cool n so r u,1,seller,default.png
+18,User18,Ashen,Wolves,password,ashen@wolves.com ,2021-12-26 03:25:29,im cool n so r u,1,seller,default.png
+19,Gottacatchemall,Ash,Catchem,password,catchemash@fake.com,2021-12-27 03:25:29,im cool n so r u,1,buyer,default.png
+20,iamuser20,Red,Redd ,password,reddddd@fake.com,2021-12-28 03:25:29,im cool n so r u,1,buyer,default.png
+,,,,,,,,,,
+,,,,,,,,,,
+,,,,,,,,,,
