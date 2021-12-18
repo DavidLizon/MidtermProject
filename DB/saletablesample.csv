@@ -1,0 +1,26 @@
+Table 1
+id,buyer_id(3-10),seller_id (11-18),game_inventory_id,sale_date,rating_by_buyer,comment_by_buyer,rating_by_seller,comment_by_seller,return_by_date,date_returned
+2,2,11,2,2021-12-13 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-22 3:33:00,2021-12-21 12:00:00
+3,3,11,3,2021-12-13 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-23 3:33:00,2021-12-21 12:00:00
+4,4,11,4,2021-12-13 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-24 3:33:00,2021-12-21 12:00:00
+5,4,12,5,2021-12-13 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-25 3:33:00,2021-12-21 12:00:00
+6,4,12,6,2021-12-13 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-26 3:33:00,2021-12-21 12:00:00
+7,5,12,7,2021-12-13 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-27 3:33:00,2021-12-21 12:00:00
+8,6,13,8,2021-12-13 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-28 3:33:00,2021-12-21 12:00:00
+9,6,14,9,2021-12-15 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-29 3:33:00,2021-12-22 12:00:00
+10,6,14,10,2021-12-16 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-22 3:33:00,2021-12-22 12:00:00
+11,7,14,11,2021-12-17 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-23 3:33:00,2021-12-22 12:00:00
+12,8,15,12,2021-12-18 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-24 3:33:00,2021-12-22 12:00:00
+13,9,16,13,2021-12-19 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-25 3:33:00,2021-12-23 12:00:00
+14,9,17,14,2021-12-20 3:33:30,5,Arrived in perfect condition,5,Nice person,2021-12-26 3:33:00,2021-12-24 12:00:00
+15,9,17,15,2021-12-21 3:33:30,4,"Seller was good, game was ok",4,Good person,2021-12-27 3:33:00,2021-12-25 12:00:00
+16,10,17,16,2021-12-22 3:33:30,3,Condition not as listed,3,Ok person,2021-12-28 3:33:00,2021-12-26 12:00:00
+17,10,18,17,2021-12-23 3:33:30,2,Terrible communication,2,Bad person,2021-12-28 3:33:00,2021-12-27 12:00:00
+18,10,18,18,2021-12-24 3:33:30,1,Just awful,1,Terrible person,2021-12-22 3:33:00,2021-12-22 15:33:00
+19,19,11,19,2021-12-25 3:33:30,4,"Seller was good, game was ok",3,Good person,2021-12-22 3:33:00,2021-12-23 15:33:00
+20,19,12,20,2021-12-26 3:33:30,4,"Seller was good, game was ok",3,Good person,2021-12-23 3:33:00,2021-12-24 15:33:00
+21,19,13,21,2021-12-27 3:33:30,4,"Seller was good, game was ok",5,Good person,2021-12-24 3:33:00,2021-12-25 15:33:00
+22,19,14,22,2021-12-28 3:33:30,3,"Seller was good, game was ok",4,Good person,2021-12-25 3:33:00,2021-12-26 15:33:00
+23,20,15,23,2021-12-29 3:33:30,3,"Seller was good, game was ok",5,Good person,2021-12-26 3:33:00,2021-12-27 15:33:00
+24,20,15,24,2021-12-30 3:33:30,3,"Seller was good, game was ok",4,Good person,2021-12-27 3:33:00,2021-12-28 15:33:00
+25,20,16,25,2021-12-31 3:33:30,4,"Seller was good, game was ok",2,Good person,2021-12-28 3:33:00,2021-12-29 15:33:00
