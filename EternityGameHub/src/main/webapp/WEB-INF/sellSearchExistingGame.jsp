@@ -44,7 +44,7 @@
 		</c:when>
 	
 	</c:choose>	
-	<input type="hidden" name="alreadyInGames.id" value="${alreadyInGames.id}"/>
+
 	</div>
 		<!-- Not seeing what you're looking for? -->
 		<!-- add catch for when first coming to page that user doesnt have option to add game or see
