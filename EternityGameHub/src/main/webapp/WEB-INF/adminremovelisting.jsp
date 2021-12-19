@@ -14,27 +14,33 @@
 	</ul>
 </nav>
 
-<tbody class="adminRemoveListingListings">
+<body class="adminRemoveListingListings">
+	<table class="listingtable">
 		<c:choose>
 			<c:when test="${! empty allGames}">
 			<h2>Active Listings</h2>
-				<ul class="adminRemoveListingItems">
-					<c:forEach var="item" items="${allGames}">
-					<c:choose>
-							<c:when test="${item.available}">
-								<tr>
-									<td>${item.game.title} </td>
-									<td><fmt:formatNumber type="currency" value="${item.salePrice}"/> Seller ${item.user.username}</td>
-									<td class="adminRemoveListingButton"><form action="removeGameInventoryItem.do" method="GET">
-											<input type="submit" value="Remove">
-											<input type="hidden" value="${item.id}" name="id">
-										</form></td>
-								</tr>
-							</c:when>
-							</c:choose>
-					</c:forEach>
-				</ul>
+				<div class="individuallisting">
+					<ul class="adminRemoveListingItems">
+						<c:forEach var="item" items="${allGames}">
+						<c:choose>
+								<c:when test="${item.available}">
+									<tr>
+										<td>${item.game.title} </td>
+										<td><fmt:formatNumber type="currency" value="${item.salePrice}"/></td>
+										<td>Seller ${item.user.username}</td>
+										
+										<td class="adminRemoveListingButton"><form action="removeGameInventoryItem.do" method="GET">
+												<input type="submit" value="Remove">
+												<input type="hidden" value="${item.id}" name="id">
+											</form></td>
+									</tr>
+								</c:when>
+								</c:choose>
+						</c:forEach>
+					</ul>
+				</div>
 			</c:when>
 		</c:choose>
-</tbody>
+	</table>
+</body>
 </html>
