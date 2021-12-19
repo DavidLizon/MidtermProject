@@ -32,7 +32,6 @@ body{
   padding: .5em;
   font-size: 1em;
   list-style-type: none;
-
   display: flex;
   justify-content: space-between;
   height: auto;
@@ -71,7 +70,7 @@ button{
   position: relative;
   float: left;
   color: limegreen;
-  background-color: yellow;
+  background-color: var(--primary-yellow);
   font-size: 600%;
   border-radius: .1em;
   margin-left: auto;
@@ -82,7 +81,7 @@ button{
   position: relative;
   float: right;
   color: limegreen;
-  background-color: yellow;
+  background-color: var(--primary-yellow);
   font-size: 600%;
   border-radius: .1em;
   margin-right: auto;
@@ -92,16 +91,12 @@ button{
 .reviews{
   padding-top: 15em;
   text-align: center;
-
 }
 
 .reviews li{
   list-style-type: none;
   margin-bottom: 3em;
 }
-
-/* loginOrCreateAccount.jsp */
-
 
 /* adminremovelisting.jsp */
 .adminRemoveListingListings h2 {
@@ -113,6 +108,55 @@ button{
 	margin-left: 30px;
 	justify-content: space-between;
 	width: 100%;
+}
+
+.adminRemoveListingListings {
+	width: 100%;
+}
+
+.admin-disable-user-table th {
+    border-left: 1px solid #cbcbcb;/*  inner column border */
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; /*to make ths where the title is really long work*/
+    padding: 0.5em 1em; /* cell padding */
+}
+
+.admin-disable-user-table thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+    left: 20px;
+}
+
+.disable-user-body h2 {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+}
+
+.disable-user-body {
+	width: 100%
+}
+
+.admin-disable-user-table {
+	text-align: left;
+}
+
+.admin-disable-user-table th {
+    border-width: 0 0 1px 0;
+    border-bottom: 1px solid #cbcbcb;
+    text-align: left;
+}
+
+.admin-disable-user-table tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}
+
+.admin-disable-user-table tbody {
+	text-indent: 20px;
 }
 
 /* adminhome.jsp */
