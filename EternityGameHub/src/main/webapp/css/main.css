@@ -115,20 +115,6 @@ button{
 	width: 100%;
 }
 
-
-
-
-
-
-
-
-	
-
-
-
-
-
-
 /* adminhome.jsp */
 .adminHomeHeader{
 	color: var(--primary-green);
@@ -139,8 +125,51 @@ button{
 	border: 3px solid var(--primary-green);
 	text-align: center;
 	position: relative; top: 2em;
-	
 }
 
 /* search.jsp */
+.searchResults{
+	margin-left: 30px;
+	justify-content: space-between;
+	width: 100%;
+}
 
+.searchResults li{
+	list-style-type: none;
+	margin-bottom: 1em;
+	position: relative; top: 2em;
+	margin-left: auto;
+}
+
+.search{
+	margin: 2em;
+	display: flex;
+}
+.game-search{
+	width: 200px;
+}
+
+.searchResults{
+	margin-left: 10em;
+	flex: 1;
+}
+
+.titleSearch{
+	margin-bottom: .2em;
+}
+
+.searchCondition{
+	margin-bottom: .2em;
+}
+
+.searchGenre{
+	margin-bottom: .2em;
+}
+
+.searchRating{
+	margin-bottom: .2em;
+}
+
+.searchPlatform{
+	margin-bottom: .2em;
+}
