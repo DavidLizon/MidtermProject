@@ -104,11 +104,15 @@ public class GameController {
 		return "sellAddListingSuccessful";
 	}
 	
+	
 	@RequestMapping(path = "addGameInventoryItem.do", params={"genres","ratings"}, method = RequestMethod.POST)
 	public String addGameInventoryItemToInventory(GameInventory gameInventoryItem, Model model, Genre genres, Rating ratings) {
 		gameInventoryItem.setAvailable(true);
+		//System.out.println(gameId + "***************************** game id");
+		System.out.println(gameInventoryItem + "********************************** game i");
 //		Game passGameToSuccessfulListingPage = gameInventoryItem.getGame();	
 		Game passGameToSuccessfulListingPage = gameDao.findGameById(gameInventoryItem.getGame().getId());	
+		//System.out.println(passGameToSuccessfulListingPage + "********************************");
 		gameInventoryItem.setGame(passGameToSuccessfulListingPage);
 		GameInventory newGameInventoryItem = gameDao.addGameInventory(gameInventoryItem);
 		System.out.println("*******************");
@@ -119,6 +123,22 @@ public class GameController {
 		model.addAttribute("ratings", ratings);
 		return "sellAddInventoryItemSuccessful";
 	}
+	//working on this one to solve game inv not being added
+//	@RequestMapping(path = "addGameInventoryItem.do", params={"genres","ratings"}, method = RequestMethod.POST)
+//	public String addGameInventoryItemToInventory(Model model, Genre genres, Rating ratings, int id) {
+//		GameInventory newAddedGameInventoryItem = new GameInventory();
+//		newAddedGameInventoryItem.setAvailable(true);
+//		model.addAttribute("newGameInventoryItemDisplayed", newAddedGameInventoryItem);
+//		Game addingThisGame = gameDao.findGameById(id);
+//		
+//		
+//		
+//		model.addAttribute("newGameInventoryItem", newAddedGameInventoryItem);
+//		model.addAttribute("game", addingThisGame);
+//		model.addAttribute("genres", genres);
+//		model.addAttribute("rating", ratings);
+//		return "sellAddInventoryItemSuccessful";
+//	}
 	
 //	@RequestMapping(path = "displayGameInfoFromSearch.do", method = RequestMethod.GET)
 //	public String displayGameInfoFromSearch(int id, Model model) {

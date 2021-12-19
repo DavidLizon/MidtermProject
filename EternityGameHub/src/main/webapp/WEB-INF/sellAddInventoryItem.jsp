@@ -23,14 +23,8 @@
 		<br>
 		Genre: ${newGame.genres}
 		<br> 
-		<%-- <label for="rating">Rating: </label>
-		<select name="rating.id">
-			<c:forEach items="${ratings}" var="rating">	
-				<option value="${rating.id}" title="${rating.description}">
-						${rating.name}
-				</option>
-			</c:forEach>
-		</select>		 --%>	
+		Rating: ${newGame.rating}
+		
 		<br>
 		
 		<form action="addGameInventoryItem.do" method="POST">
@@ -63,8 +57,9 @@
 			<input type="text" name="description"/>
 			<br>
 			<br>
-		<input type="hidden" name="genres" value="${genre.id}"/>	
-		<input type="hidden" name="ratings" value="${rating.id}"/>
+		<input type="hidden" name="genres" value="${newGame.genres}"/>
+		<input type="hidden" name="ratings" value="${newGame.rating}"/>	
+		
 		
 		
 		<input type="hidden" name="user.id" value="${user.id}"/>

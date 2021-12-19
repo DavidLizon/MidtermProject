@@ -56,7 +56,7 @@ public class GameDAOImple implements GameDAO {
 			jpql += " and gg.id = :genreId";
 		}
 		if (ratingId > 0) {
-			jpql += " and gi.rating.id = :ratingId";
+			jpql += " and gi.game.rating.id = :ratingId";
 		}
 		if (platformId > 0) {
 			jpql += " and gi.platform.id = :platformId";
