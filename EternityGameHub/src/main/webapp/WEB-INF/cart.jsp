@@ -15,10 +15,12 @@
 
 
 <c:choose>
-<c:when test="${empty gamesInCart}" >
-	<h3>Your cart is empty.</h3>
-</c:when>
-<c:otherwise>
+		<div>
+			<c:when test="${empty gamesInCart}" >
+				<h3>Your cart is empty.</h3>
+			</c:when>
+		</div>
+	<c:otherwise>
 		<table id="cart" >
 			<thead>
 				<tr>

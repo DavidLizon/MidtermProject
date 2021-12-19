@@ -19,11 +19,11 @@
 
 
 
-
+	<div class="titleSearch">
       <label for="title">Keyword search for Title or Description</label>
       <input type="text" name="title"><br>
-
-
+	</div>
+	<div class="filterOptions">
       <label for="condition">Condition</label>
       <select class="condition" name="filteredcondition">
         <option value="new">New</option>
@@ -63,15 +63,10 @@
 				</c:forEach>
 			</select>	
 		<br>
-
-    <%--  <label for="maxPlayers">Max Players</label>
-      <select class="maxPlayers" name="maxPlayers" required>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-      </select><br> --%>
+	</div>
+	<div class="searchButton">
       <input type="submit" value="Search">
+      </div>
     </form>
   </div>
   <!-- must have a selection for all fields before submitting search -->
@@ -86,9 +81,7 @@
 					<c:forEach var="item" items="${result}">
 						<c:choose>
 							<c:when test="${item.available}">
-							<!-- Need to confirm these names are correct  -->
 								<li><a href="goToItemListing.do?inventoryItemId=${item.id}">${item.game.title} <fmt:formatNumber type="currency" value="${item.salePrice}"/> </a></li>
-							<!-- Need to confirm href is correct -->
 							</c:when>
 						</c:choose>
 					</c:forEach>

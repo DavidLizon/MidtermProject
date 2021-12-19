@@ -10,6 +10,7 @@
 </head>
 <body>
 <jsp:include page="navBar.jsp"/>
+<div class=homePageContainer" >
 	<section class="buy-sell">
       <div class="container">
 
@@ -48,5 +49,6 @@
         </ul>
       </div>
     </section>
+</div>
 </body>
 </html>

@@ -11,7 +11,7 @@
 </head>
 <body>
 <jsp:include page="navBar.jsp"/>
-
+<div class="loginOrCreateAccountContainer">
 	<div class="existingUserLogin">
 		<h2>Existing User Login</h2>
 		<br>
@@ -65,7 +65,6 @@
 			<input type="submit" value="Create Account">
 		
 		</form>
-		
 			<c:choose>
 				<c:when test="${!empty emailInUse}">
 					<h5>${emailInUse}</h5>
@@ -76,8 +75,7 @@
 					<h5>${usernameInUse}</h5>
 				</c:when>
 			</c:choose>
-		
 	</div>
-
+</div>
 </body>
 </html>
