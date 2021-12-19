@@ -30,12 +30,9 @@ public class GameController {
 	@RequestMapping(path = "findByKeyword.do", method = RequestMethod.GET)
 	public String findByKeyword(String title, Model model, String[] filteredcondition, int genreId, int ratingId, int platformId) {
 		List<GameInventory> games = new ArrayList<>();
-		List<Platform> platforms = gameDao.listPlatforms();
-		model.addAttribute("platforms", platforms);
-		List<Rating> ratings = gameDao.listRatings();
-		model.addAttribute("ratings", ratings);
-		List<Genre> genres = gameDao.listGenres();
-		model.addAttribute("genres", genres);
+		model.addAttribute("platforms",gameDao.listPlatforms());
+		model.addAttribute("ratings", gameDao.listRatings());
+		model.addAttribute("genres", gameDao.listGenres());
 		games = gameDao.findGameByKeywordSearch(title, filteredcondition, genreId, ratingId, platformId);
 		model.addAttribute("result", games);
 		
@@ -102,10 +99,8 @@ public class GameController {
 	public String displayGameInventoryItem(int id, Model model) {
 		GameInventory newAddedGameInventoryItem = gameDao.displayCreatedGameInventoryItem(id);
 		model.addAttribute("newGameInventoryItemDisplayed", newAddedGameInventoryItem);
-		List<Genre> genres = gameDao.listGenres();
-		model.addAttribute("genres", genres);
-		List<Rating> ratings = gameDao.listRatings();
-		model.addAttribute("ratings", ratings);
+		model.addAttribute("genres",  gameDao.listGenres());
+		model.addAttribute("ratings", gameDao.listRatings());
 		return "sellAddListingSuccessful";
 	}
 	
