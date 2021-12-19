@@ -217,3 +217,59 @@ button{
 .searchPlatform{
 	margin-bottom: .2em;
 }
+
+/* cart.jsp */
+table#cart{
+	table-layout: fixed;
+	width: 97%;
+	border-collapse: collapse;
+	text-align: center;
+	margin: 20px;
+}
+
+tbody tr{
+	border: 2px black solid;
+}
+
+tbody tr td:first-child {
+	width: 50px;
+	max-width: 50px;
+}
+
+tbody tr td:second-child  {
+	text-align: left;
+	}
+	
+tFoot{
+	position: relative;
+	top: 5px;
+	text-align: center;
+	font-weight: 500;
+}
+
+.cartDescription .cartGame .cartGameImage {
+	float: left;
+	width:  100px;
+	height: 150px;
+	object-fit: cover;
+	margin: 10px;
+}
+
+#removeFromCart{
+	box-shadow: 5px 10px #888888;
+}
+
+.cartCompletePurchase {
+	position: relative;
+	top: -35px;
+	float: right;
+	margin-right: 115px;
+}
+
+.cartStatus {
+	text-align: center;
+	margin-top: 50px;
+	font-size: 150%;
+	
+	
+}

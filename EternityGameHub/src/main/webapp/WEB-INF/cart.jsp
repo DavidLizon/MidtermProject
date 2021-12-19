@@ -25,7 +25,6 @@
 					<tr>
 						<th></th>
 						<th><h6>Title</h6></th>
-						<th><h6>Description</h6></th>
 						<th><h6>Condition</h6></th>
 						<th><h6>Price</h6></th>
 					</tr>
@@ -36,9 +35,8 @@
 				<c:forEach items="${gamesInCart}" var="cartItem">
 					<c:set var="total" ><fmt:formatNumber type="number" value="${total + cartItem.salePrice}"/></c:set>
 					<tr class="cartGame">
-						<td class="cartGameImage"><img src="${cartItem.game.gameImageUrl}" alt="${game.title} Cover Art"></td>
+						<td><img class="cartGameImage" src="${cartItem.game.gameImageUrl}" alt="${game.title} Cover Art"></td>
 						<td class="cartGameTitle">${cartItem.game.title}</td>
-						<td class="cartGameDescription">${cartItem.description}</td>
 						<td class="cartGameCondition">
 							<c:if test="${cartItem.conditionNew}">New</c:if>
 							<c:if test="${not cartItem.conditionNew}">Used</c:if>
@@ -57,31 +55,25 @@
 					</tr>
 				</c:forEach>
 			</tbody>	
-			<tfoot>
+			<tfoot class="tFoot">
 				<tr class="cartTotal">
-					<td colspan="3" align="right">Total: </td>
-					<td><fmt:formatNumber type="currency" value="${total}"/></td>
+					<td colspan="4"></td>
+					<td>
+						Total: <fmt:formatNumber type="currency" value="${total}"/>
+						<form action="completePurchase.do" method="GET">
+							<input type="submit" value="Complete Transaction">
+						</form>
+					
+					</td>
+
 				</tr>
 			</tfoot>
-		<!-- </label> -->
 		</table>
 		</div>
 		<br>
-		<div class="cartCompletePurchase">
-			<!-- Have to confirm action & method type -->
-			<form action="completePurchase.do" method="GET">
-				<input type="submit" value="Complete Transaction">
-			</form>
-		</div>
 		
 </c:otherwise>
 </c:choose>
-
-
-
-
-
-
 
 </body>
 </html>
