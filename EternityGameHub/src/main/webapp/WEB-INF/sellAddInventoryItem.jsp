@@ -21,7 +21,10 @@
 		<br>
 		Max players: ${newGame.maxPlayers}
 		<br>
-		Genre: ${newGame.genres}
+		Genre:
+		<c:forEach items="${newGame.genres}" var="genre">
+						${genre.name}		
+			</c:forEach>
 		<br> 
 		Rating: ${newGame.rating}
 		
