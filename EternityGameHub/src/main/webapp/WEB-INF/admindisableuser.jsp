@@ -7,8 +7,9 @@
 <nav>
 	<ul class="navbar">
 		<li><a class="logo">Eternity<span>GameHub</span></a></li>
-		<li><a href="displayAllActiveGameListings.do">Active Listings</a></li>
-		<li><a href="displayAllUsers.do">Active Users</a></li>
+		<!-- <li><a href="displayAllActiveGameListings.do">Active Listings</a></li> -->
+		<li><a href="passToChangeUserEnableStatusListingPage.do">Active Users</a></li>
+		<li><a href="passToRemoveListingPage.do">Active Listings</a></li>
 		<li><a href="logout.do">Log Out</a></li>
 	</ul>
 </nav>

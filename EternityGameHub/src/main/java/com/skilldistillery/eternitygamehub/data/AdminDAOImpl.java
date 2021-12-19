@@ -9,6 +9,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.stereotype.Repository;
 
+import com.skilldistillery.eternitygamehub.entities.GameInventory;
 import com.skilldistillery.eternitygamehub.entities.User;
 
 @Repository
@@ -44,7 +45,19 @@ public class AdminDAOImpl implements AdminDAO {
 	@Override 
 	public User changeEnabledStatusOfUser(int userId) {
 		User user = em.find(User.class, userId);
-		user.setEnabled(false);
-		return user; 
+		if (user.isEnabled() == true) {
+			user.setEnabled(false);
+			return user;
+		} else {
+			user.setEnabled(true);
+			return user;
+		} 
+	}
+	
+	@Override 
+	public GameInventory removeAvailableStatusOfGame(int gameInventoryId) {
+		GameInventory gameInventoryToRemove = em.find(GameInventory.class, gameInventoryId);
+		gameInventoryToRemove.setAvailable(false);
+		return gameInventoryToRemove; 
 	}
 }
