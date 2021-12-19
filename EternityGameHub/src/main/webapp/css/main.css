@@ -98,4 +98,15 @@ button{
   margin-bottom: 3em;
 }
 
-/* loginOrCreateAccount.jsp */
+/* adminhome.jsp */
+.adminHomeHeader{
+	color: var(--primary-green);
+	font-weight: bold;
+	margin: auto;
+	width: 50%;
+	padding:10px;
+	border: 3px solid var(--primary-green);
+	text-align: center;
+	position: relative; top: 2em;
+	
+}
