@@ -113,16 +113,30 @@ button{
 	width: 100%;
 }
 
+.admin-disable-user-table th {
+    border-left: 1px solid #cbcbcb;/*  inner column border */
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible; /*to make ths where the title is really long work*/
+    padding: 0.5em 1em; /* cell padding */
+}
 
-
-
-
-
-
-
-	
-
-
+.admin-disable-user-table thead {
+    background-color: #e0e0e0;
+    color: #000;
+    text-align: left;
+    vertical-align: bottom;
+}
+ 
+.admin-disable-user-table td,
+.admin-disable-user-table th {
+    border-width: 0 0 1px 0;
+    border-bottom: 1px solid #cbcbcb;
+}
+.admin-disable-user-table tbody > tr:last-child > td {
+    border-bottom-width: 0;
+}
 
 
 
