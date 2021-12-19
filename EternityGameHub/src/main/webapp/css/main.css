@@ -100,6 +100,35 @@ button{
   margin-bottom: 3em;
 }
 
+/* loginOrCreateAccount.jsp */
+
+
+/* adminremovelisting.jsp */
+.adminRemoveListingListings h2 {
+	margin-top: 20px;
+	margin-left: 20px;
+}
+
+.listingtable {
+	margin-left: 30px;
+	justify-content: space-between;
+	width: 100%;
+}
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
 /* adminhome.jsp */
 .adminHomeHeader{
 	color: var(--primary-green);

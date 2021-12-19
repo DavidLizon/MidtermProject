@@ -13,7 +13,7 @@
 		<li><a href="logout.do">Log Out</a></li>
 	</ul>
 </nav>
-
+<body></body>
 <tbody class="adminDisableUser">
 		<c:choose>
 			<c:when test="${! empty activeUsers}">
@@ -38,4 +38,5 @@
 			</c:when>
 		</c:choose>	
 </tbody>
+</body>
 </html>
