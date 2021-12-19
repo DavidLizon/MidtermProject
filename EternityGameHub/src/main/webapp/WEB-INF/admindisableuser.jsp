@@ -7,9 +7,7 @@
 
 <head>
 <style>
-	body {
-		margin: 1em; 
-	}
+	
 	.box {
 		display:inline-block;
 		width: 100px;
@@ -28,7 +26,7 @@
 	</ul>
 </nav>
 
-<body>
+<body class="disable-user-body">
 	<table class = "admin-disable-user-table">
 		<c:choose>
 				<c:when test="${! empty activeUsers}">
@@ -45,7 +43,6 @@
 							<th>Change Status:</th> 
 					</tr></thead>
 					<c:forEach var="item" items="${activeUsers}">
-					<tbody>
 						<tr>
 							<td>${item.firstName}</td>
 							<td>${item.lastName}</td>
@@ -61,7 +58,6 @@
 										<input type="hidden" value="${item.id}" name="id">
 									</form></div></td>
 						</tr>
-					</tbody>			
 				</c:forEach>
 				</c:when>
 		</c:choose>	
