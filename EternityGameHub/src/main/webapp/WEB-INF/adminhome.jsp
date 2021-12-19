@@ -14,7 +14,7 @@
 	</ul>
 </nav>
 
-<section class="buy-sell">
+<section class="adminHomeHeader">
       <div class="container">
 	 	     <div>
 	        	<h2> WELCOME ADMIN</h2>

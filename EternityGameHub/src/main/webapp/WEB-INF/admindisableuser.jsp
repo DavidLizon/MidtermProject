@@ -14,26 +14,11 @@
 	</ul>
 </nav>
 
-<section class="buy-sell">
-      <div class="container">
-	 	     <div>
-	        	<h2> WELCOME ADMIN</h2>
-	        </div>
-	   </div>
-</section>
-
-<section class="buy-sell">
-      <div class="container">
-	 	     <div>
-	        	<h2> WELCOME ADMIN</h2>
-	        </div>
-	   </div>
-</section>
-<tbody>
+<tbody class="adminDisableUser">
 		<c:choose>
 			<c:when test="${! empty activeUsers}">
 			<h2>All Users</h2>
-				<ul>
+				<ul class="adminDisableUser-user">
 					<c:forEach var="item" items="${activeUsers}">
 						<li>First Name: ${item.firstName}</li>
 						<li>Last Name: ${item.lastName}</li>
@@ -43,7 +28,7 @@
 						<li>Role: ${item.role}</li>
 						<li>Enabled Status: ${item.enabled}</li>
 						<li><a href="http://mail.google.com/mail/u/1/?view=cm&fs=1&to=${item.email}&tf=1">CONTACT</a></li>
-						<div>
+						<div class="adminDisableUserDelete">
 								<form action="disableUser.do" method="GET">
 									<input type="submit" value="Change Enabled">
 									<input type="hidden" value="${item.id}" name="id">
