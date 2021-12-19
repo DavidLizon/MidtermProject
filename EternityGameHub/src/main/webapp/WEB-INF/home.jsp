@@ -10,7 +10,7 @@
 </head>
 <body>
 <jsp:include page="navBar.jsp"/>
-<div class=homePageContainer" >
+<div class="homePageContainer" >
 	<section class="buy-sell">
       <div class="container">
 

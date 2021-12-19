@@ -68,23 +68,25 @@ button{
 }
 
 .sell-button{
+  position: relative;
   float: left;
   color: limegreen;
   background-color: yellow;
-  font-size: 6em;
+  font-size: 600%;
   border-radius: .1em;
-  margin-left: 1em;
-  width: 3em;
+  margin-left: auto;
+  width: 40%;
 }
 
 .buy-button{
+  position: relative;
   float: right;
   color: limegreen;
   background-color: yellow;
-  font-size: 6em;
+  font-size: 600%;
   border-radius: .1em;
-  margin-right: 1em;
-  width: 3em;
+  margin-right: auto;
+  width: 40%;
 }
 
 .reviews{
@@ -110,3 +112,6 @@ button{
 	position: relative; top: 2em;
 	
 }
+
+/* search.jsp */
+
