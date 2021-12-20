@@ -536,12 +536,15 @@ tFoot{
 	text-align: left; 
 	padding: 5%;
 	display: flex;
-	justify-content: center;}
+	justify-content: center;
+	text-align: center;
+}
 
 .sell-add-inventory-item-successful-header-2 {
 	display: inline-block;
 	display: flex;
 	justify-content: center;
+	text-align: center;
 }
 
 .sell-add-inventory-item-successful-inner-group {
