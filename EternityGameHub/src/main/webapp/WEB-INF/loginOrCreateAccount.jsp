@@ -14,15 +14,18 @@
 	<div class="forms-container">
 			<div class="login-form-box">
 					<form class="login-form" action="login.do" method="POST"> <!-- Need to confirm this is the correct mapping within controller -->
-						<h2>Existing User Login</h2>
+						<h2>Existing User Login</h2><br>
+							<div class="loginUsername">
 								<label for="username">Username: </label> 
 								<input type="text" name="username" /> 
 								<br> 
-						
+							</div>
+							
+							<div class="loginPassword">
 								<label for="password">Password:</label> 
 								<input type="password" name="password" /> 
 								<br> 
-						
+							</div><br>
 								<input type="submit" value="Login">
 					</form><br>
 			<c:choose>
@@ -34,29 +37,36 @@
 					<div class="new-account-form-box">
 							<form class="new-account-form" action="createUserAccount.do" method="POST">
 								<h2>New Account Creation</h2>
-									<input type="hidden" name="user.id" value="${newUser.id}"/> 
+									<input type="hidden" name="user.id" value="${newUser.id}"/>
+									 
+									<div class="createFname">
+										<label for="firstName">First Name: </label> 
+										<input required type="text" name="firstName" /> <br>
+									</div>
 									
-									<label for="firstName">First Name: </label> 
-									<input required type="text" name="firstName" /> 
-									<br> 
+									<div class="createLname">
+										<label for="lastName">Last Name: </label> 
+										<input required type="text" name="lastName" /> <br> 
+									</div>
 									
-									<label for="lastName">Last Name: </label> 
-									<input required type="text" name="lastName" /> 
-									<br> 
+									<div class="createUsername">
+										<label for="username">Username: </label> 
+										<input required type="text" name="username" /> <br> 
+									</div>
 									
-									<label for="username">Username: </label> 
-									<input required type="text" name="username" /> 
-									<br> 
+									<div class="createPassword">
+										<label for="password">Password:</label> 
+										<input required type="password" name="password" /> <br> 
+									</div>
 									
-									<label for="password">Password:</label> 
-									<input required type="password" name="password" /> 
-									<br> 
+									<div class="createEmail">
+										<label for="email">Email: </label> 
+										<input required type="text" name="email" /><br> 
+									</div><br>
 									
-									<label for="email">Email: </label> 
-									<input required type="text" name="email" />
-									<br> 
-									
-									<input type="submit" value="Create Account">
+									<div class="createSubmit">
+										<input type="submit" value="Create Account">
+									</div>
 							</form>
 				<c:choose>
 					<c:when test="${!empty emailInUse}">
