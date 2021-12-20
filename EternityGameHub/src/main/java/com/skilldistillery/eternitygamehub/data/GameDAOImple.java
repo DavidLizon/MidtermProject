@@ -25,33 +25,38 @@ public class GameDAOImple implements GameDAO {
 	private EntityManager em;
 
 	@Override
-	public List<GameInventory> findGameByKeywordSearch(String keyword, String[] filteredcondition, int genreId, int ratingId, int platformId) {
+	public List<GameInventory> findGameByKeywordSearch(String keyword, String[] filteredcondition, int genreId,
+			int ratingId, int platformId) {
 		List<GameInventory> gamesByKeyword = new ArrayList<>();
 		String jpql = "SELECT gi FROM GameInventory gi LEFT JOIN gi.game.genres gg WHERE gi.available = true AND gi.game.title LIKE :searchkeyword";
-		
+
 		if (filteredcondition != null && filteredcondition.length > 0) {
 
-			jpql += " and ("; 
-			boolean addedOne = false; 
+			jpql += " and (";
+			boolean addedOne = false;
 			for (String filtered : filteredcondition) {
 				switch (filtered) {
-					case "new": 
-						if (addedOne) {jpql += " OR "; } 
-						jpql += " gi.conditionNew = 1 "; 
+				case "new":
+					if (addedOne) {
+						jpql += " OR ";
+					}
+					jpql += " gi.conditionNew = 1 ";
 //						jpql += " conditionNew = true "; 
-						addedOne = true;
-						break;
-					case "used": 
-						if (addedOne) {jpql += " OR "; } 
-						jpql += " gi.conditionNew = 0 "; 
+					addedOne = true;
+					break;
+				case "used":
+					if (addedOne) {
+						jpql += " OR ";
+					}
+					jpql += " gi.conditionNew = 0 ";
 //						jpql += " conditionNew = false "; 
-						addedOne = true;
-						break;
+					addedOne = true;
+					break;
 				}
-			} jpql += ")";
+			}
+			jpql += ")";
 		}
-		
-		
+
 		if (genreId > 0) {
 			jpql += " and gg.id = :genreId";
 		}
@@ -61,46 +66,37 @@ public class GameDAOImple implements GameDAO {
 		if (platformId > 0) {
 			jpql += " and gi.platform.id = :platformId";
 		}
-		
+
 		System.out.println("*******************");
 		System.out.println(jpql);
-		
+
 		TypedQuery<GameInventory> query = em.createQuery(jpql, GameInventory.class);
 		System.out.println("*******************");
 		System.out.println(query);
-		
+
 		if (genreId > 0) {
 			query.setParameter("genreId", genreId);
 		}
 		if (ratingId > 0) {
 			query.setParameter("ratingId", ratingId);
-		}	
+		}
 		if (platformId > 0) {
 			query.setParameter("platformId", platformId);
 		}
-		
-		
-		
-		
-		
+
 //		gamesByKeyword = em.createQuery(jpql, GameInventory.class)
-		gamesByKeyword = query
-				.setParameter("searchkeyword", "%" + keyword + "%")
-				.getResultList();
-		
+		gamesByKeyword = query.setParameter("searchkeyword", "%" + keyword + "%").getResultList();
+
 //		findGameByFilteredSearch(gamesByKeyword);
-		
-		
-		 
+
 		return gamesByKeyword;
 	}
-	
+
 	@Override
 	public List<Game> findAllGames() {
 		List<Game> allGames = new ArrayList<>();
 		String jpql = "Select g FROM Game g";
-		allGames = em.createQuery(jpql, Game.class)
-				.getResultList();
+		allGames = em.createQuery(jpql, Game.class).getResultList();
 		return allGames;
 	}
 
@@ -108,43 +104,60 @@ public class GameDAOImple implements GameDAO {
 	public List<GameInventory> findAllGameInventoryItems() {
 		List<GameInventory> allGames = new ArrayList<>();
 		String jpql = "Select gi FROM GameInventory gi";
-		allGames = em.createQuery(jpql, GameInventory.class)
-				.getResultList();
+		allGames = em.createQuery(jpql, GameInventory.class).getResultList();
 		return allGames;
 	}
-	
+
 	@Override
 	public List<Game> findTitlesInGames(String title) {
 		List<Game> gamesByTitleSearch = new ArrayList<>();
 		String jpql = "SELECT g FROM Game g WHERE g.title LIKE :gametitle ORDER BY g.title ASC";
-		gamesByTitleSearch = em.createQuery(jpql, Game.class)
-				.setParameter("gametitle", "%" + title + "%")
+		gamesByTitleSearch = em.createQuery(jpql, Game.class).setParameter("gametitle", "%" + title + "%")
 				.getResultList();
 		return gamesByTitleSearch;
 	}
-	
+
 	public GameInventory displaySelectedGameFromSearch(int inventoryItemId) {
 		GameInventory selectedGame = em.find(GameInventory.class, inventoryItemId);
 		return selectedGame;
 	}
-	
-	
-	
+
 	@Override
 	public Game addGame(Game game) {
 		List<Game> allGames = findAllGames();
 		for (Game game2 : allGames) {
 			if (game2.getTitle().equalsIgnoreCase(game.getTitle())) {
-				return null;
+				game = null;
+				break;
 			}
-		} em.persist(game);
+		}
+		if (game != null) {
+			em.persist(game);
+		}
+		return game;
+	}
+	
+	@Override
+	public Game addGame(Game game, int genreId) {
+		List<Game> allGames = findAllGames();
+		for (Game game2 : allGames) {
+			if (game2.getTitle().equalsIgnoreCase(game.getTitle())) {
+				game = null;
+				break;
+			}
+		}
+		if (game != null) {
+			Genre genre = findGenreById(genreId);
+			game.addGenre(genre);
+			em.persist(game);
+		}
 		return game;
 	}
 
 	@Override
 	public GameInventory addGameInventory(GameInventory newGameInventoryItem) {
 		em.persist(newGameInventoryItem);
-		return newGameInventoryItem; 
+		return newGameInventoryItem;
 	}
 
 	@Override
@@ -153,14 +166,13 @@ public class GameDAOImple implements GameDAO {
 		recentlyAddedGameInventoryItem = em.find(GameInventory.class, id);
 		return recentlyAddedGameInventoryItem;
 	}
-	
+
 	@Override
 	public List<GameInventory> findGameByFilteredSearch(List<GameInventory> gamesByKeyword, Boolean conditionNew) {
 		List<GameInventory> filteredGames = new ArrayList<>();
 		String jpql = "SELECT gi FROM GameInventory gi WHERE gi.game.title LIKE :searchkeyword OR gi.game.description LIKE :searchkeyword";
 		gamesByKeyword = em.createQuery(jpql, GameInventory.class)
-				.setParameter("searchkeyword", "%" + conditionNew + "%")
-				.getResultList();
+				.setParameter("searchkeyword", "%" + conditionNew + "%").getResultList();
 		return filteredGames;
 	}
 
@@ -192,8 +204,7 @@ public class GameDAOImple implements GameDAO {
 	public List<GameInventory> listGamesInCart(int inventoryItemId) {
 		List<GameInventory> userCart = new ArrayList<>();
 		String jpql = "Select gi from GameInventory gi where gi.id = :gameinventoryid";
-		userCart = em.createQuery(jpql, GameInventory.class)
-				.setParameter("gameinventoryid", inventoryItemId)
+		userCart = em.createQuery(jpql, GameInventory.class).setParameter("gameinventoryid", inventoryItemId)
 				.getResultList();
 		return userCart;
 	}
@@ -203,9 +214,8 @@ public class GameDAOImple implements GameDAO {
 		List<GameInventory> gameInventoryItemsToBuy = new ArrayList<>();
 		String jpql = "Select gi from GameInventory gi where gi.id = :gameinventoryid";
 		gameInventoryItemsToBuy = em.createQuery(jpql, GameInventory.class)
-				.setParameter("gameinventoryid", gameInventoryItemsToBuy)
-				.getResultList();
-		 
+				.setParameter("gameinventoryid", gameInventoryItemsToBuy).getResultList();
+
 		return gameInventoryItemsToBuy;
 	}
 
@@ -214,7 +224,7 @@ public class GameDAOImple implements GameDAO {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
 	@Override
 	public Game findGameById(int id) {
 		Game findGameToPassToSell = new Game();
@@ -225,21 +235,19 @@ public class GameDAOImple implements GameDAO {
 	public GameInventory findGameInventoryById(int id) {
 		GameInventory findGameToAddToCart = new GameInventory();
 		String jpql = "Select gi from GameInventory gi where gi.id = :findGameToAddToCart";
-		findGameToAddToCart = em.createQuery(jpql, GameInventory.class)
-				.setParameter("findGameToAddToCart", id)
+		findGameToAddToCart = em.createQuery(jpql, GameInventory.class).setParameter("findGameToAddToCart", id)
 				.getSingleResult();
 		return findGameToAddToCart;
 	}
-	
+
 	public Genre findGenreById(int id) {
 		Genre findGenreToAddToGame = new Genre();
 		String jpql = "Select g from Genre g where g.id = :findGenreToAddToGame";
-		findGenreToAddToGame = em.createQuery(jpql, Genre.class)
-				.setParameter("findGenreToAddToGame", id)
+		findGenreToAddToGame = em.createQuery(jpql, Genre.class).setParameter("findGenreToAddToGame", id)
 				.getSingleResult();
 		return findGenreToAddToGame;
 	}
-	
+
 //	@Override
 //	public Game addGameInfoFromId(int id) {
 //		Game game = new Game();
@@ -250,9 +258,5 @@ public class GameDAOImple implements GameDAO {
 //		 
 //		return userCart;
 //	}
-	
-	
-
-
 
 }

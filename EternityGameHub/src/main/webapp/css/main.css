@@ -278,8 +278,6 @@ tFoot{
 	font-size: 150%;
 }
 
-<<<<<<< HEAD
-=======
 /* loginOrCreateAccount.jsp */
 
 .forms-container {
@@ -478,7 +476,6 @@ tFoot{
 	height: auto;
 }
 
->>>>>>> 9e5200d325fa1f117152068c06cde39196682779
 /* sellsearchexistinggame.jsp */
 .sellsearchexisitnggame{
 	margin: 2em;
@@ -569,29 +566,32 @@ tFoot{
 	padding-left: 2%;
 }
 
+.sellAddTitleImg{
+	justify-content: center;
+	text-align: center;
+}
+
+.sellAddTitleImg h1{
+	justify-content: center;
+	text-align: center;
+}
+
+/* sell add successful */
 .sell-add-inventory-item-successful-header-1 label{
 	font-weight: 900%;
 	font-size: 300%;
 	text-align: left; 
 	padding: 5%;
 	display: flex;
-<<<<<<< HEAD
-	display: flex;
-	justify-content: center;}
-=======
 	justify-content: center;
 	text-align: center;
 }
->>>>>>> 9e5200d325fa1f117152068c06cde39196682779
 
 .sell-add-inventory-item-successful-header-2 {
 	display: inline-block;
 	display: flex;
 	justify-content: center;
-<<<<<<< HEAD
-=======
 	text-align: center;
->>>>>>> 9e5200d325fa1f117152068c06cde39196682779
 }
 
 .sell-add-inventory-item-successful-inner-group {
@@ -611,6 +611,8 @@ tFoot{
 	width: 70%;	
 	margin-bottom: 3%;
 } 
+
+
 
 
 
