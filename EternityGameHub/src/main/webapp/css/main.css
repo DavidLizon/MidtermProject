@@ -317,5 +317,30 @@ tFoot{
 	padding: 20px;
 }
 
+/* sellsearchexistinggame.jsp */
+.sellsearchexisitnggame{
+	margin: 2em;
+	display: flex;
+}
 
+.sellsearchexistinggametitlesearch{
+	width: 200px;
+}
+
+.sellsearchexisitinggameresults{
+	margin-left: 10em;
+	flex: 1;
+	margin-left: 10em;
+	justify-content: space-between;
+	width: 100%;
+}
+
+
+
+.sellsearchexisitinggameresults li{
+	list-style-type: none;
+	margin-bottom: 1em;
+	position: relative; top: 2em;
+	margin-left: auto;
+}
 
