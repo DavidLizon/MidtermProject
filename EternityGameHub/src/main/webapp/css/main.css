@@ -417,5 +417,28 @@ tFoot{
 	margin-left: 11em;
 }
 
+/* gameinfo.jsp */
+.gameinfo{
+	margin: 2em;
+	display: flex;
+}
+
+.gameinfoGame{
+	width: 200px;
+}
+
+.gameInfoInventory{
+	margin-left: 10em;
+	flex: 1;
+	margin-left: 10em;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.gameinfoGame img{
+	width: 100%;
+	height: auto;
+}
+
 
 

@@ -76,14 +76,14 @@ public class GameController {
 		Game newGame = new Game();
 		game.addGenre(gameDao.findGenreById(genreId));
 		newGame = gameDao.addGame(game);
+		System.out.println("NEWGAME: " + newGame);
 		if (newGame == null) {
 			String gameAlreadyExists = "Unable to add game. Game with same title already exists.";
 			model.addAttribute("gameExists", gameAlreadyExists); 
 			return "addGame";
 		} else {
-			model.addAttribute("newGame", newGame);
-			model.addAttribute("platforms", gameDao.listPlatforms());
-			return "sellAddInventoryItem";			
+			int id = newGame.getId();
+			return "redirect:populateItem.do?id="+id;			
 		}
 	}
 

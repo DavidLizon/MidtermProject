@@ -68,7 +68,7 @@
 		<!-- need to add image upload field -->
 				If you know the URL image location enter it below: <br>
 				<label for="gameImageUrl">Image URL: </label>
-					<input type="text" name="gameImageUrl" />
+					<input type="text" name="gameImageUrl" value="https://i.imgur.com/a3H171W.png"/>
 				<br>
 			</div>
 	
