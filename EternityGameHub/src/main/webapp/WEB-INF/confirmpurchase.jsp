@@ -5,10 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <jsp:include page="bootstrapHead.jsp" />
-<title>Insert title here</title>
+<title>Purchase Confirmation</title>
 </head>
 <body>
 <jsp:include page="navBar.jsp" />
-<h1>Thank you for shopping with EGH!</h1>
+	<div class="confirmPurchaseMessage">
+		<h1>Thank you for shopping with EGH!</h1>
+	</div>
 </body>
 </html>

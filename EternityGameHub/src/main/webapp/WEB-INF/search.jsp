@@ -12,25 +12,25 @@
 </head>
 <body>
 	<jsp:include page="navBar.jsp" />
-
+<div class="search">
   <div class="game-search">
     <!-- have this div all on left or right side -->
     <form class="search-criteria" action="findByKeyword.do" method="GET">
 
-
-
 	<div class="titleSearch">
-      <label for="title">Keyword search for Title or Description</label>
-      <input type="text" name="title"><br>
+      <label for="title">Search by Title</label>
+      <input type="text" name="title"><br><br>
 	</div>
-	<div class="filterOptions">
-      <label for="condition">Condition</label>
-      <select class="condition" name="filteredcondition">
-        <option value="new">New</option>
-        <option value="used">Used</option>
-      </select><br>
+	
+	<div class="searchCondition">
+    	<label for="condition">Condition</label>
+    		<select class="condition" name="filteredcondition">
+        		<option value="new">New</option>
+        		<option value="used">Used</option>
+      		</select><br><br>
+    </div>
 
-		
+	<div class = searchGenre>
 		<label for="genre">Genre: </label>
 			<select name="genreId">
 				<option value=0>--Choose Genre--</option>
@@ -40,9 +40,11 @@
 					</option>
 				</c:forEach>
 			</select>	
-		<br>
-      
-       <label for="rating">Rating: </label>
+		<br><br>
+      </div>
+      	
+      <div class="searchRating">
+      	<label for="rating">Rating: </label>
 			<select name="ratingId">
 			<option value=0>--Choose Rating--</option>
 				<c:forEach items="${ratings}" var="rating">
@@ -50,10 +52,11 @@
 							${rating.name}
 					</option>
 				</c:forEach>
-			</select>	
-		<br>
-      
-      <label for="platform">Platform: </label>
+			</select>	<br><br>
+	  </div>
+	  
+      <div class="searchPlatform">
+      	<label for="platform">Platform: </label>
 			<select name="platformId">
 			<option value=0>--Choose Platform--</option>
 				<c:forEach items="${platforms}" var="platform">
@@ -61,12 +64,12 @@
 							${platform.name}
 					</option>
 				</c:forEach>
-			</select>	
-		<br>
-	</div>
-	<div class="searchButton">
-      <input type="submit" value="Search">
-      </div>
+			</select><br><br>
+	   </div>
+	   
+	   <div class="searchButton">
+      		<input type="submit" value="Search">
+       </div>
     </form>
   </div>
   <!-- must have a selection for all fields before submitting search -->
@@ -90,5 +93,6 @@
 			</c:when>
 		</c:choose>
 	</div>
+</div>
 </body>
 </html>
