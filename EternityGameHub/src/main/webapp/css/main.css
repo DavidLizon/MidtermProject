@@ -335,12 +335,87 @@ tFoot{
 	width: 100%;
 }
 
-
-
 .sellsearchexisitinggameresults li{
 	list-style-type: none;
 	margin-bottom: 1em;
 	position: relative; top: 2em;
 	margin-left: auto;
 }
+
+/* addgame.jsp */
+.addgamebody{
+	margin-left: 15em;
+}
+.addgamebody form{
+	width: 80%;
+}
+
+.addgamebody label, input{
+	display: inline-block;
+}
+
+.addgamebody label{
+	width: 30%;
+	text-align: right;
+}
+
+.addgamebody label+input+select{
+	width: 30%;
+	margin: 0 30% 0 4%;
+}
+
+.addgamebody input+input{
+	float: right;
+}
+.addgametitle{
+	margin-bottom: 1em;
+}
+
+.accountinfoWholePage {
+	border: 1px black solid;
+	margin: 20%;
+	margin-top: 50px;
+	padding: 5%;
+	padding-top: 3%;
+	padding-left: 15%;
+}
+
+
+
+/* resetpassword.jsp */
+
+.resetPasswordForm {
+	border: 1px black solid;
+	margin: 30%;
+	margin-top: 5%;
+	padding: 5%;
+}
+
+.addgamedescription{
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.addgamemaxplayers{
+	margin-bottom: 1em;
+}
+
+.addgamegenre{
+	margin-bottom: 1em;
+}
+
+.addgamerating{
+	margin-bottom: 1em;
+}
+
+.addgameimage{
+	margin-bottom: 1em;
+}
+
+.addgamesubmit{
+	margin-bottom: 1em;
+	margin-left: 11em;
+}
+
+
 
