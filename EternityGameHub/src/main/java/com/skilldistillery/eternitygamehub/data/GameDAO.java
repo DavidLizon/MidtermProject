@@ -39,8 +39,6 @@ public interface GameDAO {
 
 	public List<GameInventory> displayGameInfoById(int id);
 
-	public Game addGameInfoFromId(int id);
-
 	Game findGameById(int id);
 
 	public GameInventory findGameInventoryById(int id);

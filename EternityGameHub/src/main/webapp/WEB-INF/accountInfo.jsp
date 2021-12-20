@@ -25,8 +25,6 @@
 							<input required type="text" name="lastName" value = "${user.lastName}"/><br> 
 						<label for="username">Username: </label> 
 							<input required readonly type="text" name="username" value = "${user.username}"/><br> 
-						<label for="password">Password: </label> 
-							<input required type="text" name="password" value = "${user.password}"/><br>  
 					 	<label for="email">Email: </label> 
 					 		<input required type="text" name="email" value = "${user.email}"/><br> 
 					</div>

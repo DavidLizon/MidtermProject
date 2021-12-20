@@ -3,8 +3,6 @@ package com.skilldistillery.eternitygamehub.controllers;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +13,6 @@ import com.skilldistillery.eternitygamehub.data.GameDAO;
 import com.skilldistillery.eternitygamehub.entities.Game;
 import com.skilldistillery.eternitygamehub.entities.GameInventory;
 import com.skilldistillery.eternitygamehub.entities.Genre;
-import com.skilldistillery.eternitygamehub.entities.Platform;
 import com.skilldistillery.eternitygamehub.entities.Rating;
 
 @Controller
@@ -23,9 +20,6 @@ public class GameController {
 
 	@Autowired
 	private GameDAO gameDao;
-
-//	<input type = checkbox name = "filteredcondition" value ="new">
-//	<input type = checkbox name = "filteredcondition" value ="rentable">
 
 	@RequestMapping(path = "findByKeyword.do", method = RequestMethod.GET)
 	public String findByKeyword(String title, Model model, String[] filteredcondition, int genreId, int ratingId, int platformId) {
@@ -110,53 +104,13 @@ public class GameController {
 		Game gameToList = gameDao.findGameById(gameID);
 		gameInventoryItem.setGame(gameToList);
 		Game passGameToSuccessfulListingPage = gameDao.findGameById(gameID);
-		
-		System.out.println("gameInventoryItem: " + gameInventoryItem);
-		System.out.println(gameID + "********************************** gameID");
-		System.out.println("GAME: " + passGameToSuccessfulListingPage + "********************************");
-		System.out.println("GAME INVENTORY: " + gameInventoryItem + "********************************");
-		
 		gameInventoryItem.setGame(passGameToSuccessfulListingPage);
 		gameInventoryItem.setAvailable(true);
 		GameInventory newGameInventoryItem = gameDao.addGameInventory(gameInventoryItem);
-		
-		System.out.println("*******************");
-		System.out.println(gameInventoryItem);
-		
 		model.addAttribute("newGameInventoryItem", newGameInventoryItem);
 		model.addAttribute("game", passGameToSuccessfulListingPage);
 		model.addAttribute("genres", genres);
 		model.addAttribute("ratings", ratings);
 		return "sellAddInventoryItemSuccessful";
-	}
-	//working on this one to solve game inv not being added
-//	@RequestMapping(path = "addGameInventoryItem.do", params={"genres","ratings"}, method = RequestMethod.POST)
-//	public String addGameInventoryItemToInventory(Model model, Genre genres, Rating ratings, int id) {
-//		GameInventory newAddedGameInventoryItem = new GameInventory();
-//		newAddedGameInventoryItem.setAvailable(true);
-//		model.addAttribute("newGameInventoryItemDisplayed", newAddedGameInventoryItem);
-//		Game addingThisGame = gameDao.findGameById(id);
-//		
-//		
-//		
-//		model.addAttribute("newGameInventoryItem", newAddedGameInventoryItem);
-//		model.addAttribute("game", addingThisGame);
-//		model.addAttribute("genres", genres);
-//		model.addAttribute("rating", ratings);
-//		return "sellAddInventoryItemSuccessful";
-//	}
-	
-//	@RequestMapping(path = "displayGameInfoFromSearch.do", method = RequestMethod.GET)
-//	public String displayGameInfoFromSearch(int id, Model model) {
-//		List <GameInventory> displayGameItemInGameInfo = gameDao.displayGameInfoById(id);
-//		model.addAttribute("gameItemInGameInfo", displayGameItemInGameInfo);
-//		return "gameInfo";
-//	}
-	
-	@RequestMapping(path = "sellSearchGameToAddInventoryItem.do", method = RequestMethod.GET)
-	public String passGameToSellAddInventoryItem(Integer id, Model model) {
-		Game passingGameToSellInventory = gameDao.addGameInfoFromId(id);
-		
-		return "sellAddInventoryItem";
 	}
 }

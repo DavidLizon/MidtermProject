@@ -37,7 +37,6 @@
 							<th>Username: </th>
 							<th>Email: </th>
 							<th>Account Created: </th>
-							<th>Role: </th>
 							<th>Enabled Status:</th>
 							<th>Contact</th>
 							<th>Change Status:</th> 
@@ -49,7 +48,6 @@
 							<td>${item.username}</td>
 							<td>${item.email}</td>
 							<td>${item.accountCreated}</td>
-							<td>${item.role}</td>
 							<td>${item.enabled}</td>
 							<td><a href="http://mail.google.com/mail/u/1/?view=cm&fs=1&to=${item.email}&tf=1">EMAIL</a></td>
 							<td><div class="adminDisableUserDelete">

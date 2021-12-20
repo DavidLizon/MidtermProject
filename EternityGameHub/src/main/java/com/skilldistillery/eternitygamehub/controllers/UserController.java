@@ -31,12 +31,7 @@ public class UserController {
 		return "sellSearchExistingGame";
 	}
 
-//	@RequestMapping(path = "goToAddGame.do") // testmapping
-//	public String addNewGameButton() {
-//		return "addGame";
-//	}
-
-	@RequestMapping(path = "gameLinkToSAII.do") // testmapping
+	@RequestMapping(path = "gameLinkToSAII.do")
 	public String gameLinkClicked() {
 		return "sellAddInventoryItem";
 	}
@@ -49,7 +44,6 @@ public class UserController {
 		return "accountinfo";
 	}
 
-	// what is this method doing??????
 	@RequestMapping(path = {"login.do"}, method = RequestMethod.GET)
 	public String getLogin(HttpSession session, User user, Model model) {
 		if (session.getAttribute("user") != null) {
@@ -62,7 +56,7 @@ public class UserController {
 	@RequestMapping(path = {"login.do"}, method = RequestMethod.POST)
 	public String postLogin(User user, HttpSession session, Model model) {
 		User u = userDao.getUserByUserNameAndPassword(user.getUsername(), user.getPassword());
-		if (u != null) {
+		if (u != null && u.isEnabled()) {
 			if (u.getId() == 1) {
 				session.setAttribute("admin", u);
 				model.addAttribute("admin", u);
@@ -95,7 +89,6 @@ public class UserController {
 			return "loginOrCreateAccount";
 		}
 		User sessionUser = (User) session.getAttribute("user");
-		System.out.println("**************" + user.getEmail() + "*****************" );
 		if(userDao.checkIfEmailIsInUseAlready(user) && !sessionUser.getEmail().equals(user.getEmail())) {
 			String emailInUse = "There is already an account with that email, please use a different email";
 			model.addAttribute("emailInUseAlready", emailInUse);
@@ -112,7 +105,7 @@ public class UserController {
 
 	@RequestMapping(path = "createUserAccount.do", method = RequestMethod.POST)
 	public String createNewUserAccount(User user, HttpSession session, Model model) throws Exception {
-		model.addAttribute("newUser", new User()); // what is this doing?
+		model.addAttribute("newUser", new User()); 
 		if (userDao.checkIfEmailIsInUseAlready(user)) {
 			String emailInUse = "Sorry, an account using this email has already been made";
 			model.addAttribute("emailInUse", emailInUse);

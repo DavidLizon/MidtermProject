@@ -53,10 +53,6 @@
 		</c:choose>	
 	
 		</div>
-		<!-- Not seeing what you're looking for? -->
-		<!-- add catch for when first coming to page that user doesnt have option to add game or see
-		this message prior to doing 1 search first??????? -->
-	
 	</div>
 </body>
 </html>

@@ -23,7 +23,7 @@
 			<div class = "sell-add-inventory-item-successful-header-2">	
 			<img src="${game.gameImageUrl}" alt="${game.title} Cover Art"></div></div>
 		 
-			<div class="sell-add-inventory-item-successful-inner-group">Description:<br>${game.description}</div>
+			<div class="sell-add-inventory-item-successful-inner-group">Game Description:<br>${game.description}</div>
 		 	
 			<div class="sell-add-inventory-item-successful-inner-group">Max players: ${game.maxPlayers} </div>
 		 
@@ -45,7 +45,7 @@
 				</c:choose></div>
 		 
 		 	
-			<div class="sell-add-inventory-item-successful-inner-group"> Description: <br>
+			<div class="sell-add-inventory-item-successful-inner-group"> User Description: <br>
 			${newGameInventoryItem.description} </div>
 	</div>	
 </body>

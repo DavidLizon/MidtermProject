@@ -60,6 +60,7 @@ public class UserDAOImpl implements UserDAO {
 	@Override
 	public User createNewUser(User user) {
 		User newUser = user;
+		user.setEnabled(true);
 		em.persist(newUser);
 		return newUser;
 	}

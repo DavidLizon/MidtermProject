@@ -450,7 +450,7 @@ tFoot{
 
 .addgamesubmit{
 	margin-bottom: 1em;
-	margin-left: 100em;
+	margin-left: 11em;
 	
 }
 
@@ -570,6 +570,8 @@ tFoot{
 .sellAddTitleImg{
 	justify-content: center;
 	text-align: center;
+	width: 100%;
+	height: auto;
 }
 
 .sellAddTitleImg h1{

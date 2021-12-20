@@ -1,7 +1,6 @@
 package com.skilldistillery.eternitygamehub.data;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -67,12 +66,7 @@ public class GameDAOImple implements GameDAO {
 			jpql += " and gi.platform.id = :platformId";
 		}
 
-		System.out.println("*******************");
-		System.out.println(jpql);
-
 		TypedQuery<GameInventory> query = em.createQuery(jpql, GameInventory.class);
-		System.out.println("*******************");
-		System.out.println(query);
 
 		if (genreId > 0) {
 			query.setParameter("genreId", genreId);
@@ -83,12 +77,7 @@ public class GameDAOImple implements GameDAO {
 		if (platformId > 0) {
 			query.setParameter("platformId", platformId);
 		}
-
-//		gamesByKeyword = em.createQuery(jpql, GameInventory.class)
 		gamesByKeyword = query.setParameter("searchkeyword", "%" + keyword + "%").getResultList();
-
-//		findGameByFilteredSearch(gamesByKeyword);
-
 		return gamesByKeyword;
 	}
 
@@ -219,11 +208,6 @@ public class GameDAOImple implements GameDAO {
 		return gameInventoryItemsToBuy;
 	}
 
-	@Override
-	public Game addGameInfoFromId(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public Game findGameById(int id) {
@@ -247,16 +231,5 @@ public class GameDAOImple implements GameDAO {
 				.getSingleResult();
 		return findGenreToAddToGame;
 	}
-
-//	@Override
-//	public Game addGameInfoFromId(int id) {
-//		Game game = new Game();
-//		String jpql = "Select gi from GameInventory gi where gi.id = :gameinventoryid";
-//		userCart = em.createQuery(jpql, GameInventory.class)
-//				.setParameter("gameinventoryid", inventoryItemId)
-//				.getResultList();
-//		 
-//		return userCart;
-//	}
 
 }
