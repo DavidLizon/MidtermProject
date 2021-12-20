@@ -566,6 +566,17 @@ tFoot{
 	padding-left: 2%;
 }
 
+.sellAddTitleImg{
+	justify-content: center;
+	text-align: center;
+}
+
+.sellAddTitleImg h1{
+	justify-content: center;
+	text-align: center;
+}
+
+/* sell add successful */
 .sell-add-inventory-item-successful-header-1 label{
 	font-weight: 900%;
 	font-size: 300%;
@@ -600,6 +611,8 @@ tFoot{
 	width: 70%;	
 	margin-bottom: 3%;
 } 
+
+
 
 
 
