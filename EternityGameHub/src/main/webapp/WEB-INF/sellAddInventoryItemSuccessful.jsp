@@ -9,44 +9,42 @@
 <title>Listing Success! | Eternity GameHub</title>
 <jsp:include page="bootstrapHead.jsp" />
 </head>
-
 <body>
 	<jsp:include page="navBar.jsp" />
 
 
-<div class = "sell-add-inventory-item-successful">	
-			<div class = "sell-add-inventory-item-successful-header">	
-			<div class = "sell-add-inventory-item-successful-header-1">	
-			<input type="hidden" name="game.id" value="${game.id}"/>			
-			<label>Great success!<br></label>
-			<label> You've successfully listed ${game.title} for sale!</label></div>
-			<div class = "sell-add-inventory-item-successful-header-2">	
-			<img src="${game.gameImageUrl}" alt="${game.title} Cover Art"></div></div>
-		 
-			<div class="sell-add-inventory-item-successful-inner-group">Description:<br>${game.description}</div>
-		 	
-			<div class="sell-add-inventory-item-successful-inner-group">Max players: ${game.maxPlayers} </div>
-		 
-			<div class="sell-add-inventory-item-successful-inner-group">Genre: 
-				<c:forEach items="${game.genres}">
-				${game.genres.name}
-				</c:forEach></div>
-		
-			<div class="sell-add-inventory-item-successful-inner-group">Rating: ${game.rating.name} </div>			
-		 
-			<div class="sell-add-inventory-item-successful-inner-group"> Price:
-			<fmt:formatNumber type="currency" value="${newGameInventoryItem.salePrice}"/> </div>
-		 
-		 	
-			<div class="sell-add-inventory-item-successful-inner-group"> Condition: 
-				<c:choose>
-					<c:when test="${ not newGameInventoryItem.conditionNew}"> Used </c:when>		
-					<c:when test="${newGameInventoryItem.conditionNew}"> New </c:when>		
-				</c:choose></div>
-		 
-		 	
-			<div class="sell-add-inventory-item-successful-inner-group"> Description: <br>
-			${newGameInventoryItem.description} </div>
-	</div>	
+<div>
+	<input type="hidden" name="game.id" value="${game.id}"/>
+			
+	<h1>Great success!</h1>
+	<br>
+	<h4>You've successfully listed ${game.title} for sale!</h4>
+	<br>
+		<img src="${game.gameImageUrl}" alt="${game.title} Cover Art">
+		<br>
+		Description: ${game.description}
+		<br>
+		Max players: ${game.maxPlayers}
+		<br>
+		Genre: 
+			<ul>
+				<c:forEach var="g" items="${game.genres }">
+					<li>${g.name }</li>
+				</c:forEach>
+			</ul>
+		<br> 
+		Rating: ${game.rating.name}
+		<br>			
+		Price: <fmt:formatNumber type="currency" value="${newGameInventoryItem.salePrice}"/>  
+		<br>
+		Condition: <c:choose>
+						<c:when test="${ not newGameInventoryItem.conditionNew}"> Used </c:when>		
+						<c:when test="${newGameInventoryItem.conditionNew}"> New </c:when>		
+					</c:choose>	
+		<br>
+		Description: ${newGameInventoryItem.description}
+		<br>
+</div>		
+
 </body>
 </html>

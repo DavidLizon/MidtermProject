@@ -15,7 +15,7 @@
 			<h1 class="sell-add-inventory-item-page-inner-group-header" colspan="2">${newGame.title} Info</h1>
 			<div class="sell-add-inventory-item-page-inner-group"><img height="200px" width="200px" src="${newGame.gameImageUrl}" alt="${newGame.title} Cover Art"></div>
 			<input type="hidden" name="newGame.id" value="${newGame.id}"/>
-			<div class="sell-add-inventory-item-page-inner-group">Description:</h2> <br> ${newGame.description}</div>
+			<div class="sell-add-inventory-item-page-inner-group">Description: <br> ${newGame.description}</div>
 			<div class="sell-add-inventory-item-page-inner-group">Max players:${newGame.maxPlayers}</div>
 			<div class="sell-add-inventory-item-page-inner-group">Genre:</div>
 			<div class="sell-add-inventory-item-page-inner-group"><c:forEach items="${newGame.genres}" var="genre">${genre.name}</c:forEach></div>
