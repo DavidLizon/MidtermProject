@@ -227,16 +227,16 @@ table#cart{
 	margin: 20px;
 }
 
-tbody tr{
+.items-in-cart tr{
 	border: 2px black solid;
 }
 
-tbody tr td:first-child {
+.items-in-cart tr td:first-child {
 	width: 50px;
 	max-width: 50px;
 }
 
-tbody tr td:second-child  {
+.items-in-cart tr td:second-child  {
 	text-align: left;
 	}
 	

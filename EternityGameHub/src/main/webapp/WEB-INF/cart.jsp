@@ -29,7 +29,7 @@
 						<th><h6>Price</h6></th>
 					</tr>
 				</thead>
-			<tbody>
+			<tbody class="items-in-cart">
 				<!-- <label for="cartList"> -->
 				<c:set var="total" value="0"></c:set>
 				<c:forEach items="${gamesInCart}" var="cartItem">
