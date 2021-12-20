@@ -12,13 +12,15 @@
 <body id = "sell-add-inventory-item-page">
 	<div class="sell-add-inventory-item-page-outer">
 		<div class="sell-add-inventory-item-page-inner">
-			<h1 class="sell-add-inventory-item-page-inner-group-header" colspan="2">${newGame.title} Info</h1>
-			<div><img height="200px" width="200px" src="${newGame.gameImageUrl}" alt="${newGame.title} Cover Art"></div>
+			<div class="sellAddTitleImg">
+				<h1 class="sell-add-inventory-item-page-inner-group-header" colspan="2">${newGame.title} Info</h1>
+				<div><img height="200px" width="200px" src="${newGame.gameImageUrl}" alt="${newGame.title} Cover Art"></div>
+			</div>
 			<input type="hidden" name="newGame.id" value="${newGame.id}"/>
 			<div class="sell-add-inventory-item-page-inner-group">Description: <br> ${newGame.description}</div>
 			<div class="sell-add-inventory-item-page-inner-group">Max players:${newGame.maxPlayers}</div>
-			<div class="sell-add-inventory-item-page-inner-group">Genre:</div>
-			<div class="sell-add-inventory-item-page-inner-group"><c:forEach items="${newGame.genres}" var="genre">${genre.name}</c:forEach></div>
+			<div class="sell-add-inventory-item-page-inner-group">Genre:
+			<c:forEach items="${newGame.genres}" var="genre">${genre.name}</c:forEach></div>
 			<div class="sell-add-inventory-item-page-inner-group">Rating:${newGame.rating}</div>
 		</div>
 	</div>	
