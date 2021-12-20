@@ -22,7 +22,16 @@
 				<input type="text" name="title"/>
 				<input type="submit" value="Search">
 	
-			</form>
+			</form><br>
+			<c:choose>
+				<c:when test="${! empty alreadyInGames}">
+					<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button>
+				</c:when>
+				
+				<c:when test="${!empty noGamesFound }">
+					<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button>
+				</c:when>
+			</c:choose>
 		</div>
 	
 		<div class="sellsearchexisitinggameresults">
@@ -31,14 +40,14 @@
 			<c:when test="${! empty alreadyInGames}">
 				<ul>
 					<c:forEach var="item" items="${alreadyInGames}"> 
-						<li>	<a href="populateItem.do?id=${item.id}">${item.title}</a></li> <!-- Need to confirm href is correct -->
+						<li>	<a href="populateItem.do?id=${item.id}">${item.title}</a></li>
 					</c:forEach>
 				</ul><br>
-				<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button> <!-- Not 100% sure the on click command is correct -->
+				
 			</c:when>
 			<c:when test="${!empty noGamesFound }">
-				<h3>"${noGamesFound}"</h3><br>
-				<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button> <!-- Not 100% sure the on click command is correct -->
+				<br><br>
+				<h3>${noGamesFound}</h3><br>
 				
 			</c:when>
 		</c:choose>	
