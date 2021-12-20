@@ -132,9 +132,6 @@ public class GameDAOImple implements GameDAO {
 			}
 		}
 		if (game != null) {
-			System.out.println("**==============================");
-			System.out.println(game);
-			System.out.println(game.getGenres());
 			em.persist(game);
 		}
 		return game;
@@ -152,9 +149,6 @@ public class GameDAOImple implements GameDAO {
 		if (game != null) {
 			Genre genre = findGenreById(genreId);
 			game.addGenre(genre);
-			System.out.println("**==============================");
-			System.out.println(game);
-			System.out.println(game.getGenres());
 			em.persist(game);
 		}
 		return game;

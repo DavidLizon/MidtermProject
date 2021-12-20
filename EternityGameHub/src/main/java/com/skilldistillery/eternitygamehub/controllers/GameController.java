@@ -74,10 +74,6 @@ public class GameController {
 	@RequestMapping(path = "addGame.do", method = RequestMethod.POST) //
 	public String addGameToGames(Game game, Model model, int genreId) {
 		Game newGame;
-//		Genre genre1 = new Genre();
-//		genre1.setName("TEST");
-//		genre1.setId(genreId);
-//		game.addGenre(genre1);
 		newGame = gameDao.addGame(game, genreId);
 		if (newGame == null) {
 			String gameAlreadyExists = "Unable to add game. Game with same title already exists.";
