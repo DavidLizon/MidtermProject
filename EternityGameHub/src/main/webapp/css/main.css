@@ -270,6 +270,10 @@ tFoot{
 	text-align: center;
 	margin-top: 50px;
 	font-size: 150%;
-	
-	
+}
+
+.confirmPurchaseMessage {
+	text-align: center;
+	margin-top: 50px;
+	font-size: 150%;
 }
