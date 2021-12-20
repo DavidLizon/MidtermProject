@@ -302,6 +302,15 @@ tFoot{
 	
 }
 
+.loginUsername{
+	margin-bottom: .7em;
+}
+
+.loginPassword{
+	margin-bottom: .7em;
+	margin-left: .3em;
+}
+
 .new-account-form-box {
 	margin: 20px;
 	margin-right: 5%;
@@ -315,6 +324,33 @@ tFoot{
 	border: 1px solid black;
 	margin: 10px;
 	padding: 20px;
+}
+
+.createFname{
+	margin-bottom: .7em;
+}
+
+.createLname{
+	margin-bottom: .7em;
+}
+
+.createUsername{
+	margin-bottom: .7em;
+	margin-left: .1em;
+}
+
+.createPassword{
+	margin-bottom: .7em;
+	margin-left: .4em;
+}
+
+.createEmail{
+	margin-bottom: .7em;
+	margin-left: 2.5em;
+}
+
+.createSubmit{
+	margin-left: 5.7em;
 }
 
 /* sellsearchexistinggame.jsp */
