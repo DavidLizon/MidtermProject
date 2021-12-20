@@ -73,13 +73,17 @@ public class GameController {
 
 	@RequestMapping(path = "addGame.do", method = RequestMethod.POST) //
 	public String addGameToGames(Game game, Model model, int genreId) {
-		Game newGame = new Game();
-		game.addGenre(gameDao.findGenreById(genreId));
-		newGame = gameDao.addGame(game);
-		System.out.println("NEWGAME: " + newGame);
+		Game newGame;
+//		Genre genre1 = new Genre();
+//		genre1.setName("TEST");
+//		genre1.setId(genreId);
+//		game.addGenre(genre1);
+		newGame = gameDao.addGame(game, genreId);
 		if (newGame == null) {
 			String gameAlreadyExists = "Unable to add game. Game with same title already exists.";
 			model.addAttribute("gameExists", gameAlreadyExists); 
+			model.addAttribute("genres",  gameDao.listGenres());
+			model.addAttribute("ratings", gameDao.listRatings());
 			return "addGame";
 		} else {
 			int id = newGame.getId();

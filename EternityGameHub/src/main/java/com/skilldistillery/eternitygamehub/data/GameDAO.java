@@ -19,6 +19,7 @@ public interface GameDAO {
 	public List<Game> findTitlesInGames(String title);
 	
 	public Game addGame(Game game);
+	public Game addGame(Game game, int id);
 	
 	public GameInventory addGameInventory(GameInventory newGameInventoryItem);
 	
