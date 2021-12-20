@@ -106,17 +106,23 @@ public class GameController {
 	
 	
 	@RequestMapping(path = "addGameInventoryItem.do", params={"genres","ratings"}, method = RequestMethod.POST)
-	public String addGameInventoryItemToInventory(GameInventory gameInventoryItem, Model model, Genre genres, Rating ratings) {
-		gameInventoryItem.setAvailable(true);
-		//System.out.println(gameId + "***************************** game id");
-		System.out.println(gameInventoryItem + "********************************** game i");
-//		Game passGameToSuccessfulListingPage = gameInventoryItem.getGame();	
-		Game passGameToSuccessfulListingPage = gameDao.findGameById(gameInventoryItem.getGame().getId());	
-		//System.out.println(passGameToSuccessfulListingPage + "********************************");
+	public String addGameInventoryItemToInventory(GameInventory gameInventoryItem, Integer gameID, Model model, Genre genres, Rating ratings) {
+		Game gameToList = gameDao.findGameById(gameID);
+		gameInventoryItem.setGame(gameToList);
+		Game passGameToSuccessfulListingPage = gameDao.findGameById(gameID);
+		
+		System.out.println("gameInventoryItem: " + gameInventoryItem);
+		System.out.println(gameID + "********************************** gameID");
+		System.out.println("GAME: " + passGameToSuccessfulListingPage + "********************************");
+		System.out.println("GAME INVENTORY: " + gameInventoryItem + "********************************");
+		
 		gameInventoryItem.setGame(passGameToSuccessfulListingPage);
+		gameInventoryItem.setAvailable(true);
 		GameInventory newGameInventoryItem = gameDao.addGameInventory(gameInventoryItem);
+		
 		System.out.println("*******************");
 		System.out.println(gameInventoryItem);
+		
 		model.addAttribute("newGameInventoryItem", newGameInventoryItem);
 		model.addAttribute("game", passGameToSuccessfulListingPage);
 		model.addAttribute("genres", genres);

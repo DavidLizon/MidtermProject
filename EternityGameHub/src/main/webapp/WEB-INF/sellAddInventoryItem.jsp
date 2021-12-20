@@ -68,6 +68,7 @@
 		<input type="hidden" name="user.id" value="${user.id}"/>
 		
 		<input type="submit" value="List Game for Sale"/>
+		<input type="hidden" name="gameID" value="${newGame.id}"/>	
 		
 		</form>
 
