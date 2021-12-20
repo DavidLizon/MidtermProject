@@ -355,12 +355,13 @@ tFoot{
 	padding-left: 15%;
 }
 
-
-
-
-
 /* resetpassword.jsp */
 
-
+.resetPasswordForm {
+	border: 1px black solid;
+	margin: 30%;
+	margin-top: 5%;
+	padding: 5%;
+}
 
 
