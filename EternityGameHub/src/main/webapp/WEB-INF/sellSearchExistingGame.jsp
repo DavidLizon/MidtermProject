@@ -15,14 +15,33 @@
 	<div class="sellsearchexisitnggame">
 		<div class=sellsearchexistinggametitlesearch>
 			<h2>Search Title to List</h2>
+<<<<<<< HEAD
 		
 			<form action="searchByTitle.do" method="GET">
 		
+=======
+		
+			<form action="searchByTitle.do" method="GET">
+		
+>>>>>>> 9e5200d325fa1f117152068c06cde39196682779
 				<label for="title">Title: </label>
 				<input type="text" name="title"/>
 				<input type="submit" value="Search">
 	
+<<<<<<< HEAD
 			</form>
+=======
+			</form><br>
+			<c:choose>
+				<c:when test="${! empty alreadyInGames}">
+					<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button>
+				</c:when>
+				
+				<c:when test="${!empty noGamesFound }">
+					<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button>
+				</c:when>
+			</c:choose>
+>>>>>>> 9e5200d325fa1f117152068c06cde39196682779
 		</div>
 	
 		<div class="sellsearchexisitinggameresults">
@@ -31,6 +50,7 @@
 			<c:when test="${! empty alreadyInGames}">
 				<ul>
 					<c:forEach var="item" items="${alreadyInGames}"> 
+<<<<<<< HEAD
 						<li>	<a href="populateItem.do?id=${item.id}">${item.title}</a></li> <!-- Need to confirm href is correct -->
 					</c:forEach>
 				</ul><br>
@@ -39,6 +59,16 @@
 			<c:when test="${!empty noGamesFound }">
 				<h3>"${noGamesFound}"</h3><br>
 				<button type="button" onclick="location.href='goToAddGame.do'" value="Add New Game!">Add New Game!</button> <!-- Not 100% sure the on click command is correct -->
+=======
+						<li>	<a href="populateItem.do?id=${item.id}">${item.title}</a></li>
+					</c:forEach>
+				</ul><br>
+				
+			</c:when>
+			<c:when test="${!empty noGamesFound }">
+				<br><br>
+				<h3>${noGamesFound}</h3><br>
+>>>>>>> 9e5200d325fa1f117152068c06cde39196682779
 				
 			</c:when>
 		</c:choose>	

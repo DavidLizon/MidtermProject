@@ -227,16 +227,16 @@ table#cart{
 	margin: 20px;
 }
 
-tbody tr{
+.items-in-cart tr{
 	border: 2px black solid;
 }
 
-tbody tr td:first-child {
+.items-in-cart tr td:first-child {
 	width: 50px;
 	max-width: 50px;
 }
 
-tbody tr td:second-child  {
+.items-in-cart tr td:second-child  {
 	text-align: left;
 	}
 	
@@ -278,6 +278,171 @@ tFoot{
 	font-size: 150%;
 }
 
+<<<<<<< HEAD
+=======
+/* loginOrCreateAccount.jsp */
+
+.forms-container {
+	width: 100%;
+	height: 100vh;
+	
+}
+
+.login-form-box {
+	margin: 20px;
+	margin-left: 3%;
+	padding: 3%;
+	padding-top: 35px;
+	width: 43%;
+	float: left;
+}
+
+.login-form {
+	border: 1px solid black;
+	margin: 10px;
+	padding: 20px;
+	
+}
+
+.new-account-form-box {
+	margin: 20px;
+	margin-right: 5%;
+	padding: 3%;
+	padding-top: 35px;
+	width: 43%;
+	float: right;
+}
+
+.new-account-form {
+	border: 1px solid black;
+	margin: 10px;
+	padding: 20px;
+}
+
+/* sellsearchexistinggame.jsp */
+.sellsearchexisitnggame{
+	margin: 2em;
+	display: flex;
+}
+
+.sellsearchexistinggametitlesearch{
+	width: 200px;
+}
+
+.sellsearchexisitinggameresults{
+	margin-left: 10em;
+	flex: 1;
+	margin-left: 10em;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.sellsearchexisitinggameresults li{
+	list-style-type: none;
+	margin-bottom: 1em;
+	position: relative; top: 2em;
+	margin-left: auto;
+}
+
+/* addgame.jsp */
+.addgamebody{
+	margin-left: 15em;
+}
+.addgamebody form{
+	width: 80%;
+}
+
+.addgamebody label, input{
+	display: inline-block;
+}
+
+.addgamebody label{
+	width: 30%;
+	text-align: right;
+}
+
+.addgamebody label+input+select{
+	width: 30%;
+	margin: 0 30% 0 4%;
+}
+
+.addgamebody input+input{
+	float: right;
+}
+.addgametitle{
+	margin-bottom: 1em;
+}
+
+.accountinfoWholePage {
+	border: 1px black solid;
+	margin: 20%;
+	margin-top: 50px;
+	padding: 5%;
+	padding-top: 3%;
+	padding-left: 15%;
+}
+
+
+
+/* resetpassword.jsp */
+
+.resetPasswordForm {
+	border: 1px black solid;
+	margin: 30%;
+	margin-top: 5%;
+	padding: 5%;
+}
+
+.addgamedescription{
+	margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.addgamemaxplayers{
+	margin-bottom: 1em;
+}
+
+.addgamegenre{
+	margin-bottom: 1em;
+}
+
+.addgamerating{
+	margin-bottom: 1em;
+}
+
+.addgameimage{
+	margin-bottom: 1em;
+}
+
+.addgamesubmit{
+	margin-bottom: 1em;
+	margin-left: 11em;
+}
+
+/* gameinfo.jsp */
+.gameinfo{
+	margin: 2em;
+	display: flex;
+}
+
+.gameinfoGame{
+	width: 200px;
+}
+
+.gameInfoInventory{
+	margin-left: 10em;
+	flex: 1;
+	margin-left: 10em;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.gameinfoGame img{
+	width: 100%;
+	height: auto;
+}
+
+>>>>>>> 9e5200d325fa1f117152068c06cde39196682779
 /* sellsearchexistinggame.jsp */
 .sellsearchexisitnggame{
 	margin: 2em;
@@ -374,13 +539,23 @@ tFoot{
 	text-align: left; 
 	padding: 5%;
 	display: flex;
+<<<<<<< HEAD
 	display: flex;
 	justify-content: center;}
+=======
+	justify-content: center;
+	text-align: center;
+}
+>>>>>>> 9e5200d325fa1f117152068c06cde39196682779
 
 .sell-add-inventory-item-successful-header-2 {
 	display: inline-block;
 	display: flex;
 	justify-content: center;
+<<<<<<< HEAD
+=======
+	text-align: center;
+>>>>>>> 9e5200d325fa1f117152068c06cde39196682779
 }
 
 .sell-add-inventory-item-successful-inner-group {
