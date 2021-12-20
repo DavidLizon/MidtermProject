@@ -16,11 +16,13 @@
 		<h2 class="resetPasswordHeader">Reset your password ${user.username}</h2>
 		
 		<form action="resetUserPassword.do" method="POST">
+		<div class="resetOldPassword">
+			<label for="oldPassword"> Old Password: </label> <input type="password" name=oldPassword><br>
+		</div>
 		
-		<label for="oldPassword"> Old Password: </label> <input type="password" name=oldPassword>
-		<br>
-		<label for="newPassword"> New Password: </label> <input type="password" name=newPassword>
-		<br>
+		<div class="resetNewPassword">
+			<label for="newPassword"> New Password: </label> <input type="password" name=newPassword><br>
+		</div><br>
 		<input type="submit" value="Update"/>
 		
 		</form>

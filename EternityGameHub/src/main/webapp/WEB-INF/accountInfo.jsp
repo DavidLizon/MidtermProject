@@ -19,14 +19,22 @@
 					<input type="hidden" name="id" value="${user.id}"/>
 					
 					<div class="accountInfoUserInfo">
-						<label for="firstName">First Name: </label> 
+						<div class="infoFirstName">
+							<label for="firstName">First Name: </label> 
 							<input required type="text" name="firstName" value = "${user.firstName}"/><br> 
-						 <label for="lastName">Last Name: </label> 
+						 </div>
+						 <div class="infoLastName">
+						 	<label for="lastName">Last Name: </label> 
 							<input required type="text" name="lastName" value = "${user.lastName}"/><br> 
-						<label for="username">Username: </label> 
+						</div>
+						<div class="infoUserName">
+							<label for="username">Username: </label> 
 							<input required readonly type="text" name="username" value = "${user.username}"/><br> 
-					 	<label for="email">Email: </label> 
+					 	</div>
+					 	<div class="infoEmail">
+					 		<label for="email">Email: </label> 
 					 		<input required type="text" name="email" value = "${user.email}"/><br> 
+						</div>
 					</div>
 					<div class="accountInfoSubmit">
 						<input type="submit" value="Update Account">

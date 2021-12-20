@@ -416,6 +416,30 @@ tFoot{
 	padding-left: 15%;
 }
 
+.infoFirstName{
+	margin-bottom: .7em;
+}
+
+.infoLastName{
+	margin-bottom: .7em;
+}
+
+.infoUserName{
+	margin-bottom: .7em;
+}
+
+.infoEmail{
+	margin-bottom: 2em;
+	margin-left: 2.5em;
+}
+
+.accountInfoSubmit{
+	margin-left: 4em;
+}
+
+.accountInfoResetPassword{
+	margin-left: 4em;
+}
 
 
 /* resetpassword.jsp */
@@ -427,6 +451,7 @@ tFoot{
 	padding: 5%;
 }
 
+/* addgame */
 .addgamedescription{
 	margin-top: 1em;
 	margin-bottom: 1em;
