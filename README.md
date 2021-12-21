@@ -12,15 +12,18 @@
 + mySQL
 + JPA / Hibernate / JPQL
 + Java
-+ Spring MVC
++ Spring MVC Boot
 + Github
 + Gradel
 + MAMP
 + Trello
-+ figma
++ Figma
++ AWS / EC2
++ Discord
++ HTML / CSS
 
 ## Description
-As a team, the general concensus was to design a full stack application that would implement all features of CRUD(Create, Read, Update, Delete) and utilize all materials covering Java, Spring MVC(model-view-controller), mySQL, and JPA(java persistence API). With a video game store, a user would be able to participate as a buyer or seller.
+As a team, the general consensus was to design a full stack application that would implement all features of CRUD(Create, Read, Update, Delete) and utilize all materials covering Java, Spring MVC(model-view-controller), mySQL, and JPA(java persistence API). With a video game store, a user would be able to participate as a buyer or seller.
 
 When entering the site's landing page, or Home page, the user is prompted to login or register an account. After successfully logging in, there is a search bar that the user may use to find match video game listings of their interest. Otherwise, the user may create, or add, an item to sell. They are then prompted with a form to fill out information, such as the title, number of players, ratings, or images of the item. When the item has been successfully added, it will populate the search page where all listings are held.
 
@@ -31,5 +34,17 @@ There will also be an admin, whose responsibility is to ensure all listings and 
 ## Methodologies Used
 In the process of building Eternity GameHub, we utilized agile development, where the goal as team is to produce a working product by a given deadline. The first step was to Plan, where we collaborated on an idea of what the application would encompass. We presented it to our instructors, who gave us feedback and the approval to move into the next process of designing a database design and wireframe of the website layout. After designing a schema with mySQL workbench and wireframe with figma, we moved into creating Java entities and JUnit tests to ensure a smooth, working program that interacted with the database. Lastly, we moved into the development of the actual website, where frontend designing was important in making an attractive, inviting product.
 
+
+## Methodologies Used
+Communication is key: Our team was always talking about what needed to be done, who was doing what, and when pushes happened. We experienced very few merge conflicts and always knew the status of our project.
+
+Small groups are best:
+Our team worked the fastest in groups of 2, sometimes 3. With 5 people in a room working on the same thing, very few
+
+Take Rob’s advice:
+Debugging our program and understanding our mapping was a challenge with the amount of methods in our controllers. More small controllers is better than fewer large controllers.
+
+
+
 Schema:
-![alt text](https://github.com/DavidLizon/MidtermProject/blob/main/DB/regh_schema.png) 
+![alt text](https://github.com/DavidLizon/MidtermProject/blob/main/DB/regh_schema.png)
