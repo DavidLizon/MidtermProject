@@ -13,7 +13,7 @@
 	
 	<div class="resetPasswordForm">
 		<!-- need to map in user to that username can be displayed -->
-		<h2 class="resetPasswordHeader">Reset your password ${user.username}</h2><br>
+		<h2 class="resetPasswordHeader">Reset your password</h2><br>
 		
 		<form action="resetUserPassword.do" method="POST">
 		<div class="resetOldPassword">
@@ -25,17 +25,18 @@
 		</div><br>
 		<input type="submit" value="Update"/>
 		
+		<div class=resetPasswordFail>
+			<c:if test="${!empty oldPasswordIsIncorrect }">
+				<h5>${oldPasswordIsIncorrect} </h5>
+			</c:if>
+		</div>
 		</form>
 	</div>
 	
 	<!-- If oldPassword matches current password AND newPassword != oldPassword 
 	 	reset password to newPassword and show "Password reset success"-->
 	<!-- Else, password reset unsuccessful -->
-	<div class=resetPasswordFail>
-		<c:if test="${!empty oldPasswordIsIncorrect }">
-			<h5>${oldPasswordIsIncorrect} </h5>
-		</c:if>
-	</div>
+	
 	
 </body>
 </html>
