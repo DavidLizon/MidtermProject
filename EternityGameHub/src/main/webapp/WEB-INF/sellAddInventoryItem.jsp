@@ -26,11 +26,11 @@
 	</div>	
 
 	<form class="sell-add-inventory-item-container" action="addGameInventoryItem.do" method="POST">
-		<div class = "sell-add-inventory-item-container-group">
+		<div class = "sell-add-inventory-item-container-group1">
 			<label for="price"> Price: </label>
 			<input type="number" step="0.01" name="salePrice" min="0" max="99"/><br><br>
 		</div>
-		<div class = "sell-add-inventory-item-container-group">
+		<div class = "sell-add-inventory-item-container-group2">
 		
 			<label for="platform">Platform: </label>
 			<select name="platform.id">
@@ -41,18 +41,18 @@
 				</c:forEach>
 			</select><br><br>	
 		</div>
-		<div class = "sell-add-inventory-item-container-group">
+		<div class = "sell-add-inventory-item-container-group3">
 		
 			<label for="conditionNew">Condition: </label>
 				<input type="radio" name="conditionNew" value="1"/> New 
 				<input type="radio" name="conditionNew" value="0"/> Used <br><br>
 		</div>
-		<div class = "sell-add-inventory-item-container-group">
+		<div class = "sell-add-inventory-item-container-group4">
 		
 		<label for="description">Description: </label>
 			<input type="text" name="description"/>
 		</div>
-		<div class = "sell-add-inventory-item-container-group">
+		<div class = "sell-add-inventory-item-container-group-button">
 			<input type="hidden" name="genres" value="${newGame.genres}"/>
 			<input type="hidden" name="ratings" value="${newGame.rating}"/>	
 			<input type="hidden" name="user.id" value="${user.id}"/>

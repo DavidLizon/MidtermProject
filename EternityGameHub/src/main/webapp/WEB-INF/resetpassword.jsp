@@ -13,7 +13,7 @@
 	
 	<div class="resetPasswordForm">
 		<!-- need to map in user to that username can be displayed -->
-		<h2 class="resetPasswordHeader">Reset your password ${user.username}</h2>
+		<h2 class="resetPasswordHeader">Reset your password ${user.username}</h2><br>
 		
 		<form action="resetUserPassword.do" method="POST">
 		<div class="resetOldPassword">
@@ -21,7 +21,7 @@
 		</div>
 		
 		<div class="resetNewPassword">
-			<label for="newPassword"> New Password: </label> <input type="password" name=newPassword><br>
+			<label for="newPassword"> New Password: </label> <input type="password" name=newPassword>
 		</div><br>
 		<input type="submit" value="Update"/>
 		
