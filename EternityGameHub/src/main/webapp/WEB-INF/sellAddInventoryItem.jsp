@@ -17,7 +17,7 @@
 				<div><img src="${newGame.gameImageUrl}" alt="${newGame.title} Cover Art"></div>
 			</div>
 			<input type="hidden" name="newGame.id" value="${newGame.id}"/>
-			<div class="sell-add-inventory-item-page-inner-group">Description: <br> ${newGame.description}</div>
+			<div class="sell-add-inventory-item-page-inner-group">Game Description: <br> ${newGame.description}</div>
 			<div class="sell-add-inventory-item-page-inner-group">Max players: ${newGame.maxPlayers}</div>
 			<div class="sell-add-inventory-item-page-inner-group">Genre:
 			<c:forEach items="${newGame.genres}" var="genre">${genre.name}</c:forEach></div>
@@ -49,7 +49,7 @@
 		</div>
 		<div class = "sell-add-inventory-item-container-group4">
 		
-		<label for="description">Description: </label>
+		<label for="description">Listing Description: </label>
 			<input type="text" name="description"/>
 		</div>
 		<div class = "sell-add-inventory-item-container-group-button">
