@@ -20,11 +20,11 @@
 + figma
 
 ## Description
-As a team, the general concensus was to design a full stack application that would implement all features of CRUD(Create, Read, Update, Delete) and utilize all materials covering Java, Spring MVC(model-view-controller), mySQL, and JPA(java persistence API). With a video game rental store, a user would be able to participate as a buyer or seller.
+As a team, the general concensus was to design a full stack application that would implement all features of CRUD(Create, Read, Update, Delete) and utilize all materials covering Java, Spring MVC(model-view-controller), mySQL, and JPA(java persistence API). With a video game store, a user would be able to participate as a buyer or seller.
 
 When entering the site's landing page, or Home page, the user is prompted to login or register an account. After successfully logging in, there is a search bar that the user may use to find match video game listings of their interest. Otherwise, the user may create, or add, an item to sell. They are then prompted with a form to fill out information, such as the title, number of players, ratings, or images of the item. When the item has been successfully added, it will populate the search page where all listings are held.
 
-For a successful transaction, a user will be able to click a button to buy the item they are interested in. The buyer will be able to reach the seller and respectively via email that is available on their profiles. The website will confirm the transaction when both users accept. The item is then removed from the search listings. Given that users will be able to fulfill roles as a buyer or seller, each instance they will be able to give and receive a rating on their experience.
+For a successful transaction, a user will be able to click a button to buy the item they are interested in. The website will confirm the transaction when both users accept. The item is then removed from the search listings. Given that users will be able to fulfill roles as a buyer or seller, each instance they will be able to give and receive a rating on their experience.
 
 There will also be an admin, whose responsibility is to ensure all listings and or interactions local to Eternity GameHub provide a friendly experience for all users and visitors of the site.
 
